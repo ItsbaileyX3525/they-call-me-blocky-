@@ -1,0 +1,276 @@
+[gd_scene load_steps=16 format=3 uid="uid://cycxjosluar88"]
+
+[ext_resource type="Script" uid="uid://0ev47o3j3m06" path="res://Scenes/Levels/hidden_level_2.gd" id="1_5d43a"]
+[ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="1_8ta6h"]
+[ext_resource type="Texture2D" uid="uid://d1gt8saq54ff6" path="res://Assets/Decals/Space.jpg" id="1_qa8rg"]
+[ext_resource type="Shader" uid="uid://cqoc05xe2qhbp" path="res://Shaders/CRT.gdshader" id="2_qa8rg"]
+[ext_resource type="FontFile" uid="uid://dco5e3c6rjal5" path="res://Assets/Fonts/Autography.otf" id="3_5d43a"]
+[ext_resource type="FontFile" uid="uid://ir0tjy2l36gl" path="res://Assets/Fonts/d.ttf" id="4_xba2k"]
+[ext_resource type="FontFile" uid="uid://bbgliofgel8u8" path="res://Assets/Fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="7_pphjp"]
+[ext_resource type="AudioStream" uid="uid://bjw0hmde40v41" path="res://Assets/Sounds/Background/SwanLake.mp3" id="8_pphjp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfydi"]
+size = Vector2(74, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d43a"]
+size = Vector2(20, 5555.06)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xba2k"]
+size = Vector2(7708.63, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pphjp"]
+size = Vector2(8489.08, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fbiq"]
+size = Vector2(20, 5600.86)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pphjp"]
+shader = ExtResource("2_qa8rg")
+shader_parameter/overlay = false
+shader_parameter/resolution = Vector2(1280, 720)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.086
+shader_parameter/scanlines_width = 0.5
+shader_parameter/grille_opacity = 0.09
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 21.061
+shader_parameter/roll_variation = 1.948
+shader_parameter/distort_intensity = 0.056
+shader_parameter/aberration = 0.05
+shader_parameter/noise_opacity = 1.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.161
+shader_parameter/pixelate = true
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fbiq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="HiddenLevel2" type="Node2D"]
+script = ExtResource("1_5d43a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(686.205, 296.01)
+texture = ExtResource("1_qa8rg")
+region_enabled = true
+region_rect = Rect2(-74067.5, -43876.2, 170362, 83240.9)
+
+[node name="Note" type="ColorRect" parent="."]
+offset_left = 2885.89
+offset_top = 2215.62
+offset_right = 2948.89
+offset_bottom = 2311.62
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Label" type="Label" parent="Note"]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 6
+text = "This is placeholder
+text you really don't
+need to be reading
+this part of the note
+at all
+
+- Bailey"
+
+[node name="Area2D" type="Area2D" parent="Note"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Note/Area2D"]
+position = Vector2(31, 57)
+shape = SubResource("RectangleShape2D_rfydi")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(-1499.63, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+position = Vector2(-1755.88, 119.682)
+shape = SubResource("RectangleShape2D_5d43a")
+
+[node name="WallUp" type="StaticBody2D" parent="."]
+position = Vector2(-3255.51, -2646.24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallUp"]
+position = Vector2(3844.32, 0)
+shape = SubResource("RectangleShape2D_xba2k")
+
+[node name="WallBottom" type="StaticBody2D" parent="."]
+position = Vector2(-3255.51, 2887.43)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
+position = Vector2(4234.54, 0)
+shape = SubResource("RectangleShape2D_pphjp")
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(4435.44, -2647.23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+position = Vector2(0, 2790.43)
+shape = SubResource("RectangleShape2D_0fbiq")
+
+[node name="Player" parent="." instance=ExtResource("1_8ta6h")]
+position = Vector2(22, 32)
+space_mode = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(32.84, 32.471)
+
+[node name="LevelCounter" type="Node2D" parent="Player/Camera2D"]
+position = Vector2(8.96414, -241.717)
+
+[node name="Control" type="Control" parent="Player/Camera2D/LevelCounter"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -607.35
+offset_top = -17.67
+offset_right = 608.65
+offset_bottom = 546.33
+
+[node name="Outline" type="ColorRect" parent="Player/Camera2D/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = -6.0
+offset_right = 116.0
+offset_bottom = 46.0
+grow_horizontal = 2
+color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[node name="Inside" type="ColorRect" parent="Player/Camera2D/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = -3.0
+offset_right = 113.0
+offset_bottom = 43.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Player/Camera2D/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_right = 113.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.843184, 0.843184, 0.843184, 1)
+theme_override_fonts/font = ExtResource("7_pphjp")
+theme_override_font_sizes/font_size = 46
+text = "60"
+horizontal_alignment = 1
+
+[node name="BG" type="ColorRect" parent="Player/Camera2D"]
+material = SubResource("ShaderMaterial_pphjp")
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="Note" type="ColorRect" parent="Player/Camera2D"]
+visible = false
+offset_left = -159.0
+offset_top = -304.0
+offset_right = -96.0
+offset_bottom = -208.0
+scale = Vector2(5.49371, 5.49371)
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Label" type="Label" parent="Player/Camera2D/Note"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 900.0
+offset_bottom = 1397.0
+scale = Vector2(0.0692046, 0.0692046)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5d43a")
+theme_override_font_sizes/font_size = 66
+text = "I wish I could remember more. I feel
+the more that I do these tests, the
+more I forget. All I know right now 
+is that all these people or \"voices\" know
+too much about me... It's uncanny.
+
+Sometimes they respond to my questions
+but they don't help me at all, it's all
+things I already know... Or rather don't
+know.
+
+I suppose the tests make me feel better
+a bit but each second I feel myself 
+fading further and further."
+
+[node name="Button" type="Button" parent="Player/Camera2D/Note"]
+layout_mode = 0
+offset_left = 86.6445
+offset_top = 96.656
+offset_right = 94.6445
+offset_bottom = 104.656
+scale = Vector2(0.28625, 0.28625)
+theme_override_styles/focus = SubResource("StyleBoxFlat_0fbiq")
+text = "Accessability mode"
+
+[node name="AccessNote" type="ColorRect" parent="Player/Camera2D"]
+visible = false
+offset_left = -527.0
+offset_top = -295.0
+offset_right = 559.0
+offset_bottom = 303.0
+color = Color(0, 0, 0, 0.752941)
+
+[node name="Label" type="Label" parent="Player/Camera2D/AccessNote"]
+layout_mode = 0
+offset_right = 3190.0
+offset_bottom = 1752.0
+scale = Vector2(0.340726, 0.340726)
+theme_override_fonts/font = ExtResource("4_xba2k")
+theme_override_font_sizes/font_size = 60
+text = "It's like I don't even understand
+what is going on anymore. I test over
+and over and yet it doesn't make sense.
+
+From what I can remeber, the tests
+are supposed to help me get back my
+\"Life\"... Whatever that is supposed to
+mean.
+
+When I don't do the tests everything
+becomes jsut a bit more confusing like
+I'm slipping away, for now I think
+I think I will continue the tests,"
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="Player/Camera2D/AccessNote"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 56
+text = "Return"
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pphjp")
+volume_db = -13.777
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[connection signal="body_entered" from="Note/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Note/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="Player/Camera2D/Note/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Player/Camera2D/AccessNote/Close" to="." method="_on_close_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

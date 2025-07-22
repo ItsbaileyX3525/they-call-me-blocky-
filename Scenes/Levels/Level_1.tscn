@@ -1,0 +1,892 @@
+[gd_scene load_steps=65 format=3 uid="uid://8mxho7jfpe2x"]
+
+[ext_resource type="Shader" uid="uid://dd40doue2epok" path="res://Shaders/Grid.gdshader" id="1_2dy8h"]
+[ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="1_cp10e"]
+[ext_resource type="AudioStream" uid="uid://dk7avqaba0y8h" path="res://Assets/VoiceLines/Intro/Intro.wav" id="2_7pr3o"]
+[ext_resource type="Script" uid="uid://dq4cbm261iynf" path="res://Scripts/LevelScripts/level_1.gd" id="3_qpfou"]
+[ext_resource type="FontFile" uid="uid://bbgliofgel8u8" path="res://Assets/Fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="3_uigiy"]
+[ext_resource type="AudioStream" uid="uid://buyfwl8fjow70" path="res://Assets/VoiceLines/Intro/Intro2.wav" id="4_87l2y"]
+[ext_resource type="Shader" uid="uid://bxudinudgkho3" path="res://Shaders/Cobblestone.gdshader" id="4_trgpn"]
+[ext_resource type="AudioStream" uid="uid://b3svf5kc7af2" path="res://Assets/Sounds/Ambience/LightSwitch.mp3" id="5_4gffl"]
+[ext_resource type="AudioStream" uid="uid://bwfh80cuk18tf" path="res://Assets/VoiceLines/Level1/Level1 - No skip.wav" id="6_ducwx"]
+[ext_resource type="Script" uid="uid://dn44uolvofonr" path="res://Scripts/LevelScripts/level_2.gd" id="6_hs11j"]
+[ext_resource type="AudioStream" uid="uid://kso611m34f4d" path="res://Assets/Sounds/Ambience/locked_door.mp3" id="6_it58x"]
+[ext_resource type="AudioStream" uid="uid://c4qe8g34rd8t8" path="res://Assets/VoiceLines/Level1/Level1 - Partial skip.wav" id="7_hs11j"]
+[ext_resource type="AudioStream" uid="uid://cyinns4qi0btw" path="res://Assets/VoiceLines/Level1/Level1 - Went back2.wav" id="7_ngxpw"]
+[ext_resource type="AudioStream" uid="uid://dl6drodmp2jqj" path="res://Assets/VoiceLines/Level1/Level1 - Went back1.wav" id="7_uigiy"]
+[ext_resource type="AudioStream" uid="uid://c61fychbdn5r7" path="res://Assets/Sounds/SFX/RadioPickup.mp3" id="8_gu1j6"]
+[ext_resource type="AudioStream" uid="uid://bysjjb7yodkxx" path="res://Assets/VoiceLines/Level1/Level1 - Full skip.wav" id="8_o5ofx"]
+[ext_resource type="AudioStream" uid="uid://30edr73d2pcq" path="res://Assets/VoiceLines/Level1/Level1 - Went back3.wav" id="8_trw0a"]
+[ext_resource type="AudioStream" uid="uid://bfaqygtj56utj" path="res://Assets/VoiceLines/Level1/Level1 - Went back8.wav" id="9_8nmnw"]
+[ext_resource type="AudioStream" uid="uid://de6j1mc2t1pyq" path="res://Assets/VoiceLines/Level1/Level1 - Went back4.wav" id="9_tjcye"]
+[ext_resource type="AudioStream" uid="uid://dvpj7m1yld8p2" path="res://Assets/VoiceLines/Intro/Intro - Hurry1.wav" id="10_x6ugg"]
+[ext_resource type="AudioStream" uid="uid://cuq6mkq5i4uec" path="res://Assets/VoiceLines/Intro/Intro - Hurry2.wav" id="11_i6xvf"]
+[ext_resource type="AudioStream" uid="uid://bsruaggkhuwxg" path="res://Assets/VoiceLines/Intro/Intro - Hurry3.wav" id="12_6vjt7"]
+[ext_resource type="AudioStream" uid="uid://d13n1rq65eo0f" path="res://Assets/VoiceLines/Intro/Intro - Hurry4.wav" id="13_i6xvf"]
+[ext_resource type="AudioStream" uid="uid://c3cytuir353" path="res://Assets/VoiceLines/Intro/Intro - Hurry5.wav" id="13_uigiy"]
+[ext_resource type="AudioStream" uid="uid://cwgwrk6fwqmaj" path="res://Assets/VoiceLines/Level1/Level1 - Came back1.wav" id="21_trgpn"]
+[ext_resource type="AudioStream" uid="uid://canfcjeclqooy" path="res://Assets/VoiceLines/Level1/Level1 - Came back2.wav" id="22_2dy8h"]
+[ext_resource type="AudioStream" uid="uid://dpyx0ca6wtf0c" path="res://Assets/Sounds/Ambience/LampBuzzing.mp3" id="23_6vjt7"]
+[ext_resource type="AudioStream" uid="uid://bdmfh87kstp3n" path="res://Assets/VoiceLines/Level1/Level1 - Came back3.wav" id="23_es41r"]
+[ext_resource type="AudioStream" uid="uid://dw205hn5p6fno" path="res://Assets/VoiceLines/Level1/Level1 - Came back4.wav" id="24_k77tw"]
+[ext_resource type="AudioStream" uid="uid://uwinq0q2chyk" path="res://Assets/VoiceLines/Level1/Level1 - Instructions1.wav" id="26_es41r"]
+[ext_resource type="PackedScene" uid="uid://cqtlaat786iaf" path="res://Scenes/Objects/Button.tscn" id="27_k77tw"]
+[ext_resource type="AudioStream" uid="uid://8l61jmg50i8f" path="res://Assets/VoiceLines/Level1/Level1 - Praise.wav" id="27_xlfcq"]
+[ext_resource type="AudioStream" uid="uid://vye35lqy27tu" path="res://Assets/VoiceLines/Level1/Level1 - Disapline.wav" id="28_4gffl"]
+[ext_resource type="AudioStream" uid="uid://iyiol1jol04s" path="res://Assets/VoiceLines/Level1/Level1 - Button press.wav" id="29_it58x"]
+[ext_resource type="AudioStream" uid="uid://m8iyastke4rd" path="res://Assets/VoiceLines/Level1/Level1 - Complete.wav" id="33_eqs5w"]
+[ext_resource type="PackedScene" uid="uid://cjl5n1qfq2ys6" path="res://Scenes/Objects/Lever.tscn" id="34_eyw8r"]
+[ext_resource type="AudioStream" uid="uid://nv780oudl8q1" path="res://Assets/VoiceLines/Level1/Level1 - CompleteDisapline.wav" id="34_gu1j6"]
+[ext_resource type="AudioStream" uid="uid://dety60xffkd7t" path="res://Assets/VoiceLines/Level1/Level1 - CompletePraise.wav" id="35_f0kld"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_es41r"]
+shader = ExtResource("1_2dy8h")
+shader_parameter/grid_color = Color(0, 0, 0, 1)
+shader_parameter/grid_size = 60.855
+shader_parameter/line_thickness = 5.46
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqs5w"]
+size = Vector2(61.738, 40)
+
+[sub_resource type="Animation" id="Animation_vfeps"]
+resource_name = "DoorUp"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-42, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wall2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 8), Vector2(48, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorMiddle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 54), Vector2(-16, 54), Vector2(-16, -129)]
+}
+
+[sub_resource type="Animation" id="Animation_eqs5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wall2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 26)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorMiddle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, 54)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gu1j6"]
+_data = {
+&"DoorUp": SubResource("Animation_vfeps"),
+&"RESET": SubResource("Animation_eqs5w")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2dy8h"]
+shader = ExtResource("4_trgpn")
+shader_parameter/crack_density = 5.24
+shader_parameter/crack_intensity = 0.955
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pr3o"]
+size = Vector2(6272, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8yj7"]
+size = Vector2(40, 40.0227)
+
+[sub_resource type="Animation" id="Animation_eyw8r"]
+resource_name = "MoveWallUp"
+length = 0.42
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.37893, 0.993343),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -127)]
+}
+
+[sub_resource type="Animation" id="Animation_6eh4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfeps"]
+_data = {
+&"MoveWallUp": SubResource("Animation_eyw8r"),
+&"RESET": SubResource("Animation_6eh4x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87l2y"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpfou"]
+size = Vector2(40, 40)
+
+[sub_resource type="Gradient" id="Gradient_f0kld"]
+offsets = PackedFloat32Array(0.34, 0.42)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gu1j6"]
+gradient = SubResource("Gradient_f0kld")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htyn7"]
+size = Vector2(138, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybqp2"]
+size = Vector2(61.738, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eh4x"]
+size = Vector2(3060.33, 15.4427)
+
+[sub_resource type="Gradient" id="Gradient_eyw8r"]
+offsets = PackedFloat32Array(0.012987, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tjj3e"]
+gradient = SubResource("Gradient_eyw8r")
+fill = 1
+fill_from = Vector2(0.5, 0.963415)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs11j"]
+size = Vector2(29.6968, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyw8r"]
+size = Vector2(176, 40)
+
+[sub_resource type="Animation" id="Animation_4gffl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2820, 479)]
+}
+
+[sub_resource type="Animation" id="Animation_xlfcq"]
+resource_name = "playAnim"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2820, 479), Vector2(2820, 618)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_it58x"]
+_data = {
+&"RESET": SubResource("Animation_4gffl"),
+&"playAnim": SubResource("Animation_xlfcq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlfcq"]
+size = Vector2(9, 181)
+
+[node name="Level1" type="Node2D"]
+
+[node name="LevelCamera" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_es41r")
+offset_left = -482.0
+offset_top = -425.0
+offset_right = -442.0
+offset_bottom = -385.0
+scale = Vector2(572.12, 41.68)
+color = Color(0.344076, 0.344076, 0.344076, 1)
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(2429, 666)
+
+[node name="Wall" type="ColorRect" parent="Walls"]
+offset_top = 26.0
+offset_right = 10.0
+offset_bottom = 58.0
+color = Color(0, 0, 0, 1)
+
+[node name="Wall2" type="ColorRect" parent="Walls"]
+offset_left = 6.0
+offset_top = 26.0
+offset_right = 15.0
+offset_bottom = 58.0
+color = Color(0, 0, 0, 1)
+
+[node name="DoorMiddle" type="Area2D" parent="Walls"]
+position = Vector2(-16, 54)
+scale = Vector2(1.2796, 4.0796)
+
+[node name="ColorRect" type="ColorRect" parent="Walls/DoorMiddle"]
+offset_left = -15.0
+offset_right = 114.0
+offset_bottom = 40.0
+scale = Vector2(0.48001, 1)
+color = Color(0.372327, 0.219733, 1.92523e-07, 1)
+
+[node name="Knob" type="ColorRect" parent="Walls/DoorMiddle"]
+offset_left = 33.0
+offset_top = 23.0
+offset_right = 48.0
+offset_bottom = 26.0
+scale = Vector2(0.48001, 1)
+color = Color(0.988022, 0.615569, 6.93083e-06, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/DoorMiddle"]
+position = Vector2(16.0206, 19.9999)
+shape = SubResource("RectangleShape2D_eqs5w")
+
+[node name="AppearDoor" type="AnimationPlayer" parent="Walls"]
+libraries = {
+&"": SubResource("AnimationLibrary_gu1j6")
+}
+
+[node name="Level1Elements" type="Node2D" parent="."]
+script = ExtResource("3_qpfou")
+
+[node name="LevelCounter" type="Node2D" parent="Level1Elements"]
+
+[node name="Control" type="Control" parent="Level1Elements/LevelCounter"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 136.0
+offset_right = 1256.0
+offset_bottom = 700.0
+
+[node name="Outline" type="ColorRect" parent="Level1Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = -6.0
+offset_right = 116.0
+offset_bottom = 46.0
+grow_horizontal = 2
+color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[node name="Inside" type="ColorRect" parent="Level1Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = -3.0
+offset_right = 113.0
+offset_bottom = 43.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Level1Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_right = 113.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.843184, 0.843184, 0.843184, 1)
+theme_override_fonts/font = ExtResource("3_uigiy")
+theme_override_font_sizes/font_size = 46
+text = "0"
+horizontal_alignment = 1
+
+[node name="Floor" type="StaticBody2D" parent="Level1Elements"]
+position = Vector2(0, 700)
+
+[node name="ColorRect" type="ColorRect" parent="Level1Elements/Floor"]
+material = SubResource("ShaderMaterial_2dy8h")
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(127.896, 1)
+color = Color(0.140447, 0.140447, 0.140447, 1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Elements/Floor"]
+position = Vector2(3136, 20)
+shape = SubResource("RectangleShape2D_7pr3o")
+
+[node name="WallL" type="StaticBody2D" parent="Level1Elements"]
+scale = Vector2(0.839999, 17.64)
+
+[node name="ColorRect" type="ColorRect" parent="Level1Elements/WallL"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.999763, 0.992068)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Elements/WallL"]
+position = Vector2(20, 20.0113)
+shape = SubResource("RectangleShape2D_q8yj7")
+
+[node name="MoveWall" type="AnimationPlayer" parent="Level1Elements/WallL"]
+libraries = {
+&"": SubResource("AnimationLibrary_vfeps")
+}
+speed_scale = 0.14
+
+[node name="WallR" type="StaticBody2D" parent="Level1Elements"]
+position = Vector2(1256, 0)
+scale = Vector2(11.0248, 17.5008)
+
+[node name="ColorRect" type="ColorRect" parent="Level1Elements/WallR"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Elements/WallR"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_87l2y")
+
+[node name="Roof" type="StaticBody2D" parent="Level1Elements"]
+scale = Vector2(260.76, 0.76)
+
+[node name="ColorRect" type="ColorRect" parent="Level1Elements/Roof"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Elements/Roof"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_qpfou")
+
+[node name="Radio" type="Node2D" parent="Level1Elements"]
+visible = false
+position = Vector2(424, 611)
+
+[node name="Base" type="ColorRect" parent="Level1Elements/Radio"]
+offset_left = -98.0
+offset_top = 16.0
+offset_right = -5.0
+offset_bottom = 61.0
+scale = Vector2(0.904625, 0.904625)
+color = Color(0, 0, 0, 1)
+
+[node name="Center" type="ColorRect" parent="Level1Elements/Radio"]
+offset_left = -95.0
+offset_top = 19.0
+offset_right = -9.0
+offset_bottom = 48.0
+scale = Vector2(0.904625, 0.904625)
+color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[node name="CircleHolder" type="ColorRect" parent="Level1Elements/Radio"]
+offset_left = -79.748
+offset_top = 31.0
+offset_right = -31.748
+offset_bottom = 44.0
+color = Color(0.77084, 0.770839, 0.770839, 1)
+
+[node name="Window" type="ColorRect" parent="Level1Elements/Radio"]
+offset_left = -66.748
+offset_top = 32.0
+offset_right = -44.748
+offset_bottom = 38.0
+
+[node name="Circle1" type="Sprite2D" parent="Level1Elements/Radio"]
+position = Vector2(-73.748, 37.252)
+scale = Vector2(0.257876, 0.257876)
+texture = SubResource("GradientTexture2D_gu1j6")
+
+[node name="Circle2" type="Sprite2D" parent="Level1Elements/Radio"]
+position = Vector2(-37.748, 37.252)
+scale = Vector2(0.257876, 0.257876)
+texture = SubResource("GradientTexture2D_gu1j6")
+
+[node name="Label" type="Label" parent="Level1Elements/Radio"]
+offset_left = -93.0
+offset_top = 19.0
+offset_right = 635.0
+offset_bottom = 126.0
+scale = Vector2(0.103052, 0.103052)
+theme_override_font_sizes/font_size = 76
+text = "Voice log #1"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Level1Elements/Radio"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Elements/Radio/Area2D"]
+position = Vector2(-51, 36.5)
+shape = SubResource("RectangleShape2D_htyn7")
+
+[node name="Door" type="Area2D" parent="Level1Elements"]
+position = Vector2(1220, 537)
+scale = Vector2(1.2796, 4.0796)
+
+[node name="ColorRect" type="ColorRect" parent="Level1Elements/Door"]
+offset_left = 23.0
+offset_right = 63.0
+offset_bottom = 40.0
+scale = Vector2(0.48001, 1)
+color = Color(0.372327, 0.219733, 1.92523e-07, 1)
+
+[node name="Knob" type="ColorRect" parent="Level1Elements/Door"]
+offset_left = 37.0
+offset_top = 23.0
+offset_right = 43.0
+offset_bottom = 26.0
+scale = Vector2(0.48001, 1)
+color = Color(0.988022, 0.615569, 6.93083e-06, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Elements/Door"]
+position = Vector2(27.252, 20)
+shape = SubResource("RectangleShape2D_ybqp2")
+
+[node name="HiddenLevel" type="Area2D" parent="Level1Elements"]
+position = Vector2(-54, 1244)
+scale = Vector2(1.2796, 4.0796)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1Elements/HiddenLevel"]
+position = Vector2(-222.726, 7.84389)
+shape = SubResource("RectangleShape2D_6eh4x")
+
+[node name="HoleInTheWall" type="Node2D" parent="Level1Elements"]
+visible = false
+
+[node name="Hole" type="ColorRect" parent="Level1Elements/HoleInTheWall"]
+offset_left = 431.0
+offset_top = 610.0
+offset_right = 471.0
+offset_bottom = 650.0
+scale = Vector2(1.49777, 1.49777)
+color = Color(0, 0, 0, 1)
+
+[node name="Lever" parent="Level1Elements/HoleInTheWall" instance=ExtResource("34_eyw8r")]
+position = Vector2(448, 604)
+scale = Vector2(0.889095, 0.889095)
+can_interact = false
+
+[node name="Light" type="Node2D" parent="Level1Elements"]
+position = Vector2(634, 30)
+
+[node name="LightbulbWire" type="ColorRect" parent="Level1Elements/Light"]
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
+scale = Vector2(0.159995, 0.559999)
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Lightbulb" type="ColorRect" parent="Level1Elements/Light"]
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 60.0
+scale = Vector2(0.639995, 0.16)
+color = Color(0.484183, 0.266439, 0.0693719, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Level1Elements"]
+position = Vector2(687, 375)
+rotation = 3.14159
+scale = Vector2(19.4062, 10.6563)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_tjj3e")
+
+[node name="Teleport" type="Node2D" parent="Level1Elements"]
+position = Vector2(1117, 642)
+
+[node name="CameraPositionInitial" type="Node2D" parent="Level1Elements"]
+position = Vector2(640, 360)
+
+[node name="SFX" type="Node2D" parent="Level1Elements"]
+
+[node name="LightTurnOff" type="AudioStreamPlayer2D" parent="Level1Elements/SFX"]
+position = Vector2(644, 68)
+stream = ExtResource("5_4gffl")
+
+[node name="DoorRattle" type="AudioStreamPlayer2D" parent="Level1Elements/SFX"]
+position = Vector2(1240, 633)
+stream = ExtResource("6_it58x")
+
+[node name="RadioPickup" type="AudioStreamPlayer2D" parent="Level1Elements/SFX"]
+position = Vector2(1240, 633)
+stream = ExtResource("8_gu1j6")
+volume_db = 4.0
+
+[node name="VoiceLines" type="Node" parent="Level1Elements"]
+
+[node name="Intro1" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("2_7pr3o")
+autoplay = true
+
+[node name="Intro2" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("4_87l2y")
+
+[node name="Wentback1" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("7_uigiy")
+volume_db = -14.0
+
+[node name="Wentback2" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("7_ngxpw")
+volume_db = -14.0
+
+[node name="Wentback3" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("8_trw0a")
+volume_db = -14.0
+
+[node name="Wentback4" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("9_tjcye")
+volume_db = -14.0
+
+[node name="Wentback8" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("9_8nmnw")
+volume_db = -14.0
+
+[node name="Hurry1" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("10_x6ugg")
+volume_db = -14.0
+
+[node name="Hurry2" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("11_i6xvf")
+volume_db = -14.0
+
+[node name="Hurry3" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("12_6vjt7")
+volume_db = -14.0
+
+[node name="Hurry4" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("13_i6xvf")
+volume_db = -14.0
+
+[node name="Hurry5" type="AudioStreamPlayer" parent="Level1Elements/VoiceLines"]
+stream = ExtResource("13_uigiy")
+volume_db = -14.0
+
+[node name="Level2Elements" type="Node2D" parent="."]
+script = ExtResource("6_hs11j")
+
+[node name="Teleport" type="Node2D" parent="Level2Elements"]
+position = Vector2(1804, 642)
+
+[node name="CameraPosition" type="Node2D" parent="Level2Elements"]
+position = Vector2(2303, 360)
+
+[node name="LevelCounter" type="Node2D" parent="Level2Elements"]
+position = Vector2(1663, 0)
+
+[node name="Control" type="Control" parent="Level2Elements/LevelCounter"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 136.0
+offset_right = 1256.0
+offset_bottom = 700.0
+
+[node name="Outline" type="ColorRect" parent="Level2Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = -6.0
+offset_right = 116.0
+offset_bottom = 46.0
+grow_horizontal = 2
+color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[node name="Inside" type="ColorRect" parent="Level2Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = -3.0
+offset_right = 113.0
+offset_bottom = 43.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Level2Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_right = 113.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.843184, 0.843184, 0.843184, 1)
+theme_override_fonts/font = ExtResource("3_uigiy")
+theme_override_font_sizes/font_size = 46
+text = "1"
+horizontal_alignment = 1
+
+[node name="Secret" type="Label" parent="Level2Elements/LevelCounter/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_right = 512.0
+offset_bottom = 97.0
+grow_horizontal = 2
+scale = Vector2(0.410014, 0.410014)
+theme_override_colors/font_color = Color(0.843184, 0.843184, 0.843184, 1)
+theme_override_fonts/font = ExtResource("3_uigiy")
+theme_override_font_sizes/font_size = 46
+text = "Philtonic
+Games"
+horizontal_alignment = 1
+
+[node name="Door" type="Area2D" parent="Level2Elements"]
+position = Vector2(1643, 537)
+scale = Vector2(1.2796, 4.0796)
+
+[node name="ColorRect" type="ColorRect" parent="Level2Elements/Door"]
+offset_left = 23.0
+offset_right = 63.0
+offset_bottom = 40.0
+scale = Vector2(0.48001, 1)
+color = Color(0.372327, 0.219733, 1.92523e-07, 1)
+
+[node name="Knob" type="ColorRect" parent="Level2Elements/Door"]
+offset_left = 37.0
+offset_top = 23.0
+offset_right = 43.0
+offset_bottom = 26.0
+scale = Vector2(0.48001, 1)
+color = Color(0.988022, 0.615569, 6.93083e-06, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2Elements/Door"]
+position = Vector2(37.5117, 20)
+shape = SubResource("RectangleShape2D_hs11j")
+
+[node name="WallL2" type="StaticBody2D" parent="Level2Elements"]
+position = Vector2(2952, 700)
+rotation = -3.14159
+scale = Vector2(0.825861, 17.64)
+
+[node name="ColorRect" type="ColorRect" parent="Level2Elements/WallL2"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2Elements/WallL2"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_q8yj7")
+
+[node name="Flooring1" type="StaticBody2D" parent="Level2Elements"]
+position = Vector2(2820, 479)
+
+[node name="ColorRect" type="ColorRect" parent="Level2Elements/Flooring1"]
+offset_left = -77.0
+offset_right = 99.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2Elements/Flooring1"]
+position = Vector2(11, 20)
+shape = SubResource("RectangleShape2D_eyw8r")
+
+[node name="Button" parent="Level2Elements/Flooring1" instance=ExtResource("27_k77tw")]
+position = Vector2(10, -33)
+
+[node name="MoveFlooringDown" type="AnimationPlayer" parent="Level2Elements/Flooring1"]
+libraries = {
+&"": SubResource("AnimationLibrary_it58x")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="Level2Elements"]
+position = Vector2(2310.58, 366)
+rotation = 3.14159
+scale = Vector2(19.3932, 10.6563)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_tjj3e")
+
+[node name="Light" type="Node2D" parent="Level2Elements"]
+position = Vector2(2297, 30)
+
+[node name="LightbulbWire" type="ColorRect" parent="Level2Elements/Light"]
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
+scale = Vector2(0.159995, 0.559999)
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Lightbulb" type="ColorRect" parent="Level2Elements/Light"]
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 60.0
+scale = Vector2(0.639995, 0.16)
+color = Color(0.484183, 0.266439, 0.0693719, 1)
+
+[node name="VoiceLines" type="Node" parent="Level2Elements"]
+
+[node name="NoSkip" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("6_ducwx")
+volume_db = -14.0
+
+[node name="PartialSkip" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("7_hs11j")
+volume_db = -14.0
+
+[node name="FullSkip" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("8_o5ofx")
+volume_db = -14.0
+
+[node name="CameBack1" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("21_trgpn")
+volume_db = -14.0
+
+[node name="CameBack2" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("22_2dy8h")
+volume_db = -14.0
+
+[node name="CameBack3" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("23_es41r")
+volume_db = -14.0
+
+[node name="CameBack4" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("24_k77tw")
+volume_db = -14.0
+
+[node name="Instructions1" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("26_es41r")
+volume_db = -14.0
+
+[node name="Praise" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("27_xlfcq")
+volume_db = -14.0
+
+[node name="Disapline" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("28_4gffl")
+volume_db = -14.0
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("29_it58x")
+volume_db = -14.0
+
+[node name="CongratsNormal" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("33_eqs5w")
+volume_db = 8.0
+
+[node name="CongratsDisapline" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("34_gu1j6")
+volume_db = 8.0
+
+[node name="CongratsPraise" type="AudioStreamPlayer" parent="Level2Elements/VoiceLines"]
+stream = ExtResource("35_f0kld")
+volume_db = 8.0
+
+[node name="Inviswall" type="StaticBody2D" parent="Level2Elements"]
+position = Vector2(2752, 529)
+
+[node name="InvisWallCollider" type="CollisionShape2D" parent="Level2Elements/Inviswall"]
+position = Vector2(-5.5, 80.5)
+shape = SubResource("RectangleShape2D_xlfcq")
+
+[node name="Ambience" type="Node" parent="."]
+
+[node name="LightBuzz" type="AudioStreamPlayer2D" parent="Ambience"]
+position = Vector2(649, 53)
+stream = ExtResource("23_6vjt7")
+volume_db = 3.617
+autoplay = true
+max_distance = 571.0
+
+[node name="LightBuzz2" type="AudioStreamPlayer2D" parent="Ambience"]
+position = Vector2(2308, 53)
+stream = ExtResource("23_6vjt7")
+volume_db = 3.617
+autoplay = true
+max_distance = 763.0
+
+[node name="Player" parent="." instance=ExtResource("1_cp10e")]
+position = Vector2(181, 631)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[connection signal="body_entered" from="Walls/DoorMiddle" to="Level2Elements" method="_on_door_middle_body_entered"]
+[connection signal="body_entered" from="Level1Elements/Radio/Area2D" to="Level1Elements" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Level1Elements/Door" to="Level1Elements" method="_on_door_body_entered"]
+[connection signal="body_entered" from="Level1Elements/HiddenLevel" to="Level1Elements" method="_on_hidden_level_body_entered"]
+[connection signal="powered" from="Level1Elements/HoleInTheWall/Lever" to="Level1Elements" method="_on_lever_powered"]
+[connection signal="finished" from="Level1Elements/VoiceLines/Intro1" to="Level1Elements" method="_on_intro_1_finished"]
+[connection signal="finished" from="Level1Elements/VoiceLines/Intro2" to="Level1Elements" method="_on_intro_2_finished"]
+[connection signal="body_entered" from="Level2Elements/Door" to="Level2Elements" method="_on_door_body_entered"]
+[connection signal="pressed_down" from="Level2Elements/Flooring1/Button" to="Level2Elements" method="_on_button_pressed_down"]
+[connection signal="animation_finished" from="Level2Elements/Flooring1/MoveFlooringDown" to="Level2Elements" method="_on_move_flooring_down_animation_finished"]
+[connection signal="finished" from="Level2Elements/VoiceLines/NoSkip" to="Level2Elements" method="_on_no_skip_finished"]

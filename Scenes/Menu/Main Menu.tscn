@@ -1,0 +1,210 @@
+[gd_scene load_steps=10 format=3 uid="uid://clujq1f4bmaa5"]
+
+[ext_resource type="Script" uid="uid://cm5jlg12vkpc6" path="res://Scripts/Menu/main_menu.gd" id="1_04eqm"]
+[ext_resource type="Texture2D" uid="uid://clxkd0enr188e" path="res://Assets/the lads.png" id="2_my7in"]
+[ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="3_krpjf"]
+[ext_resource type="AudioStream" uid="uid://b76ymtx65nc8j" path="res://Assets/Sounds/Menu/Title Boom.mp3" id="3_y7nxq"]
+[ext_resource type="AudioStream" uid="uid://5fyodqx26a1c" path="res://Assets/Sounds/Menu/one piece?.mp3" id="4_vct2b"]
+
+[sub_resource type="Animation" id="Animation_my7in"]
+resource_name = "LoadGame"
+length = 0.57
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Initial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vct2b"]
+resource_name = "LoadMenu"
+length = 0.57
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Initial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y7nxq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Initial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vct2b"]
+_data = {
+&"LoadGame": SubResource("Animation_my7in"),
+&"LoadMenu": SubResource("Animation_vct2b"),
+&"RESET": SubResource("Animation_y7nxq")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04eqm")
+
+[node name="BackgroundColour" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0114364, 0.0395265, 1)
+
+[node name="Initial" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Initial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = -135.0
+offset_right = 121.5
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Initial/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_my7in")
+
+[node name="Label" type="Label" parent="Initial/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Bailey's gaems!"
+horizontal_alignment = 1
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.5
+offset_right = 312.5
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 45
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Menu/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 67
+text = "They call me blocky!"
+
+[node name="Elements" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/Elements"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -129.5
+offset_right = 156.5
+offset_bottom = 129.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Elements/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_krpjf")
+theme_override_font_sizes/font_size = 46
+text = "START GAME"
+
+[node name="Collectables" type="Button" parent="Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_krpjf")
+theme_override_font_sizes/font_size = 46
+text = " COLLECTABLES "
+
+[node name="Options" type="Button" parent="Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_krpjf")
+theme_override_font_sizes/font_size = 46
+text = "OPTIONS"
+
+[node name="Exit" type="Button" parent="Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_krpjf")
+theme_override_font_sizes/font_size = 46
+text = "QUIT"
+
+[node name="Boom" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource("3_y7nxq")
+volume_db = 3.387
+pitch_scale = 1.29
+
+[node name="Intro" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vct2b")
+}
+autoplay = "LoadGame"
+
+[node name="Bg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vct2b")
+volume_db = -5.622
+
+[connection signal="pressed" from="Menu/Elements/CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Elements/CenterContainer/VBoxContainer/Collectables" to="." method="_on_collectables_pressed"]
+[connection signal="pressed" from="Menu/Elements/CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/Elements/CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="animation_finished" from="Intro" to="." method="_on_intro_animation_finished"]

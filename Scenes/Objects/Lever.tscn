@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjl5n1qfq2ys6"]
+
+[ext_resource type="Script" uid="uid://cpsd6n5ui4svm" path="res://Scripts/Objects/Lever.gd" id="1_wh80f"]
+[ext_resource type="Shader" uid="uid://bxudinudgkho3" path="res://Shaders/Cobblestone.gdshader" id="2_w76vg"]
+[ext_resource type="AudioStream" uid="uid://ciqv4oygwhood" path="res://Assets/Sounds/Ambience/Switch.mp3" id="3_da0ea"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_da0ea"]
+shader = ExtResource("2_w76vg")
+shader_parameter/crack_density = -1.405
+shader_parameter/crack_intensity = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h08f1"]
+shader = ExtResource("2_w76vg")
+shader_parameter/crack_density = 0.185
+shader_parameter/crack_intensity = 0.095
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wh80f"]
+size = Vector2(55, 73)
+
+[node name="Lever" type="Node2D"]
+script = ExtResource("1_wh80f")
+
+[node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(0.333196, 0.433936)
+
+[node name="Background" type="ColorRect" parent="Sprites"]
+material = SubResource("ShaderMaterial_da0ea")
+offset_top = 34.0
+offset_right = 87.0
+offset_bottom = 141.0
+color = Color(0.223103, 0.223103, 0.223103, 1)
+
+[node name="InnerBackground" type="ColorRect" parent="Sprites"]
+material = SubResource("ShaderMaterial_h08f1")
+offset_left = 29.0
+offset_top = 44.0
+offset_right = 59.0
+offset_bottom = 134.0
+color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="LeverUp" type="ColorRect" parent="Sprites"]
+visible = false
+offset_left = 38.0
+offset_right = 51.0
+offset_bottom = 90.0
+color = Color(0.138159, 0.0963757, 0.0174466, 1)
+
+[node name="LeverDown" type="ColorRect" parent="Sprites"]
+offset_left = 51.0
+offset_top = 168.0
+offset_right = 64.0
+offset_bottom = 258.0
+rotation = 3.14159
+color = Color(0.138159, 0.0963757, 0.0174466, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(15.5, 36.5)
+shape = SubResource("RectangleShape2D_wh80f")
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_da0ea")
+volume_db = -15.471
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

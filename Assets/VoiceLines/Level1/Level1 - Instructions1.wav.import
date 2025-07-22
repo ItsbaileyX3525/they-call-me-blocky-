@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://uwinq0q2chyk"
+path="res://.godot/imported/Level1 - Instructions1.wav-ad7a56ef5e4df7e30ab82fa960309023.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level1/Level1 - Instructions1.wav"
+dest_files=["res://.godot/imported/Level1 - Instructions1.wav-ad7a56ef5e4df7e30ab82fa960309023.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

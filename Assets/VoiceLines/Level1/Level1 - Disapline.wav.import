@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vye35lqy27tu"
+path="res://.godot/imported/Level1 - Disapline.wav-af93690834df2a4596b281aa0945fd7e.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level1/Level1 - Disapline.wav"
+dest_files=["res://.godot/imported/Level1 - Disapline.wav-af93690834df2a4596b281aa0945fd7e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

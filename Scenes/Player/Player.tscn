@@ -1,0 +1,464 @@
+[gd_scene load_steps=11 format=3 uid="uid://ch5uhvbhutp8a"]
+
+[ext_resource type="Shader" uid="uid://ccrimqwvf5klr" path="res://Shaders/PlayerGoop.gdshader" id="1_ft8w5"]
+[ext_resource type="Script" uid="uid://bxar5nsyyb6r" path="res://Scripts/Player.gd" id="1_s0eop"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ft8w5"]
+shader = ExtResource("1_ft8w5")
+shader_parameter/time_scale = 0.16
+shader_parameter/blob_amount = 0.125
+shader_parameter/blob_frequency = 8.0
+shader_parameter/sharpness = 5.97
+shader_parameter/slime_color = Color(0.808998, 0.808998, 0.808998, 1)
+
+[sub_resource type="Animation" id="Animation_s0eop"]
+resource_name = "Blink"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyelid:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26, 0.366667, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 17), Vector2(1, 17), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Eyelid2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26, 0.366667, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 17), Vector2(1, 17), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_ft8w5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyelid:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Eyelid2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h54ih"]
+_data = {
+&"Blink": SubResource("Animation_s0eop"),
+&"RESET": SubResource("Animation_ft8w5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0eop"]
+size = Vector2(67, 67)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s0eop"]
+polygon = PackedVector2Array(0, 0, 0, 67, 67, 67, 67, 0)
+
+[sub_resource type="Gradient" id="Gradient_s0eop"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ft8w5"]
+gradient = SubResource("Gradient_s0eop")
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_s0eop")
+
+[node name="Face" type="ColorRect" parent="."]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("ShaderMaterial_ft8w5")
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(2.24, 2.24)
+
+[node name="PlayerTextures" type="Node2D" parent="."]
+position = Vector2(-7, -11)
+scale = Vector2(0.903654, 0.903654)
+
+[node name="Idle" type="Node2D" parent="PlayerTextures"]
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/Idle"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/Idle/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/Idle/Eyes/Eye"]
+layout_mode = 0
+offset_left = 5.63838
+offset_top = 1.92326
+offset_right = 11.6383
+offset_bottom = 14.9233
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/Idle/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/Idle/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 5.65933
+offset_top = 2.0
+offset_right = 11.6593
+offset_bottom = 15.0
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eyelid" type="ColorRect" parent="PlayerTextures/Idle/Eyes"]
+offset_left = 18.0
+offset_top = 22.0
+offset_right = 35.0
+offset_bottom = 23.0
+scale = Vector2(1e-05, 1e-05)
+color = Color(0.898039, 0.898039, 0.898039, 1)
+
+[node name="Eyelid2" type="ColorRect" parent="PlayerTextures/Idle/Eyes"]
+offset_left = 55.0
+offset_top = 22.0
+offset_right = 72.0
+offset_bottom = 23.0
+scale = Vector2(1e-05, 1e-05)
+color = Color(0.899258, 0.899258, 0.899258, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerTextures/Idle/Eyes"]
+libraries = {
+&"": SubResource("AnimationLibrary_h54ih")
+}
+speed_scale = 2.0
+
+[node name="WalkL" type="Node2D" parent="PlayerTextures"]
+visible = false
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/WalkL"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/WalkL/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/WalkL/Eyes/Eye"]
+layout_mode = 0
+offset_left = 1.33187
+offset_top = 2.0
+offset_right = 7.33187
+offset_bottom = 15.0
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/WalkL/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/WalkL/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 1.65977
+offset_top = 2.0
+offset_right = 7.65977
+offset_bottom = 15.0
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="WalkR" type="Node2D" parent="PlayerTextures"]
+visible = false
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/WalkR"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/WalkR/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/WalkR/Eyes/Eye"]
+layout_mode = 0
+offset_left = 9.33099
+offset_top = 2.0
+offset_right = 15.331
+offset_bottom = 15.0
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/WalkR/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/WalkR/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 9.6589
+offset_top = 2.0
+offset_right = 15.6589
+offset_bottom = 15.0
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Jump" type="Node2D" parent="PlayerTextures"]
+visible = false
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/Jump"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/Jump/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/Jump/Eyes/Eye"]
+layout_mode = 0
+offset_left = 5.33143
+offset_top = -0.00220156
+offset_right = 11.3314
+offset_bottom = 12.9978
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/Jump/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/Jump/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 5.65934
+offset_top = -0.00220156
+offset_right = 11.6593
+offset_bottom = 12.9978
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="JumpWalkL" type="Node2D" parent="PlayerTextures"]
+visible = false
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/JumpWalkL"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/JumpWalkL/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/JumpWalkL/Eyes/Eye"]
+layout_mode = 0
+offset_left = 1.33187
+offset_top = -0.00220156
+offset_right = 7.33187
+offset_bottom = 12.9978
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/JumpWalkL/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/JumpWalkL/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 1.65977
+offset_top = -0.00220156
+offset_right = 7.65977
+offset_bottom = 12.9978
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="JumpWalkR" type="Node2D" parent="PlayerTextures"]
+visible = false
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/JumpWalkR"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/JumpWalkR/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/JumpWalkR/Eyes/Eye"]
+layout_mode = 0
+offset_left = 9.33099
+offset_top = -0.00220156
+offset_right = 15.331
+offset_bottom = 12.9978
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/JumpWalkR/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/JumpWalkR/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 9.6589
+offset_top = -0.00220156
+offset_right = 15.6589
+offset_bottom = 12.9978
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Fall" type="Node2D" parent="PlayerTextures"]
+visible = false
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/Fall"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/Fall/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/Fall/Eyes/Eye"]
+layout_mode = 0
+offset_left = 5.33143
+offset_top = 3.99736
+offset_right = 11.3314
+offset_bottom = 16.9974
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/Fall/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/Fall/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 5.65934
+offset_top = 3.99736
+offset_right = 11.6593
+offset_bottom = 16.9974
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="FallWalkL" type="Node2D" parent="PlayerTextures"]
+visible = false
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/FallWalkL"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/FallWalkL/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/FallWalkL/Eyes/Eye"]
+layout_mode = 0
+offset_left = 1.33187
+offset_top = 3.99736
+offset_right = 7.33187
+offset_bottom = 16.9974
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/FallWalkL/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/FallWalkL/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 1.65977
+offset_top = 3.99736
+offset_right = 7.65977
+offset_bottom = 16.9974
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="FallWalkR" type="Node2D" parent="PlayerTextures"]
+visible = false
+
+[node name="Eyes" type="Node2D" parent="PlayerTextures/FallWalkR"]
+
+[node name="Eye" type="ColorRect" parent="PlayerTextures/FallWalkR/Eyes"]
+offset_left = 17.7059
+offset_top = 22.1324
+offset_right = 34.7059
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris" type="ColorRect" parent="PlayerTextures/FallWalkR/Eyes/Eye"]
+layout_mode = 0
+offset_left = 9.33099
+offset_top = 3.99736
+offset_right = 15.331
+offset_bottom = 16.9974
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="Eye2" type="ColorRect" parent="PlayerTextures/FallWalkR/Eyes"]
+offset_left = 55.3309
+offset_top = 22.1324
+offset_right = 72.3309
+offset_bottom = 39.1324
+color = Color(0, 0, 0, 1)
+
+[node name="Iris2" type="ColorRect" parent="PlayerTextures/FallWalkR/Eyes/Eye2"]
+layout_mode = 0
+offset_left = 9.6589
+offset_top = 3.99736
+offset_right = 15.6589
+offset_bottom = 16.9974
+color = Color(0.286693, 0.501015, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(33.5, 33.5)
+shape = SubResource("RectangleShape2D_s0eop")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_s0eop")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(33, 33)
+energy = 0.24
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_ft8w5")
+
+[node name="AFKTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+ignore_time_scale = true
+
+[node name="BlinkTimer" type="Timer" parent="."]
+wait_time = 0.7
+ignore_time_scale = true
+
+[connection signal="timeout" from="AFKTimer" to="." method="_on_afk_timer_timeout"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]

@@ -1,0 +1,251 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4foyxgixjgce"]
+
+[ext_resource type="Script" uid="uid://xhx72kcrsunb" path="res://Scripts/Menu/Collectables.gd" id="1_cuag6"]
+[ext_resource type="Script" uid="uid://bgqglerkcylxx" path="res://addons/SmoothScroll/SmoothScrollContainer.gd" id="1_uxjkw"]
+[ext_resource type="Script" uid="uid://b7h0k2h2qwlqv" path="res://addons/SmoothScroll/scroll_damper/expo_scroll_damper.gd" id="2_aca4x"]
+[ext_resource type="Texture2D" uid="uid://cdvr04x845j4s" path="res://Assets/Decals/pause.svg" id="3_7bloj"]
+[ext_resource type="Texture2D" uid="uid://b2eeneg7ciswn" path="res://Assets/Decals/play.svg" id="4_cuag6"]
+[ext_resource type="AudioStream" uid="uid://bsruaggkhuwxg" path="res://Assets/VoiceLines/Intro/Intro - Hurry3.wav" id="6_0eyab"]
+
+[sub_resource type="Resource" id="Resource_7bloj"]
+script = ExtResource("2_aca4x")
+friction = 4.0
+minimum_velocity = 0.4
+rebound_strength = 7.0
+
+[sub_resource type="Resource" id="Resource_cuag6"]
+script = ExtResource("2_aca4x")
+friction = 4.0
+minimum_velocity = 0.4
+rebound_strength = 7.0
+
+[sub_resource type="Gradient" id="Gradient_eqs5w"]
+offsets = PackedFloat32Array(0.34, 0.42)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7bloj"]
+gradient = SubResource("Gradient_eqs5w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Collectables" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cuag6")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0550819, 0.0584847, 0.0851807, 1)
+
+[node name="Left" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 640.0
+grow_vertical = 2
+color = Color(0, 0, 0, 0.117647)
+
+[node name="Control" type="Control" parent="Left"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 640.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Left/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 60
+
+[node name="SmoothScrollContainer" type="ScrollContainer" parent="Left/Control/MarginContainer"]
+custom_minimum_size = Vector2(640, 660)
+layout_mode = 2
+scroll_horizontal = -20
+script = ExtResource("1_uxjkw")
+wheel_scroll_damper = SubResource("Resource_7bloj")
+dragging_scroll_damper = SubResource("Resource_cuag6")
+metadata/_custom_type_script = "uid://bgqglerkcylxx"
+
+[node name="MarginContainer" type="MarginContainer" parent="Left/Control/MarginContainer/SmoothScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VoiceRecordings" type="ColorRect" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 30)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.290196)
+
+[node name="VoiceLog1" type="HBoxContainer" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceRecordings"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 600.0
+offset_bottom = 27.0
+
+[node name="VoiceTitle" type="Label" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceRecordings/VoiceLog1"]
+layout_mode = 2
+mouse_filter = 1
+text = "---------------------------------Voice recordings--------------------------------------"
+horizontal_alignment = 1
+
+[node name="VoiceLog#1" type="ColorRect" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 30)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.290196)
+
+[node name="MarginContainer" type="MarginContainer" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#1"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_top = -5
+
+[node name="Play" type="Button" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#1/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+disabled = true
+icon = ExtResource("4_cuag6")
+flat = true
+
+[node name="Pause" type="Button" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#1/MarginContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+disabled = true
+icon = ExtResource("3_7bloj")
+flat = true
+
+[node name="VoiceLog1" type="HBoxContainer" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#1"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 600.0
+offset_bottom = 27.0
+
+[node name="VoiceTitle" type="Label" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#1/VoiceLog1"]
+layout_mode = 2
+mouse_filter = 1
+text = "##### ### ## # # #### ###### ######"
+
+[node name="RealTitle" type="Label" parent="Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#1/VoiceLog1"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+text = "Voice log #1 - I hate motion lights"
+
+[node name="Right" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Control" type="Control" parent="Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Right/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+theme_override_constants/margin_top = 100
+
+[node name="CenterContainer" type="CenterContainer" parent="Right/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Radio" type="Control" parent="Right/Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Base" type="ColorRect" parent="Right/Control/MarginContainer/CenterContainer/Radio"]
+layout_mode = 0
+offset_left = -122.0
+offset_top = 1.0
+offset_right = -29.0
+offset_bottom = 46.0
+scale = Vector2(2.4187, 2.4187)
+color = Color(0, 0, 0, 1)
+
+[node name="Center" type="ColorRect" parent="Right/Control/MarginContainer/CenterContainer/Radio"]
+layout_mode = 0
+offset_left = -119.0
+offset_top = 4.0
+offset_right = -29.0
+offset_bottom = 39.0
+scale = Vector2(2.4187, 2.4187)
+color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[node name="CircleHolder" type="ColorRect" parent="Right/Control/MarginContainer/CenterContainer/Radio"]
+layout_mode = 0
+offset_left = -85.0
+offset_top = 36.0
+offset_right = -32.0
+offset_bottom = 47.0
+scale = Vector2(2.67371, 2.67371)
+color = Color(0.77084, 0.770839, 0.770839, 1)
+
+[node name="Window" type="ColorRect" parent="Right/Control/MarginContainer/CenterContainer/Radio"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = 36.0635
+offset_right = -22.0
+offset_bottom = 42.0635
+scale = Vector2(2.67371, 2.67371)
+
+[node name="Circle1" type="Sprite2D" parent="Right/Control/MarginContainer/CenterContainer/Radio"]
+position = Vector2(-71, 50.0635)
+scale = Vector2(0.689485, 0.689485)
+texture = SubResource("GradientTexture2D_7bloj")
+
+[node name="Circle2" type="Sprite2D" parent="Right/Control/MarginContainer/CenterContainer/Radio"]
+position = Vector2(43, 50.0635)
+scale = Vector2(0.689485, 0.689485)
+texture = SubResource("GradientTexture2D_7bloj")
+
+[node name="Label" type="Label" parent="Right/Control/MarginContainer/CenterContainer/Radio"]
+layout_mode = 0
+offset_left = -119.0
+offset_top = 4.0
+offset_right = 672.0
+offset_bottom = 111.0
+scale = Vector2(0.275531, 0.275531)
+theme_override_font_sizes/font_size = 76
+horizontal_alignment = 1
+
+[node name="Recordings" type="Node2D" parent="."]
+
+[node name="Motion Detecors" type="AudioStreamPlayer" parent="Recordings"]
+stream = ExtResource("6_0eyab")
+volume_db = -8.0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnpx8hym7gbms"
+path="res://.godot/imported/Level2 - introskip.wav-90269f6955f0e6ac2fec812207ae6319.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level2/Level2 - introskip.wav"
+dest_files=["res://.godot/imported/Level2 - introskip.wav-90269f6955f0e6ac2fec812207ae6319.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

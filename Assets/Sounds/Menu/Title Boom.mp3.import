@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b76ymtx65nc8j"
+path="res://.godot/imported/Title Boom.mp3-a0d772e73dd1b5a219a49f36d774dfa6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Menu/Title Boom.mp3"
+dest_files=["res://.godot/imported/Title Boom.mp3-a0d772e73dd1b5a219a49f36d774dfa6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

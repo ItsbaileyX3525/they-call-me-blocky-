@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvpj7m1yld8p2"
+path="res://.godot/imported/Intro - Hurry1.wav-c494fd87fc9bdda9fa1492734da0aa2e.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Intro/Intro - Hurry1.wav"
+dest_files=["res://.godot/imported/Intro - Hurry1.wav-c494fd87fc9bdda9fa1492734da0aa2e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

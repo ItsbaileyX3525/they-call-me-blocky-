@@ -1,0 +1,315 @@
+[gd_scene load_steps=15 format=3 uid="uid://c7y8fw7kusd7h"]
+
+[ext_resource type="Script" uid="uid://dmyt7ix4at5fw" path="res://Scenes/Levels/hidden_level_1.gd" id="1_jvrvj"]
+[ext_resource type="Shader" uid="uid://cqoc05xe2qhbp" path="res://Shaders/CRT.gdshader" id="2_6x5gm"]
+[ext_resource type="Texture2D" uid="uid://b51d2uxsk3hdg" path="res://Assets/Decals/Tile.webp" id="2_gasyx"]
+[ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="2_higf8"]
+[ext_resource type="Shader" uid="uid://bxudinudgkho3" path="res://Shaders/Cobblestone.gdshader" id="4_gasyx"]
+[ext_resource type="FontFile" uid="uid://dco5e3c6rjal5" path="res://Assets/Fonts/Autography.otf" id="6_jpoia"]
+[ext_resource type="AudioStream" uid="uid://byb2tt82rc48f" path="res://Assets/Sounds/Background/GermanEASAlarm.mp3" id="6_vwjiq"]
+[ext_resource type="FontFile" uid="uid://ir0tjy2l36gl" path="res://Assets/Fonts/d.ttf" id="7_uwxqi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8i76j"]
+size = Vector2(74, 114)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwjiq"]
+shader = ExtResource("4_gasyx")
+shader_parameter/crack_density = 5.24
+shader_parameter/crack_intensity = 0.955
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpoia"]
+size = Vector2(24530, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwxqi"]
+size = Vector2(9, 682)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_higf8"]
+shader = ExtResource("2_6x5gm")
+shader_parameter/overlay = false
+shader_parameter/resolution = Vector2(1280, 720)
+shader_parameter/brightness = 1.4
+shader_parameter/scanlines_opacity = 0.086
+shader_parameter/scanlines_width = 0.5
+shader_parameter/grille_opacity = 0.09
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 21.061
+shader_parameter/roll_variation = 1.948
+shader_parameter/distort_intensity = 0.056
+shader_parameter/aberration = 0.05
+shader_parameter/noise_opacity = 1.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.161
+shader_parameter/pixelate = true
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpoia"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="HiddenLevel1" type="Node2D"]
+script = ExtResource("1_jvrvj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.187176, 0.187176, 0.187176, 1)
+texture_repeat = 2
+position = Vector2(11119, -68.9999)
+scale = Vector2(0.537188, 0.563815)
+texture = ExtResource("2_gasyx")
+region_enabled = true
+region_rect = Rect2(-4795.09, -5877.11, 44266.9, 6005.11)
+
+[node name="Note" type="ColorRect" parent="."]
+offset_left = 2544.0
+offset_top = 555.0
+offset_right = 2607.0
+offset_bottom = 651.0
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Label" type="Label" parent="Note"]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 6
+text = "This is placeholder
+text you really don't
+need to be reading
+this part of the note
+at all
+
+- Bailey"
+
+[node name="Area2D" type="Area2D" parent="Note"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Note/Area2D"]
+position = Vector2(31, 57)
+shape = SubResource("RectangleShape2D_8i76j")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 700)
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+material = SubResource("ShaderMaterial_vwjiq")
+offset_left = -2403.0
+offset_right = -2213.0
+offset_bottom = 40.0
+scale = Vector2(127.896, 1)
+color = Color(0.140447, 0.140447, 0.140447, 1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(9734, 20)
+shape = SubResource("RectangleShape2D_jpoia")
+
+[node name="Inviswall" type="StaticBody2D" parent="."]
+position = Vector2(10, 529)
+
+[node name="InvisWallCollider" type="CollisionShape2D" parent="Inviswall"]
+position = Vector2(-5.5, -170)
+shape = SubResource("RectangleShape2D_uwxqi")
+
+[node name="Inviswall2" type="StaticBody2D" parent="."]
+position = Vector2(20782, 529)
+
+[node name="InvisWallCollider" type="CollisionShape2D" parent="Inviswall2"]
+position = Vector2(-5.5, -170)
+shape = SubResource("RectangleShape2D_uwxqi")
+
+[node name="Player" parent="." instance=ExtResource("2_higf8")]
+position = Vector2(22, 32)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(28, -252)
+
+[node name="BG" type="ColorRect" parent="Player/Camera2D"]
+material = SubResource("ShaderMaterial_higf8")
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="Note" type="ColorRect" parent="Player/Camera2D"]
+visible = false
+offset_left = -159.0
+offset_top = -304.0
+offset_right = -96.0
+offset_bottom = -208.0
+scale = Vector2(5.49371, 5.49371)
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Label" type="Label" parent="Player/Camera2D/Note"]
+layout_mode = 0
+offset_right = 882.0
+offset_bottom = 1346.0
+scale = Vector2(0.0711329, 0.0711329)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_jpoia")
+theme_override_font_sizes/font_size = 66
+text = "I don't even know whats going
+on anymore, I do these tests
+over and over and it doesn't make
+any sense.
+
+From what I can remember, the tests
+are supposed to help me \"Gain
+Consciousness\". I don't know about
+all that, I feel pretty conscious right
+now.
+
+For now I guess I will keep doing the
+tests and see if anything comes of it."
+
+[node name="Button" type="Button" parent="Player/Camera2D/Note"]
+layout_mode = 0
+offset_left = 86.6445
+offset_top = 96.656
+offset_right = 94.6445
+offset_bottom = 104.656
+scale = Vector2(0.28625, 0.28625)
+theme_override_styles/focus = SubResource("StyleBoxFlat_jpoia")
+text = "Accessability mode"
+
+[node name="AccessNote" type="ColorRect" parent="Player/Camera2D"]
+visible = false
+offset_left = -527.0
+offset_top = -295.0
+offset_right = 559.0
+offset_bottom = 303.0
+color = Color(0, 0, 0, 0.752941)
+
+[node name="Label" type="Label" parent="Player/Camera2D/AccessNote"]
+layout_mode = 0
+offset_right = 3190.0
+offset_bottom = 1752.0
+scale = Vector2(0.340726, 0.340726)
+theme_override_fonts/font = ExtResource("7_uwxqi")
+theme_override_font_sizes/font_size = 60
+text = "It's like I don't even understand
+what is going on anymore. I test over
+and over and yet it doesn't make sense.
+
+From what I can remeber, the tests
+are supposed to help me get back my
+\"Life\"... Whatever that is supposed to
+mean.
+
+When I don't do the tests everything
+becomes jsut a bit more confusing like
+I'm slipping away, for now I think
+I think I will continue the tests,"
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="Player/Camera2D/AccessNote"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 56
+text = "Return"
+
+[node name="CoolStuff" type="Node2D" parent="Player"]
+
+[node name="NotTime" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = 229.0
+offset_top = -111.0
+offset_right = 1483.0
+offset_bottom = 178.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="NotTime2" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = 283.0
+offset_top = -346.0
+offset_right = 1537.0
+offset_bottom = -57.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="NotTime3" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = -176.0
+offset_top = -140.0
+offset_right = 1078.0
+offset_bottom = 149.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="NotTime4" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = -510.0
+offset_top = -490.0
+offset_right = 744.0
+offset_bottom = -201.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="NotTime5" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = -417.0
+offset_top = -266.0
+offset_right = 837.0
+offset_bottom = 23.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="NotTime6" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = -54.0
+offset_top = -494.0
+offset_right = 1200.0
+offset_bottom = -205.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="NotTime7" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = -473.0
+offset_top = -36.0
+offset_right = 781.0
+offset_bottom = 253.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="NotTime8" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = -9.00003
+offset_top = -13.0
+offset_right = 1245.0
+offset_bottom = 276.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="NotTime9" type="Label" parent="Player/CoolStuff"]
+visible = false
+offset_left = 385.0
+offset_top = -291.0
+offset_right = 1639.0
+offset_bottom = -2.0
+scale = Vector2(0.174605, 0.174605)
+theme_override_font_sizes/font_size = 206
+text = "It's not time"
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vwjiq")
+autoplay = true
+
+[node name="TimeIsNotRight" type="Node2D" parent="."]
+position = Vector2(10078, 580)
+
+[connection signal="body_entered" from="Note/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Note/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="Player/Camera2D/Note/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Player/Camera2D/AccessNote/Close" to="." method="_on_close_pressed"]

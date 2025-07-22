@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5fyodqx26a1c"
+path="res://.godot/imported/one piece?.mp3-d37449eb33250c53b6e6cb6ef0c2d9e1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Menu/one piece?.mp3"
+dest_files=["res://.godot/imported/one piece?.mp3-d37449eb33250c53b6e6cb6ef0c2d9e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
