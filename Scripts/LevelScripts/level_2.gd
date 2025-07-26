@@ -144,4 +144,5 @@ func _on_move_flooring_down_animation_finished(_anim_name: StringName) -> void:
 
 func _on_door_middle_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		WorldManager.completed_level_one = true
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/Levels/Level_2.tscn")

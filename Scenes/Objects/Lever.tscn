@@ -6,13 +6,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_da0ea"]
 shader = ExtResource("2_w76vg")
-shader_parameter/crack_density = -1.405
+shader_parameter/crack_density = -129.545
 shader_parameter/crack_intensity = 0.15
+shader_parameter/world_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h08f1"]
 shader = ExtResource("2_w76vg")
-shader_parameter/crack_density = 0.185
+shader_parameter/crack_density = -81.435
 shader_parameter/crack_intensity = 0.095
+shader_parameter/world_offset = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wh80f"]
 size = Vector2(55, 73)

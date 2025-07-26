@@ -1,11 +1,14 @@
-[gd_scene load_steps=49 format=3 uid="uid://cle5k5a0otnrl"]
+[gd_scene load_steps=62 format=3 uid="uid://cle5k5a0otnrl"]
 
+[ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="1_6ca7a"]
 [ext_resource type="Shader" uid="uid://bxudinudgkho3" path="res://Shaders/Cobblestone.gdshader" id="1_o3isv"]
 [ext_resource type="Shader" uid="uid://dd40doue2epok" path="res://Shaders/Grid.gdshader" id="1_qox7n"]
 [ext_resource type="Script" uid="uid://dmsi32be26jds" path="res://Scripts/LevelScripts/level_2_real.gd" id="2_4ju3q"]
+[ext_resource type="AudioStream" uid="uid://b76ymtx65nc8j" path="res://Assets/Sounds/Menu/Title Boom.mp3" id="2_q5gq6"]
 [ext_resource type="FontFile" uid="uid://bbgliofgel8u8" path="res://Assets/Fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="3_jixyi"]
 [ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="3_ramdh"]
 [ext_resource type="PackedScene" uid="uid://cjl5n1qfq2ys6" path="res://Scenes/Objects/Lever.tscn" id="5_n6t8q"]
+[ext_resource type="Texture2D" uid="uid://bfb6fbgpd6ncb" path="res://Assets/Decals/Crack_Decal.png" id="6_0jitg"]
 [ext_resource type="AudioStream" uid="uid://dkcdsqa6mvdj6" path="res://Assets/VoiceLines/Level2/Level2 - Intro.wav" id="7_axppo"]
 [ext_resource type="AudioStream" uid="uid://bqxqrxqhb1n1b" path="res://Assets/VoiceLines/Level2/Level2 - Sidenote1.wav" id="8_inorh"]
 [ext_resource type="AudioStream" uid="uid://bnpx8hym7gbms" path="res://Assets/VoiceLines/Level2/Level2 - introskip.wav" id="8_oxtd8"]
@@ -13,6 +16,10 @@
 [ext_resource type="AudioStream" uid="uid://brhmavcul1lpq" path="res://Assets/Sounds/SFX/Blackhole/static_buildup.mp3" id="11_cexhq"]
 [ext_resource type="Shader" uid="uid://dp0m2gp5qtue0" path="res://Shaders/blackhole.gdshader" id="11_luow5"]
 [ext_resource type="AudioStream" uid="uid://dap3scsqawtvm" path="res://Assets/Sounds/SFX/Blackhole/subsonic_boom.mp3" id="12_0jitg"]
+[ext_resource type="AudioStream" uid="uid://cmh1pcfcydmc0" path="res://Assets/Sounds/SFX/Tap.wav" id="14_e0h1s"]
+[ext_resource type="AudioStream" uid="uid://3mt8j5hpt2i3" path="res://Assets/Sounds/SFX/Rock Crumble.wav" id="15_ooxlk"]
+[ext_resource type="FontFile" uid="uid://dco5e3c6rjal5" path="res://Assets/Fonts/Autography.otf" id="15_p6wrx"]
+[ext_resource type="FontFile" uid="uid://ir0tjy2l36gl" path="res://Assets/Fonts/d.ttf" id="16_e0h1s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ramdh"]
 shader = ExtResource("1_qox7n")
@@ -112,6 +119,7 @@ _data = {
 shader = ExtResource("1_o3isv")
 shader_parameter/crack_density = 5.24
 shader_parameter/crack_intensity = 0.955
+shader_parameter/world_offset = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ramdh"]
 size = Vector2(6272, 40)
@@ -185,12 +193,12 @@ size = Vector2(40, 40.0227)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6t8q"]
 size = Vector2(40, 40)
 
-[sub_resource type="Gradient" id="Gradient_557vl"]
+[sub_resource type="Gradient" id="Gradient_ooxlk"]
 offsets = PackedFloat32Array(0.012987, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n6t8q"]
-gradient = SubResource("Gradient_557vl")
+gradient = SubResource("Gradient_ooxlk")
 fill = 1
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
@@ -368,16 +376,126 @@ size = Vector2(147, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cexhq"]
 size = Vector2(21, 220)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rujef"]
+size = Vector2(106.127, 235.249)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ck0i2"]
 shader = ExtResource("11_luow5")
 shader_parameter/strength = 0.0
 shader_parameter/black_radius = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6wrx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ooxlk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Gradient" id="Gradient_npaxn"]
+offsets = PackedFloat32Array(0.34, 0.42)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p6wrx"]
+gradient = SubResource("Gradient_npaxn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0h1s"]
+size = Vector2(138, 85)
 
 [node name="Level2" type="Node2D"]
 
 [node name="LevelCamera" type="Camera2D" parent="."]
 position = Vector2(650, 367)
 scale = Vector2(-198.006, -14.4251)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="LevelCamera"]
+visible = false
+
+[node name="Menu" type="Control" parent="LevelCamera/CanvasLayer2"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelCamera/CanvasLayer2/Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.5
+offset_right = 312.5
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 60
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCamera/CanvasLayer2/Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="LevelCamera/CanvasLayer2/Menu/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 67
+text = "Paused Game"
+
+[node name="Elements" type="Control" parent="LevelCamera/CanvasLayer2/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCamera/CanvasLayer2/Menu/Elements"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -129.5
+offset_right = 156.5
+offset_bottom = 129.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Resume" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6ca7a")
+theme_override_font_sizes/font_size = 46
+text = "RESUME GAME"
+
+[node name="Unstuck" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6ca7a")
+theme_override_font_sizes/font_size = 46
+disabled = true
+text = "UNSTUCK"
+
+[node name="ExitMenu" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6ca7a")
+theme_override_font_sizes/font_size = 46
+text = "EXIT TO MENU"
+
+[node name="Exit" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6ca7a")
+theme_override_font_sizes/font_size = 46
+text = "QUIT TO DESKTOP"
+
+[node name="Boom" type="AudioStreamPlayer" parent="LevelCamera/CanvasLayer2/Menu"]
+stream = ExtResource("2_q5gq6")
+volume_db = 3.387
+pitch_scale = 1.29
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ramdh")
@@ -387,6 +505,11 @@ offset_right = -442.0
 offset_bottom = -385.0
 scale = Vector2(572.12, 41.68)
 color = Color(0.344076, 0.344076, 0.344076, 1)
+
+[node name="CrackDecal" type="Sprite2D" parent="BackgroundColor"]
+position = Vector2(2.30196, 24.3522)
+scale = Vector2(4.68673e-05, 0.000643324)
+texture = ExtResource("6_0jitg")
 
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2(867, 666)
@@ -742,6 +865,98 @@ position = Vector2(432, -160)
 position = Vector2(460.5, 436)
 shape = SubResource("RectangleShape2D_cexhq")
 
+[node name="TextDisplay" type="Node2D" parent="Level2Elements"]
+
+[node name="Label" type="Label" parent="Level2Elements/TextDisplay"]
+offset_left = 1188.0
+offset_top = 551.0
+offset_right = 1289.0
+offset_bottom = 653.0
+scale = Vector2(0.245379, 0.245379)
+theme_override_fonts/font = ExtResource("3_jixyi")
+theme_override_font_sizes/font_size = 101
+text = "1"
+
+[node name="Label2" type="Label" parent="Level2Elements/TextDisplay"]
+offset_left = 370.0
+offset_top = 446.0
+offset_right = 471.0
+offset_bottom = 548.0
+scale = Vector2(0.245379, 0.245379)
+theme_override_fonts/font = ExtResource("3_jixyi")
+theme_override_font_sizes/font_size = 101
+text = "2"
+
+[node name="Label3" type="Label" parent="Level2Elements/TextDisplay"]
+offset_left = 847.0
+offset_top = 249.0
+offset_right = 948.0
+offset_bottom = 351.0
+scale = Vector2(0.245379, 0.245379)
+theme_override_fonts/font = ExtResource("3_jixyi")
+theme_override_font_sizes/font_size = 101
+text = "3"
+
+[node name="Label4" type="Label" parent="Level2Elements/TextDisplay"]
+offset_left = 74.0
+offset_top = 237.0
+offset_right = 175.0
+offset_bottom = 339.0
+scale = Vector2(0.245379, 0.245379)
+theme_override_fonts/font = ExtResource("3_jixyi")
+theme_override_font_sizes/font_size = 101
+text = "4"
+
+[node name="Label5" type="Label" parent="Level2Elements/TextDisplay"]
+offset_left = 1188.0
+offset_top = 83.0
+offset_right = 1289.0
+offset_bottom = 185.0
+scale = Vector2(0.245379, 0.245379)
+theme_override_fonts/font = ExtResource("3_jixyi")
+theme_override_font_sizes/font_size = 101
+text = "5"
+
+[node name="HoleInTheWall" type="Node2D" parent="Level2Elements"]
+visible = false
+position = Vector2(375, -53)
+
+[node name="Hole" type="ColorRect" parent="Level2Elements/HoleInTheWall"]
+offset_left = 431.0
+offset_top = 610.0
+offset_right = 471.0
+offset_bottom = 650.0
+scale = Vector2(1.49777, 1.49777)
+color = Color(0, 0, 0, 1)
+
+[node name="Note" type="ColorRect" parent="Level2Elements/HoleInTheWall"]
+offset_left = 444.0
+offset_top = 613.0
+offset_right = 507.0
+offset_bottom = 709.0
+scale = Vector2(0.565359, 0.565359)
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Label" type="Label" parent="Level2Elements/HoleInTheWall/Note"]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 6
+text = "This is placeholder
+text you really don't
+need to be reading
+this part of the note
+at all
+
+- Bailey"
+
+[node name="Area2D" type="Area2D" parent="Level2Elements/HoleInTheWall/Note"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2Elements/HoleInTheWall/Note/Area2D"]
+position = Vector2(30.0693, 117.624)
+shape = SubResource("RectangleShape2D_rujef")
+
 [node name="Player" parent="." instance=ExtResource("3_ramdh")]
 position = Vector2(181, 631)
 
@@ -778,6 +993,16 @@ position = Vector2(660, 353)
 stream = ExtResource("12_0jitg")
 volume_db = 4.522
 
+[node name="Tap" type="AudioStreamPlayer2D" parent="SFX"]
+position = Vector2(834, 591)
+stream = ExtResource("14_e0h1s")
+volume_db = 4.522
+
+[node name="Rock" type="AudioStreamPlayer2D" parent="SFX"]
+position = Vector2(834, 591)
+stream = ExtResource("15_ooxlk")
+volume_db = 4.522
+
 [node name="WorldGoByeBye" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_ck0i2")
@@ -786,6 +1011,158 @@ offset_top = 35.0
 offset_right = 1273.0
 offset_bottom = 706.0
 
+[node name="CrackClick" type="Button" parent="."]
+offset_left = 801.0
+offset_top = 559.0
+offset_right = 871.0
+offset_bottom = 615.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_p6wrx")
+flat = true
+
+[node name="LoreHint" type="Node2D" parent="."]
+
+[node name="Note" type="ColorRect" parent="LoreHint"]
+visible = false
+offset_left = 473.0
+offset_top = 80.0
+offset_right = 536.0
+offset_bottom = 176.0
+scale = Vector2(5.49371, 5.49371)
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Label" type="Label" parent="LoreHint/Note"]
+layout_mode = 0
+offset_left = 1.45621
+offset_right = 900.456
+offset_bottom = 1397.0
+scale = Vector2(0.0692046, 0.0692046)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("15_p6wrx")
+theme_override_font_sizes/font_size = 66
+text = "Sometimes things could definitely do with
+being done from a different angle... I
+feel.
+
+Sometimes I think I can just take it
+in reverse. I don't understand why I
+feel this way.
+
+try it in reverse.
+Reverse it.
+
+Try."
+
+[node name="AccessMode" type="Button" parent="LoreHint/Note"]
+layout_mode = 0
+offset_left = 86.6445
+offset_top = 96.656
+offset_right = 94.6445
+offset_bottom = 104.656
+scale = Vector2(0.28625, 0.28625)
+theme_override_styles/focus = SubResource("StyleBoxFlat_ooxlk")
+text = "Accessability mode"
+
+[node name="AccessNote" type="ColorRect" parent="LoreHint"]
+visible = false
+offset_left = 100.0
+offset_top = 67.0
+offset_right = 1186.0
+offset_bottom = 665.0
+color = Color(0, 0, 0, 0.752941)
+
+[node name="Label" type="Label" parent="LoreHint/AccessNote"]
+layout_mode = 0
+offset_right = 3190.0
+offset_bottom = 1752.0
+scale = Vector2(0.340726, 0.340726)
+theme_override_fonts/font = ExtResource("16_e0h1s")
+theme_override_font_sizes/font_size = 60
+text = "It's like I don't even understand
+what is going on anymore. I test over
+and over and yet it doesn't make sense.
+
+From what I can remeber, the tests
+are supposed to help me get back my
+\"Life\"... Whatever that is supposed to
+mean.
+
+When I don't do the tests everything
+becomes jsut a bit more confusing like
+I'm slipping away, for now I think
+I think I will continue the tests,"
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="LoreHint/AccessNote"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 56
+text = "Return"
+
+[node name="Radio" type="Node2D" parent="."]
+visible = false
+position = Vector2(1078, 611)
+
+[node name="Base" type="ColorRect" parent="Radio"]
+offset_left = -98.0
+offset_top = 16.0
+offset_right = -5.0
+offset_bottom = 61.0
+scale = Vector2(0.904625, 0.904625)
+color = Color(0, 0, 0, 1)
+
+[node name="Center" type="ColorRect" parent="Radio"]
+offset_left = -95.0
+offset_top = 19.0
+offset_right = -9.0
+offset_bottom = 48.0
+scale = Vector2(0.904625, 0.904625)
+color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[node name="CircleHolder" type="ColorRect" parent="Radio"]
+offset_left = -79.748
+offset_top = 31.0
+offset_right = -31.748
+offset_bottom = 44.0
+color = Color(0.77084, 0.770839, 0.770839, 1)
+
+[node name="Window" type="ColorRect" parent="Radio"]
+offset_left = -66.748
+offset_top = 32.0
+offset_right = -44.748
+offset_bottom = 38.0
+
+[node name="Circle1" type="Sprite2D" parent="Radio"]
+position = Vector2(-73.748, 37.252)
+scale = Vector2(0.257876, 0.257876)
+texture = SubResource("GradientTexture2D_p6wrx")
+
+[node name="Circle2" type="Sprite2D" parent="Radio"]
+position = Vector2(-37.748, 37.252)
+scale = Vector2(0.257876, 0.257876)
+texture = SubResource("GradientTexture2D_p6wrx")
+
+[node name="Label" type="Label" parent="Radio"]
+offset_left = -93.0
+offset_top = 19.0
+offset_right = 635.0
+offset_bottom = 126.0
+scale = Vector2(0.103052, 0.103052)
+theme_override_font_sizes/font_size = 76
+text = "Voice log #2"
+horizontal_alignment = 1
+
+[node name="Area2D_Radio" type="Area2D" parent="Radio"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Radio/Area2D_Radio"]
+position = Vector2(-51, 36.5)
+shape = SubResource("RectangleShape2D_e0h1s")
+
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Resume" to="Level2Elements" method="_on_resume_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Unstuck" to="Level2Elements" method="_on_unstuck_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/ExitMenu" to="Level2Elements" method="_on_exit_menu_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Exit" to="Level2Elements" method="_on_exit_pressed"]
 [connection signal="body_entered" from="Walls/DoorMiddle" to="Level2Elements" method="_on_door_middle_body_entered"]
 [connection signal="powered" from="Level2Elements/Lever1" to="Level2Elements" method="_on_lever_1_powered"]
 [connection signal="powered" from="Level2Elements/Lever2" to="Level2Elements" method="_on_lever_2_powered"]
@@ -794,5 +1171,11 @@ offset_bottom = 706.0
 [connection signal="powered" from="Level2Elements/Lever5" to="Level2Elements" method="_on_lever_5_powered"]
 [connection signal="body_entered" from="Level2Elements/SideNote1" to="Level2Elements" method="_on_side_note_1_body_entered"]
 [connection signal="body_entered" from="Level2Elements/SideNote2" to="Level2Elements" method="_on_side_note_2_body_entered"]
+[connection signal="body_entered" from="Level2Elements/HoleInTheWall/Note/Area2D" to="Level2Elements" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Level2Elements/HoleInTheWall/Note/Area2D" to="Level2Elements" method="_on_area_2d_body_exited"]
 [connection signal="finished" from="Voicelines/Welcome" to="Level2Elements" method="_on_welcome_finished"]
 [connection signal="finished" from="SFX/Static" to="Level2Elements" method="_on_static_finished"]
+[connection signal="pressed" from="CrackClick" to="Level2Elements" method="_on_button_pressed"]
+[connection signal="pressed" from="LoreHint/Note/AccessMode" to="Level2Elements" method="_on_access_mode_pressed"]
+[connection signal="pressed" from="LoreHint/AccessNote/Close" to="Level2Elements" method="_on_close_pressed"]
+[connection signal="body_entered" from="Radio/Area2D_Radio" to="Level2Elements" method="_on_area_2d_radio_body_entered"]

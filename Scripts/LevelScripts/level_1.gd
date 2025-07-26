@@ -22,6 +22,7 @@ extends Node2D
 @onready var door_rattle: AudioStreamPlayer2D = $SFX/DoorRattle
 @onready var hole_in_the_wall: Node2D = $HoleInTheWall
 @onready var radio: Node2D = $Radio
+@onready var pause_menu: CanvasLayer = $"../LevelCamera/CanvasLayer2"
 
 signal door_passage()
 
@@ -35,6 +36,11 @@ var finished_level: bool = false
 ]
 
 var smacked_into_door: int = 0
+
+func _input(event: InputEvent) -> void:
+	if event.is_action("ui_cancel"):
+		get_tree().paused = true
+		pause_menu.visible = true
 
 func update_times_gone_back() -> void:
 	if not WorldManager.tape1_motion_lights:
@@ -131,3 +137,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		WorldManager.tape1_motion_lights = true
 		$SFX/RadioPickup.play()
 		radio.visible = false
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+
+func _on_exit_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Menu/Main Menu.tscn")
+
+func _on_unstuck_pressed() -> void:
+	pass#player.position = unstuck_position.position
+
+func _on_resume_pressed() -> void:
+	get_tree().paused = false
+	pause_menu.visible = false

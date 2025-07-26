@@ -1,8 +1,10 @@
-[gd_scene load_steps=65 format=3 uid="uid://8mxho7jfpe2x"]
+[gd_scene load_steps=67 format=3 uid="uid://8mxho7jfpe2x"]
 
 [ext_resource type="Shader" uid="uid://dd40doue2epok" path="res://Shaders/Grid.gdshader" id="1_2dy8h"]
 [ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="1_cp10e"]
+[ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="1_htyn7"]
 [ext_resource type="AudioStream" uid="uid://dk7avqaba0y8h" path="res://Assets/VoiceLines/Intro/Intro.wav" id="2_7pr3o"]
+[ext_resource type="AudioStream" uid="uid://b76ymtx65nc8j" path="res://Assets/Sounds/Menu/Title Boom.mp3" id="2_obk3e"]
 [ext_resource type="Script" uid="uid://dq4cbm261iynf" path="res://Scripts/LevelScripts/level_1.gd" id="3_qpfou"]
 [ext_resource type="FontFile" uid="uid://bbgliofgel8u8" path="res://Assets/Fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="3_uigiy"]
 [ext_resource type="AudioStream" uid="uid://buyfwl8fjow70" path="res://Assets/VoiceLines/Intro/Intro2.wav" id="4_87l2y"]
@@ -137,6 +139,7 @@ _data = {
 shader = ExtResource("4_trgpn")
 shader_parameter/crack_density = 5.24
 shader_parameter/crack_intensity = 0.955
+shader_parameter/world_offset = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pr3o"]
 size = Vector2(6272, 40)
@@ -187,12 +190,12 @@ size = Vector2(40, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpfou"]
 size = Vector2(40, 40)
 
-[sub_resource type="Gradient" id="Gradient_f0kld"]
+[sub_resource type="Gradient" id="Gradient_gu1j6"]
 offsets = PackedFloat32Array(0.34, 0.42)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gu1j6"]
-gradient = SubResource("Gradient_f0kld")
+gradient = SubResource("Gradient_gu1j6")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -265,6 +268,95 @@ size = Vector2(9, 181)
 
 [node name="LevelCamera" type="Camera2D" parent="."]
 position = Vector2(640, 360)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="LevelCamera"]
+visible = false
+
+[node name="Menu" type="Control" parent="LevelCamera/CanvasLayer2"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelCamera/CanvasLayer2/Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.5
+offset_right = 312.5
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 60
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCamera/CanvasLayer2/Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="LevelCamera/CanvasLayer2/Menu/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 67
+text = "Paused Game"
+
+[node name="Elements" type="Control" parent="LevelCamera/CanvasLayer2/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCamera/CanvasLayer2/Menu/Elements"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -129.5
+offset_right = 156.5
+offset_bottom = 129.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Resume" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_htyn7")
+theme_override_font_sizes/font_size = 46
+text = "RESUME GAME"
+
+[node name="Unstuck" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_htyn7")
+theme_override_font_sizes/font_size = 46
+disabled = true
+text = "UNSTUCK"
+
+[node name="ExitMenu" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_htyn7")
+theme_override_font_sizes/font_size = 46
+text = "EXIT TO MENU"
+
+[node name="Exit" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_htyn7")
+theme_override_font_sizes/font_size = 46
+text = "QUIT TO DESKTOP"
+
+[node name="Boom" type="AudioStreamPlayer" parent="LevelCamera/CanvasLayer2/Menu"]
+stream = ExtResource("2_obk3e")
+volume_db = 3.387
+pitch_scale = 1.29
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_es41r")
@@ -879,6 +971,10 @@ position = Vector2(181, 631)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.255659, 0.255659, 0.255659, 1)
 
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Resume" to="Level1Elements" method="_on_resume_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Unstuck" to="Level1Elements" method="_on_unstuck_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/ExitMenu" to="Level1Elements" method="_on_exit_menu_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Exit" to="Level1Elements" method="_on_exit_pressed"]
 [connection signal="body_entered" from="Walls/DoorMiddle" to="Level2Elements" method="_on_door_middle_body_entered"]
 [connection signal="body_entered" from="Level1Elements/Radio/Area2D" to="Level1Elements" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Level1Elements/Door" to="Level1Elements" method="_on_door_body_entered"]

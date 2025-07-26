@@ -30,7 +30,6 @@ func _on_close_pressed() -> void:
 func _on_button_pressed() -> void:
 	show_accessability_note(note1_text.text)
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		print("Entered")
@@ -43,4 +42,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		hide_accessability_note()
 
 func _on_timer_timeout() -> void:
+	WorldManager.completed_hidden_level_two = true
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level_1.tscn")

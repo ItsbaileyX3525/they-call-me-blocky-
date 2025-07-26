@@ -16,13 +16,17 @@ extends CharacterBody2D
 @onready var blink_timer: Timer = $BlinkTimer
 
 # Platformer mode constants
-const GRAVITY: float = 1200.0
+var gravity: float = 1200.0
+var gravity_flipped: bool = false
+var VELOCITY_INCREASE: float = 0.6
+var velocity_decrease: float = 1000.0
 const MAX_SPEED: float = 450.0
 const GROUND_ACCELERATION: float = 2000.0
-const AIR_ACCELERATION: float = 1500.0
+var AIR_ACCELERATION: float = 1500.0
 const GROUND_FRICTION: float = 2500.0
-const AIR_FRICTION: float = 300.0
-const JUMP_FORCE: float = -450.0
+var AIR_FRICTION: float = 300.0
+var JUMP_FORCE: float = -450.0
+var PUSH_FORCE: float = 50.0
 
 const COYOTE_TIME: float = 0.1
 const JUMP_BUFFER_TIME: float = 0.1
@@ -53,6 +57,11 @@ func _physics_process(delta: float) -> void:
 		update_timers(delta)
 
 	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
 
 func handle_input() -> void:
 	input_direction = Input.get_axis("ui_left", "ui_right")
@@ -62,12 +71,29 @@ func handle_input() -> void:
 	if jump_just_pressed:
 		jump_buffer_timer = JUMP_BUFFER_TIME
 
-func apply_gravity(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += GRAVITY * delta
-		velocity.y = min(velocity.y, 1000.0)
+func oppose_gravity() -> void:
+	gravity_flipped = !gravity_flipped
+	# Update up direction for CharacterBody2D
+	if gravity_flipped:
+		up_direction = Vector2.DOWN
 	else:
-		if velocity.y > 0:
+		up_direction = Vector2.UP
+
+func apply_gravity(delta: float) -> void:
+	var effective_gravity = gravity if not gravity_flipped else -gravity
+	
+	if not is_on_floor():
+		velocity.y += effective_gravity * delta
+		# Clamp velocity based on gravity direction
+		if gravity_flipped:
+			velocity.y = max(velocity.y, -velocity_decrease)
+		else:
+			velocity.y = min(velocity.y, velocity_decrease)
+	else:
+		# Reset velocity when on ground based on gravity direction
+		if gravity_flipped and velocity.y < 0:
+			velocity.y = 0
+		elif not gravity_flipped and velocity.y > 0:
 			velocity.y = 0
 
 func handle_horizontal_movement(delta: float) -> void:
@@ -118,12 +144,17 @@ func handle_jumping() -> void:
 	var can_jump = is_on_floor() or coyote_timer > 0.0
 
 	if jump_buffer_timer > 0.0 and can_jump:
-		velocity.y = JUMP_FORCE
+		var effective_jump_force = JUMP_FORCE if not gravity_flipped else -JUMP_FORCE
+		velocity.y = effective_jump_force
 		jump_buffer_timer = 0.0
 		coyote_timer = 0.0
 
-	if not jump_pressed and velocity.y < 0:
-		velocity.y *= 0.6
+	# Variable jump height based on gravity direction
+	if not jump_pressed:
+		if gravity_flipped and velocity.y > 0:
+			velocity.y *= VELOCITY_INCREASE
+		elif not gravity_flipped and velocity.y < 0:
+			velocity.y *= VELOCITY_INCREASE
 
 func update_timers(delta: float) -> void:
 	if is_on_floor():
@@ -145,7 +176,6 @@ func handle_space_movement(delta: float) -> void:
 		Input.get_axis("ui_up", "ui_down")
 	)
 
-	# Reset all animations
 	idle.visible = false
 	walk_l.visible = false
 	walk_r.visible = false
@@ -161,12 +191,10 @@ func handle_space_movement(delta: float) -> void:
 		velocity += input_vector * space_acceleration * delta
 		velocity = velocity.limit_length(space_max_speed)
 
-		# Stop blink timers on any movement
 		afk_timer.stop()
 		blink_timer.stop()
 		can_blink = false
 
-		# Show correct animation based on direction
 		if input_vector.y < 0:
 			jump.visible = true
 		elif input_vector.y > 0:
@@ -176,14 +204,12 @@ func handle_space_movement(delta: float) -> void:
 		elif input_vector.x > 0:
 			walk_r.visible = true
 	else:
-		# Apply friction and idle animation
 		velocity = velocity.move_toward(Vector2.ZERO, space_friction * delta)
 
 		if afk_timer.is_stopped() and not can_blink:
 			afk_timer.start()
 
 		idle.visible = true
-
 
 func add_force(force: Vector2) -> void:
 	velocity += force
@@ -204,10 +230,16 @@ func is_moving() -> bool:
 	return velocity.length() > 10.0
 
 func is_falling() -> bool:
-	return velocity.y > 0 and not is_on_floor()
+	if gravity_flipped:
+		return velocity.y < 0 and not is_on_floor()
+	else:
+		return velocity.y > 0 and not is_on_floor()
 
 func is_rising() -> bool:
-	return velocity.y < 0
+	if gravity_flipped:
+		return velocity.y > 0
+	else:
+		return velocity.y < 0
 
 func _on_afk_timer_timeout() -> void:
 	can_blink = true

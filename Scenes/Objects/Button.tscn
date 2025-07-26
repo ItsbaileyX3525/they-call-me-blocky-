@@ -16,7 +16,7 @@ size = Vector2(47.0539, 4.08057)
 
 [sub_resource type="Animation" id="Animation_d1dk7"]
 resource_name = "ButtonDown"
-length = 0.38
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -23,12 +23,12 @@ func _physics_process(delta: float) -> void:
 			extended_time += delta / 2 #Should do .5s every second
 	else:
 		if timeout.is_stopped():
-			activated.emit()
 			timeout.wait_time = duration + extended_time
 			timeout.start()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ButtonDown":
+		activated.emit()
 		start_counting = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

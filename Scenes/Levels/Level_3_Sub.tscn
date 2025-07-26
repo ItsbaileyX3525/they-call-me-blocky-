@@ -1,0 +1,280 @@
+[gd_scene load_steps=15 format=3 uid="uid://b7ysr00pdlcqg"]
+
+[ext_resource type="Shader" uid="uid://dd40doue2epok" path="res://Shaders/Grid.gdshader" id="1_20aes"]
+[ext_resource type="FontFile" uid="uid://bbgliofgel8u8" path="res://Assets/Fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="2_uolee"]
+[ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="3_kyex6"]
+
+[sub_resource type="GDScript" id="GDScript_6wlcp"]
+script/source = "extends Node2D
+
+@onready var radio: Node2D = $Radio
+@onready var player: CharacterBody2D = $Player
+
+func _ready() -> void:
+	if WorldManager.tape3:
+		radio.visible = false
+	player.oppose_gravity()
+	player.velocity.y = 12
+	await get_tree().create_timer(.4).timeout
+	player.oppose_gravity()
+
+func _on_hidden_level_body_entered(body: Node2D) -> void:
+	if body.name == \"Player\":
+		WorldManager.level_3_pos = Vector2(1192.0,39.0)
+		get_tree().call_deferred(\"change_scene_to_file\", \"res://Scenes/Levels/Level_3.tscn\")
+
+func _on_area_2d_radio_body_entered(body: Node2D) -> void:
+	if body.name != \"Player\":
+		return
+		
+	if radio.visible:
+		radio.visible = false
+		WorldManager.tape3 = true
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uolee"]
+shader = ExtResource("1_20aes")
+shader_parameter/grid_color = Color(0, 0, 0, 1)
+shader_parameter/grid_size = 60.855
+shader_parameter/line_thickness = 5.46
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20aes"]
+size = Vector2(4.54441, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uolee"]
+size = Vector2(40, 65.873)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyex6"]
+size = Vector2(40, 58.2199)
+
+[sub_resource type="Gradient" id="Gradient_6wlcp"]
+offsets = PackedFloat32Array(0.012987, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ghc3"]
+gradient = SubResource("Gradient_6wlcp")
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wlcp"]
+size = Vector2(3060.33, 15.4427)
+
+[sub_resource type="Gradient" id="Gradient_f0kld"]
+offsets = PackedFloat32Array(0.34, 0.42)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kyex6"]
+gradient = SubResource("Gradient_f0kld")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ghc3"]
+size = Vector2(138, 85)
+
+[node name="Level3_sub" type="Node2D"]
+script = SubResource("GDScript_6wlcp")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_uolee")
+offset_left = -482.0
+offset_top = -425.0
+offset_right = -442.0
+offset_bottom = -385.0
+scale = Vector2(572.12, 41.68)
+color = Color(0.344076, 0.344076, 0.344076, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="Roof" type="StaticBody2D" parent="."]
+position = Vector2(0, 252)
+scale = Vector2(260.76, 0.76)
+
+[node name="ColorRect" type="ColorRect" parent="Roof"]
+offset_right = 5.0
+offset_bottom = 40.0
+color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(2.2722, 20)
+shape = SubResource("RectangleShape2D_20aes")
+
+[node name="WallL" type="StaticBody2D" parent="."]
+position = Vector2(0, 258)
+scale = Vector2(0.839999, 17.64)
+
+[node name="ColorRect" type="ColorRect" parent="WallL"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.999763, 0.992068)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallL"]
+position = Vector2(20, 7.08615)
+shape = SubResource("RectangleShape2D_uolee")
+
+[node name="WallR" type="StaticBody2D" parent="."]
+position = Vector2(1263, 258)
+scale = Vector2(0.839999, 17.64)
+
+[node name="ColorRect" type="ColorRect" parent="WallR"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.999763, 0.992068)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallR"]
+position = Vector2(19.9999, 10.9127)
+shape = SubResource("RectangleShape2D_kyex6")
+
+[node name="Light" type="Node2D" parent="."]
+position = Vector2(634, 283)
+
+[node name="LightbulbWire" type="ColorRect" parent="Light"]
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
+scale = Vector2(0.159995, 0.559999)
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Lightbulb" type="ColorRect" parent="Light"]
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 60.0
+scale = Vector2(0.639995, 0.16)
+color = Color(0.484183, 0.266439, 0.0693719, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(650, 922)
+scale = Vector2(19.4062, 19.9858)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+energy = 3.09
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_4ghc3")
+
+[node name="LevelCounter" type="Node2D" parent="."]
+position = Vector2(0, 291)
+
+[node name="Control" type="Control" parent="LevelCounter"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 136.0
+offset_right = 1256.0
+offset_bottom = 700.0
+
+[node name="Outline" type="ColorRect" parent="LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = -6.0
+offset_right = 116.0
+offset_bottom = 46.0
+grow_horizontal = 2
+color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[node name="Inside" type="ColorRect" parent="LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = -3.0
+offset_right = 113.0
+offset_bottom = 43.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_right = 113.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.843184, 0.843184, 0.843184, 1)
+theme_override_fonts/font = ExtResource("2_uolee")
+theme_override_font_sizes/font_size = 46
+text = "3"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("3_kyex6")]
+position = Vector2(1181, 180)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(642, 146)
+
+[node name="HiddenLevel" type="Area2D" parent="."]
+position = Vector2(743, 355)
+scale = Vector2(1.2796, 4.0796)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiddenLevel"]
+position = Vector2(-222.726, 7.84389)
+shape = SubResource("RectangleShape2D_6wlcp")
+
+[node name="Radio" type="Node2D" parent="."]
+position = Vector2(169, 163)
+
+[node name="Base" type="ColorRect" parent="Radio"]
+offset_left = -98.0
+offset_top = 16.0
+offset_right = -5.0
+offset_bottom = 61.0
+scale = Vector2(0.904625, 0.904625)
+color = Color(0, 0, 0, 1)
+
+[node name="Center" type="ColorRect" parent="Radio"]
+offset_left = -95.0
+offset_top = 19.0
+offset_right = -9.0
+offset_bottom = 48.0
+scale = Vector2(0.904625, 0.904625)
+color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[node name="CircleHolder" type="ColorRect" parent="Radio"]
+offset_left = -79.748
+offset_top = 31.0
+offset_right = -31.748
+offset_bottom = 44.0
+color = Color(0.77084, 0.770839, 0.770839, 1)
+
+[node name="Window" type="ColorRect" parent="Radio"]
+offset_left = -66.748
+offset_top = 32.0
+offset_right = -44.748
+offset_bottom = 38.0
+
+[node name="Circle1" type="Sprite2D" parent="Radio"]
+position = Vector2(-73.748, 37.252)
+scale = Vector2(0.257876, 0.257876)
+texture = SubResource("GradientTexture2D_kyex6")
+
+[node name="Circle2" type="Sprite2D" parent="Radio"]
+position = Vector2(-37.748, 37.252)
+scale = Vector2(0.257876, 0.257876)
+texture = SubResource("GradientTexture2D_kyex6")
+
+[node name="Label" type="Label" parent="Radio"]
+offset_left = -93.0
+offset_top = 19.0
+offset_right = 635.0
+offset_bottom = 126.0
+scale = Vector2(0.103052, 0.103052)
+theme_override_font_sizes/font_size = 76
+text = "Voice log #3"
+horizontal_alignment = 1
+
+[node name="Area2D_Radio" type="Area2D" parent="Radio"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Radio/Area2D_Radio"]
+position = Vector2(-51, 36.5)
+shape = SubResource("RectangleShape2D_4ghc3")
+
+[connection signal="body_entered" from="HiddenLevel" to="." method="_on_hidden_level_body_entered"]
+[connection signal="body_entered" from="Radio/Area2D_Radio" to="." method="_on_area_2d_radio_body_entered"]

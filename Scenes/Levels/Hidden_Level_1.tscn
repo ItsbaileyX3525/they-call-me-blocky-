@@ -16,6 +16,7 @@ size = Vector2(74, 114)
 shader = ExtResource("4_gasyx")
 shader_parameter/crack_density = 5.24
 shader_parameter/crack_intensity = 0.955
+shader_parameter/world_offset = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpoia"]
 size = Vector2(24530, 40)

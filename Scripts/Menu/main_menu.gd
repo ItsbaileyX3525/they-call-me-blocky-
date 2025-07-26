@@ -9,6 +9,8 @@ extends Control
 @onready var bg: AudioStreamPlayer = $Bg
 
 func _ready() -> void:
+	if get_tree().paused:
+		get_tree().paused = false
 	#Lets the game be in any state and still work on load
 	initial.visible = true
 	menu.visible = false
@@ -40,7 +42,7 @@ func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level_1.tscn")
 
 func _on_collectables_pressed() -> void:
-	get_tree().change_scene_to_file("res://addons/godot_super-wakatime/api_key_prompt.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Menu/Collectables.tscn")
 	
 func _on_exit_pressed() -> void:
 	get_tree().quit()
