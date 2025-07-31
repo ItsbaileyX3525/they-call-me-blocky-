@@ -21,6 +21,8 @@ extends Node2D
 @onready var no_ball_2: AudioStreamPlayer2D = $"../VoiceLines/NoBall2"
 @onready var no_ball_3: AudioStreamPlayer2D = $"../VoiceLines/NoBall3"
 @onready var big_bertha: AudioStreamPlayer2D = $"../VoiceLines/BigBertha"
+@onready var physics_objects: Node2D = $"../PhysicsObjects"
+@onready var softlock: Button = $"../LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Softlock"
 
 var entered_secret_door: bool = false
 var entered_secret_door_code: bool = false
@@ -107,11 +109,12 @@ func validate_answer(answer: String) -> void:
 
 var user_input: String
 
-var questions = ["What caused it?", "Did you listen?", "When were you born?", "Regrets?", "Are you alive?"]
+var questions = ["What caused it?", "What do the tests achieve?", "Did you listen?", "When were you born?", "Regrets?", "Are you alive?"]
 var on_question: int = 0
 
 var qna: Dictionary = {
 	"What caused it?" : ["motorbike", "bike"],
+	"What do the tests achieve?" : ["consciousness", "gain consciousness", "to gain consciousness", "regain consciousness", "to regain consciousness"],
 	"Did you listen?" : ["no", "nope", "nah", "naur", "never"],
 	"When were you born?" : ["13/5/42", "13/5/1942", "13/05/1942", "13/05/42","13th of may 1942", "may 13th 1942", "may the 13th 1942"],
 	"Regrets?" : ["many"],
@@ -235,3 +238,17 @@ func _on_disintergrate_body_entered(body: Node2D) -> void:
 		else:
 			var rand = randi_range(0,1)
 			nopes[rand].play()
+
+func _on_softlock_pressed() -> void:
+	softlock.disabled = true
+	$"../Unsoftlock".start()
+	await get_tree().create_timer(.1).timeout #Avoid impluse buildup
+	for e in physics_objects.get_children():
+		if e.name == "BallTrigger2":
+			if played_skip:
+				e.apply_central_impulse(Vector2(5000, -5000))
+		else:
+			e.apply_central_impulse(Vector2(-5000, -5000))
+
+func _on_unsoftlock_timeout() -> void:
+	softlock.disabled = false

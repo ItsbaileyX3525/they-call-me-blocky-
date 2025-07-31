@@ -85,6 +85,8 @@ func start_func() -> void:
 			await get_tree().create_timer(.6).timeout
 			came_back_voicelines[WorldManager.times_gone_back_to_intro-1].play()
 			came_back_voicelines[WorldManager.times_gone_back_to_intro-1].connect("finished", start_normal)
+		else:
+			start_normal()
 
 func _on_door_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

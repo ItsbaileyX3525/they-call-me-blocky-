@@ -88,7 +88,7 @@ func _ready() -> void:
 	if WorldManager.on_level != 0:
 		return
 	hurry_5.play()
-	await get_tree().create_timer(55).timeout
+	await get_tree().create_timer(30).timeout
 	if WorldManager.on_level != 0:
 		return
 	point_light_2d.enabled = false
@@ -127,7 +127,7 @@ func _on_lever_powered(_state: bool) -> void:
 
 func _on_hidden_level_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		get_tree().change_scene_to_file("res://Scenes/Levels/Hidden_Level_1.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://Scenes/Levels/Hidden_Level_1.tscn")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name != "Player":

@@ -1,7 +1,8 @@
-[gd_scene load_steps=76 format=3 uid="uid://ojnlvf1l7k3h"]
+[gd_scene load_steps=77 format=3 uid="uid://ojnlvf1l7k3h"]
 
 [ext_resource type="Texture2D" uid="uid://b51d2uxsk3hdg" path="res://Assets/Decals/Tile.webp" id="1_wirjb"]
 [ext_resource type="Script" uid="uid://d2462evmgybms" path="res://Scripts/LevelScripts/level_4.gd" id="2_4f37u"]
+[ext_resource type="Script" uid="uid://bttgnk3bb2a8i" path="res://addons/font_auto_size_labels/auto_size_label.gd" id="2_8lerl"]
 [ext_resource type="FontFile" uid="uid://cnvdujn66at4h" path="res://Assets/Fonts/ComicRelief-Regular.ttf" id="2_bqeum"]
 [ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="3_vvme3"]
 [ext_resource type="AudioStream" uid="uid://b76ymtx65nc8j" path="res://Assets/Sounds/Menu/Title Boom.mp3" id="4_f5hg0"]
@@ -168,7 +169,7 @@ size = Vector2(48.8472, 7.0903)
 size = Vector2(40.1138, 2.33871)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnvqf"]
-size = Vector2(21, 625)
+size = Vector2(50, 625)
 
 [sub_resource type="Animation" id="Animation_qb40t"]
 resource_name = "MoveWalls"
@@ -549,7 +550,7 @@ shader_parameter/crack_intensity = 0.68
 shader_parameter/world_offset = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq28s"]
-size = Vector2(6272, 40)
+size = Vector2(6272, 121)
 
 [node name="Level4" type="Node2D"]
 
@@ -583,14 +584,21 @@ color = Color(0.118581, 0.118581, 0.118581, 1)
 [node name="QuestionText" type="Label" parent="LevelCamera/CanvasLayer/CodeInput/Question"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 0
-offset_right = 2204.0
+offset_right = 2238.0
 offset_bottom = 163.0
 scale = Vector2(0.0187801, 0.0187801)
 theme_override_fonts/font = ExtResource("6_qb40t")
-theme_override_font_sizes/font_size = 116
+theme_override_font_sizes/font_size = 100
 text = "What caused it?"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("2_8lerl")
+_max_size = 100
+_current_font_size = 100
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://bttgnk3bb2a8i"
 
 [node name="Input" type="ColorRect" parent="LevelCamera/CanvasLayer/CodeInput"]
 offset_left = -3.0
@@ -688,6 +696,12 @@ layout_mode = 2
 theme = ExtResource("3_vvme3")
 theme_override_font_sizes/font_size = 46
 text = "RESUME GAME"
+
+[node name="Softlock" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vvme3")
+theme_override_font_sizes/font_size = 46
+text = "UNSOFTLOCK"
 
 [node name="Unstuck" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -1361,7 +1375,7 @@ shape = SubResource("RectangleShape2D_qr356")
 position = Vector2(1723, 689)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/Wall"]
-position = Vector2(10.5, -341.5)
+position = Vector2(25, -341.5)
 shape = SubResource("RectangleShape2D_xnvqf")
 
 [node name="ColorRect" type="ColorRect" parent="Level4Elements/Wall"]
@@ -1685,14 +1699,14 @@ color = Color(0.544974, 0.544974, 0.544974, 1)
 [node name="ColorRect" type="ColorRect" parent="MegaSecret"]
 offset_left = 949.0
 offset_top = 525.0
-offset_right = 1077.0
+offset_right = 949.0
 offset_bottom = 700.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="MegaSecret"]
 offset_left = 949.0
 offset_top = 700.0
-offset_right = 1077.0
+offset_right = 949.0
 offset_bottom = 875.0
 rotation = -3.14159
 color = Color(0, 0, 0, 1)
@@ -1705,9 +1719,9 @@ speed_scale = 0.3
 
 [node name="Crane" type="ColorRect" parent="MegaSecret"]
 offset_left = 954.0
-offset_top = -791.0
+offset_top = -1196.0
 offset_right = 962.0
-offset_bottom = -52.0
+offset_bottom = -457.0
 color = Color(0, 0, 0, 1)
 
 [node name="Arm" type="ColorRect" parent="MegaSecret/Crane"]
@@ -1831,7 +1845,7 @@ color = Color(0.140447, 0.140447, 0.140447, 1)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(3136, 20)
+position = Vector2(3136, 60.5)
 shape = SubResource("RectangleShape2D_yq28s")
 
 [node name="UnstuckPosition" type="Node2D" parent="."]
@@ -1918,10 +1932,15 @@ theme_override_fonts/font = ExtResource("2_bqeum")
 theme_override_font_sizes/font_size = 206
 text = "15432 ???"
 
+[node name="Unsoftlock" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="text_changed" from="LevelCamera/CanvasLayer/CodeInput/LineEdit" to="Level4Elements" method="_on_line_edit_text_changed"]
 [connection signal="text_submitted" from="LevelCamera/CanvasLayer/CodeInput/LineEdit" to="Level4Elements" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer/CodeInput/CodeReturn" to="Level4Elements" method="_on_code_return_pressed"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Resume" to="Level4Elements" method="_on_resume_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Softlock" to="Level4Elements" method="_on_softlock_pressed"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Unstuck" to="Level4Elements" method="_on_unstuck_pressed"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/ExitMenu" to="Level4Elements" method="_on_exit_menu_pressed"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Exit" to="Level4Elements" method="_on_exit_pressed"]
@@ -1941,3 +1960,4 @@ text = "15432 ???"
 [connection signal="body_entered" from="Level4Elements/Disintergrate" to="Level4Elements" method="_on_disintergrate_body_entered"]
 [connection signal="animation_finished" from="MegaSecret/ShowDoor" to="Level4Elements" method="_on_show_door_animation_finished"]
 [connection signal="body_entered" from="MegaSecret/Area2D" to="Level4Elements" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Unsoftlock" to="Level4Elements" method="_on_unsoftlock_timeout"]

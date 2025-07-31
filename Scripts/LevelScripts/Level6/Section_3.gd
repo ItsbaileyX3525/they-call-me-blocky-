@@ -32,10 +32,10 @@ var has_opened_door: bool = false
 
 func check_power() -> void:
 	if power_one and power_two and power_three:
-		power_station_label.text = "POWER : ONLINE"
+		power_station_label.text = "POWER: ONLINE"
 		cage_move.play("Move")
 	else:
-		power_station_label.text = "POWER : OFFLINE"
+		power_station_label.text = "POWER: OFFLINE"
 
 func _on_lever_powered(state: bool) -> void:
 	if state: #Power off

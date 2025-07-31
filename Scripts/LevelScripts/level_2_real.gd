@@ -50,7 +50,7 @@ func _physics_process(_delta: float) -> void:
 		level_camera.zoom = level_camera.zoom + Vector2(.01,.01)
 		#Despite this getting called 60 times a second, it all clears when switching to the hidden room
 		await get_tree().create_timer(3).timeout
-		get_tree().change_scene_to_file("res://Scenes/Levels/Hidden_Level_2.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://Scenes/Levels/Hidden_Level_2.tscn")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("ui_cancel"):
