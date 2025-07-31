@@ -968,6 +968,11 @@ position = Vector2(2752, 529)
 position = Vector2(-5.5, 80.5)
 shape = SubResource("RectangleShape2D_xlfcq")
 
+[node name="VoiceLinesCheck" type="Timer" parent="Level2Elements"]
+wait_time = 1.3
+one_shot = true
+ignore_time_scale = true
+
 [node name="Ambience" type="Node" parent="."]
 
 [node name="LightBuzz" type="AudioStreamPlayer2D" parent="Ambience"]
@@ -1005,3 +1010,4 @@ color = Color(0.255659, 0.255659, 0.255659, 1)
 [connection signal="pressed_down" from="Level2Elements/Flooring1/Button" to="Level2Elements" method="_on_button_pressed_down"]
 [connection signal="animation_finished" from="Level2Elements/Flooring1/MoveFlooringDown" to="Level2Elements" method="_on_move_flooring_down_animation_finished"]
 [connection signal="finished" from="Level2Elements/VoiceLines/NoSkip" to="Level2Elements" method="_on_no_skip_finished"]
+[connection signal="timeout" from="Level2Elements/VoiceLinesCheck" to="Level2Elements" method="_on_voice_lines_check_timeout"]

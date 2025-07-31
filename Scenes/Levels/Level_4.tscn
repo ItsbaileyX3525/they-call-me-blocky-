@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://ojnlvf1l7k3h"]
+[gd_scene load_steps=81 format=3 uid="uid://ojnlvf1l7k3h"]
 
 [ext_resource type="Texture2D" uid="uid://b51d2uxsk3hdg" path="res://Assets/Decals/Tile.webp" id="1_wirjb"]
 [ext_resource type="Script" uid="uid://d2462evmgybms" path="res://Scripts/LevelScripts/level_4.gd" id="2_4f37u"]
@@ -551,6 +551,18 @@ shader_parameter/world_offset = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yq28s"]
 size = Vector2(6272, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdxml"]
+size = Vector2(2908, 5892)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6a2tn"]
+size = Vector2(16007, 2431)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmr38"]
+size = Vector2(1479, 5072)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa54u"]
+size = Vector2(7578, 3454)
 
 [node name="Level4" type="Node2D"]
 
@@ -1936,6 +1948,34 @@ text = "15432 ???"
 wait_time = 0.5
 one_shot = true
 
+[node name="Detection" type="Area2D" parent="."]
+position = Vector2(-83, -987)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+position = Vector2(-1444, 455)
+shape = SubResource("RectangleShape2D_hdxml")
+
+[node name="Detection2" type="Area2D" parent="."]
+position = Vector2(-2400, 1289)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection2"]
+position = Vector2(7993.5, 844.5)
+shape = SubResource("RectangleShape2D_6a2tn")
+
+[node name="Detection3" type="Area2D" parent="."]
+position = Vector2(7878, 1525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection3"]
+position = Vector2(-729.5, -2546)
+shape = SubResource("RectangleShape2D_rmr38")
+
+[node name="Dectection4" type="Area2D" parent="."]
+position = Vector2(-748, -2936)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dectection4"]
+position = Vector2(3779, 1150)
+shape = SubResource("RectangleShape2D_pa54u")
+
 [connection signal="text_changed" from="LevelCamera/CanvasLayer/CodeInput/LineEdit" to="Level4Elements" method="_on_line_edit_text_changed"]
 [connection signal="text_submitted" from="LevelCamera/CanvasLayer/CodeInput/LineEdit" to="Level4Elements" method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer/CodeInput/CodeReturn" to="Level4Elements" method="_on_code_return_pressed"]
@@ -1961,3 +2001,7 @@ one_shot = true
 [connection signal="animation_finished" from="MegaSecret/ShowDoor" to="Level4Elements" method="_on_show_door_animation_finished"]
 [connection signal="body_entered" from="MegaSecret/Area2D" to="Level4Elements" method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Unsoftlock" to="Level4Elements" method="_on_unsoftlock_timeout"]
+[connection signal="body_entered" from="Detection" to="Level4Elements" method="_on_detection_body_entered"]
+[connection signal="body_entered" from="Detection2" to="Level4Elements" method="_on_detection_2_body_entered"]
+[connection signal="body_entered" from="Detection3" to="Level4Elements" method="_on_detection_3_body_entered"]
+[connection signal="body_entered" from="Dectection4" to="Level4Elements" method="_on_dectection_4_body_entered"]

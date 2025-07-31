@@ -69,27 +69,27 @@ func _ready() -> void:
 	
 	#Start timer for the voice lines about being stupid
 	await get_tree().create_timer(28).timeout
-	if WorldManager.on_level != 0:
+	if WorldManager.on_level != 0 or not is_inside_tree():
 		return
 	hurry_1.play()
 	await get_tree().create_timer(16).timeout
-	if WorldManager.on_level != 0:
+	if WorldManager.on_level != 0 or not is_inside_tree():
 		return
 	hurry_2.play()
 	await get_tree().create_timer(18).timeout
-	if WorldManager.on_level != 0:
+	if WorldManager.on_level != 0 or not is_inside_tree():
 		return
 	hurry_3.play()
 	await get_tree().create_timer(19).timeout
-	if WorldManager.on_level != 0:
+	if WorldManager.on_level != 0 or not is_inside_tree():
 		return
 	hurry_4.play()
 	await get_tree().create_timer(25).timeout
-	if WorldManager.on_level != 0:
+	if WorldManager.on_level != 0 or not is_inside_tree():
 		return
 	hurry_5.play()
 	await get_tree().create_timer(30).timeout
-	if WorldManager.on_level != 0:
+	if WorldManager.on_level != 0 or not is_inside_tree():
 		return
 	point_light_2d.enabled = false
 	light_turn_off.play()
@@ -105,13 +105,16 @@ func _on_intro_1_finished() -> void:
 func _on_door_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		if point_light_2d.enabled:
-			body.position = teleport.position
-			level_camera.position = camera_position.position
+			if teleport and camera_position:
+				body.position = teleport.position
+				level_camera.position = camera_position.position
+
 			for e in voice_lines.get_children():
 				if e.playing:
 					e.stop()
 			door_passage.emit()
 			WorldManager.on_level = 1
+			$"../Level2Elements/VoiceLinesCheck".start()
 		else:
 			if not door_rattle.playing:
 				door_rattle.play()
@@ -142,6 +145,7 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func _on_exit_menu_pressed() -> void:
+	WorldManager.reset_vars()
 	get_tree().change_scene_to_file("res://Scenes/Menu/Main Menu.tscn")
 
 func _on_unstuck_pressed() -> void:

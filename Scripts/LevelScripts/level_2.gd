@@ -25,6 +25,7 @@ extends Node2D
 #Secret stuff shhhh
 @onready var level_counter_label: Label = $LevelCounter/Control/Label
 @onready var level_counter_secret: Label = $LevelCounter/Control/Secret
+@onready var level_2_elements: Node2D = $"."
 
 
 @onready var came_back_voicelines: Array = [
@@ -91,8 +92,11 @@ func start_func() -> void:
 func _on_door_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		door_passage.emit()
-		player.position = teleport.position
-		level_camera.position = camera_position_initial.position
+		$VoiceLinesCheck.stop()
+		if teleport and camera_position_initial:
+			body.position = teleport.position
+			level_camera.position = camera_position_initial.position
+
 		for e in voice_lines.get_children():
 			if e.playing:
 				e.stop()
@@ -100,6 +104,7 @@ func _on_door_body_entered(body: Node2D) -> void:
 
 func _on_no_skip_finished() -> void:
 	WorldManager.completed_level1_explain = true
+	get_tree().paused = false #Idk just in case
 	await get_tree().create_timer(.6).timeout
 	move_flooring_down.play("playAnim")
 	instructions_1.play()
@@ -147,4 +152,14 @@ func _on_move_flooring_down_animation_finished(_anim_name: StringName) -> void:
 func _on_door_middle_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		WorldManager.completed_level_one = true
+		WorldManager.reset_vars()
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/Levels/Level_2.tscn")
+
+func _on_voice_lines_check_timeout() -> void:
+	var broken: bool = true
+	for e in $VoiceLines.get_children():
+		if e.playing:
+			broken = false
+	if broken:
+		move_flooring_down.play("playAnim")
+		instructions_1.play()

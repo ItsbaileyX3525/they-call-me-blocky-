@@ -43,14 +43,18 @@ var can_interact_note1: bool = false
 var blackhole_min: float = 0.001;
 var blackhole_max: float = 0.1
 
+var changed_scene: bool = false
+
 func _physics_process(_delta: float) -> void:
 	if world_go_bye_bye.visible:
 		var current_amount: float = world_go_bye_bye.material.get_shader_parameter("strength")
 		world_go_bye_bye.material.set_shader_parameter("strength",current_amount+0.0008)
 		level_camera.zoom = level_camera.zoom + Vector2(.01,.01)
-		#Despite this getting called 60 times a second, it all clears when switching to the hidden room
-		await get_tree().create_timer(3).timeout
-		get_tree().call_deferred("change_scene_to_file", "res://Scenes/Levels/Hidden_Level_2.tscn")
+		#Despite this getting called 60 times a second, it all clears when switching to the hidden room <--- Yh this caused many crashes but its fixed now... Probably :<
+		if not changed_scene:
+			changed_scene = true
+			await get_tree().create_timer(3).timeout
+			get_tree().call_deferred("change_scene_to_file"," res://Scenes/Levels/Hidden_Level_2.tscn")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("ui_cancel"):

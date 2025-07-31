@@ -114,9 +114,9 @@ var on_question: int = 0
 
 var qna: Dictionary = {
 	"What caused it?" : ["motorbike", "bike"],
-	"What do the tests achieve?" : ["consciousness", "gain consciousness", "to gain consciousness", "regain consciousness", "to regain consciousness"],
+	"What do the tests achieve?" : ["consciousness", "gainconsciousness", "togainconsciousness", "regainconsciousness", "toregainconsciousness"],
 	"Did you listen?" : ["no", "nope", "nah", "naur", "never"],
-	"When were you born?" : ["13/5/42", "13/5/1942", "13/05/1942", "13/05/42","13th of may 1942", "may 13th 1942", "may the 13th 1942"],
+	"When were you born?" : ["13/5/42", "13/5/1942", "13/05/1942", "13/05/42","13thofmay1942", "may13th1942", "maythe13th1942"],
 	"Regrets?" : ["many"],
 	"Are you alive?" : ["yes", "no"]
 }
@@ -252,3 +252,56 @@ func _on_softlock_pressed() -> void:
 
 func _on_unsoftlock_timeout() -> void:
 	softlock.disabled = false
+
+@onready var ball_trigger_1: RigidBody2D = $"../PhysicsObjects/BallTrigger1"
+@onready var ball_trigger_2_pos: RigidBody2D = $"../PhysicsObjects/BallTrigger2"
+@onready var ball_trigger_3: RigidBody2D = $"../PhysicsObjects/BallTrigger3"
+@onready var square_trigger_1_pos: RigidBody2D = $"../PhysicsObjects/SquareTrigger1"
+
+func reset_triggers() -> void:
+	var body_positions = {
+		ball_trigger_1: Vector2(333.0, 649.0),
+		ball_trigger_2_pos: Vector2(964.0, 43.0),
+		square_trigger_1_pos: Vector2(1976.0, 610.0),
+		ball_trigger_3: Vector2(4694.0, 563.0),
+	}
+
+	for body in body_positions.keys():
+		body.set_deferred("freeze", true)
+
+	await get_tree().physics_frame
+
+	for body in body_positions.keys():
+		var pos = body_positions[body]
+		var xform = body.global_transform
+		xform.origin = pos
+		PhysicsServer2D.body_set_state(body.get_rid(), PhysicsServer2D.BODY_STATE_TRANSFORM, xform)
+		PhysicsServer2D.body_set_state(body.get_rid(), PhysicsServer2D.BODY_STATE_LINEAR_VELOCITY, Vector2.ZERO)
+		PhysicsServer2D.body_set_state(body.get_rid(), PhysicsServer2D.BODY_STATE_ANGULAR_VELOCITY, 0.0)
+
+	await get_tree().physics_frame
+
+	for body in body_positions.keys():
+		body.freeze = false
+
+
+
+func _on_dectection_4_body_entered(body: Node2D) -> void:
+	if body.name.rstrip("1234567890") == "BallTrigger":
+		print("Detected")
+		reset_triggers()
+
+func _on_detection_3_body_entered(body: Node2D) -> void:
+	if body.name.rstrip("1234567890") == "BallTrigger":
+		print("Detected")
+		reset_triggers()
+
+func _on_detection_2_body_entered(body: Node2D) -> void:
+	if body.name.rstrip("1234567890") == "BallTrigger":
+		print("Detected")
+		reset_triggers()
+
+func _on_detection_body_entered(body: Node2D) -> void:
+	if body.name.rstrip("1234567890") == "BallTrigger":
+		print("Detected")
+		reset_triggers()

@@ -89,6 +89,12 @@ func _ready() -> void:
 	
 	data_loaded = true
 
+func reset_vars() -> void:
+	intro_on_voicelines = 1
+	on_level = 0
+	times_gone_back_to_intro = 0
+	completed_level1_explain = false
+
 #Intro/Level 1 stuff
 var intro_on_voicelines: int = 1 #1 - first, #2 - second, #3 finished
 var on_level: int = 0 #0 for intro and 1 for level 1 and so on...
@@ -137,7 +143,8 @@ var _completed_level_one: bool = false
 var completed_level_one: bool = false :
 	set (value):
 		_completed_level_one = value
-		save_game()
+		if data_loaded:
+			save_game()
 	get:
 		return _completed_level_one
 
