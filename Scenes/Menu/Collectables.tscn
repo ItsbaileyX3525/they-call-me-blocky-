@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4foyxgixjgce"]
+[gd_scene load_steps=10 format=3 uid="uid://d4foyxgixjgce"]
 
 [ext_resource type="Script" uid="uid://xhx72kcrsunb" path="res://Scripts/Menu/Collectables.gd" id="1_cuag6"]
 [ext_resource type="Texture2D" uid="uid://cdvr04x845j4s" path="res://Assets/Decals/pause.svg" id="3_7bloj"]
+[ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="4_0eyab"]
 [ext_resource type="Texture2D" uid="uid://b2eeneg7ciswn" path="res://Assets/Decals/play.svg" id="4_cuag6"]
-[ext_resource type="AudioStream" uid="uid://bsruaggkhuwxg" path="res://Assets/VoiceLines/Intro/Intro - Hurry3.wav" id="6_0eyab"]
+[ext_resource type="AudioStream" uid="uid://dvnykhqnwyywh" path="res://Assets/VoiceLines/VoiceShlog/VoiceLog #1.wav" id="5_sw50e"]
+[ext_resource type="AudioStream" uid="uid://csh0ok338dykk" path="res://Assets/VoiceLines/VoiceShlog/VoiceLog #2.wav" id="6_ru2ph"]
+[ext_resource type="AudioStream" uid="uid://c0r5lnair560e" path="res://Assets/VoiceLines/VoiceShlog/VoiceLog #3.wav" id="7_lfuwx"]
 
 [sub_resource type="Gradient" id="Gradient_eqs5w"]
 offsets = PackedFloat32Array(0.34, 0.42)
@@ -247,6 +250,17 @@ layout_mode = 2
 mouse_filter = 1
 text = "Voice log #3 - People say cars are unsafe."
 
+[node name="Return" type="Button" parent="Left"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 247.0
+offset_bottom = 80.0
+scale = Vector2(0.454011, 0.454011)
+theme = ExtResource("4_0eyab")
+theme_override_font_sizes/font_size = 51
+text = " RETURN "
+
 [node name="Right" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(640, 0)
 layout_mode = 1
@@ -326,6 +340,7 @@ scale = Vector2(0.689485, 0.689485)
 texture = SubResource("GradientTexture2D_7bloj")
 
 [node name="Label" type="Label" parent="Right/Control/MarginContainer/CenterContainer/Radio"]
+visible = false
 layout_mode = 0
 offset_left = -119.0
 offset_top = 4.0
@@ -367,13 +382,18 @@ texture = SubResource("GradientTexture2D_7bloj")
 [node name="Recordings" type="Node2D" parent="."]
 
 [node name="Motion Detecors" type="AudioStreamPlayer" parent="Recordings"]
-stream = ExtResource("6_0eyab")
-volume_db = -8.0
+stream = ExtResource("5_sw50e")
+volume_db = 8.0
+bus = &"VoiceLines"
 
 [node name="American Dates" type="AudioStreamPlayer" parent="Recordings"]
-stream = ExtResource("6_0eyab")
-volume_db = -8.0
+stream = ExtResource("6_ru2ph")
+volume_db = 8.0
+bus = &"VoiceLines"
 
 [node name="Motorbikes" type="AudioStreamPlayer" parent="Recordings"]
-stream = ExtResource("6_0eyab")
-volume_db = -8.0
+stream = ExtResource("7_lfuwx")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[connection signal="pressed" from="Left/Return" to="." method="_on_return_pressed"]

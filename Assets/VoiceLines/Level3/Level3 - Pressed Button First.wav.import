@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b84x8jcwtllll"
+path="res://.godot/imported/Level3 - Pressed Button First.wav-306a23ba85fb20f5950842f63c32c669.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level3/Level3 - Pressed Button First.wav"
+dest_files=["res://.godot/imported/Level3 - Pressed Button First.wav-306a23ba85fb20f5950842f63c32c669.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,6 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://dy2wikfp5xjfr"]
+[gd_scene load_steps=42 format=3 uid="uid://dy2wikfp5xjfr"]
 
-[ext_resource type="Shader" uid="uid://dd40doue2epok" path="res://Shaders/Grid.gdshader" id="1_0bn43"]
+[ext_resource type="Texture2D" uid="uid://b51d2uxsk3hdg" path="res://Assets/Decals/Tile.webp" id="1_socs1"]
 [ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="1_x6m50"]
 [ext_resource type="AudioStream" uid="uid://b76ymtx65nc8j" path="res://Assets/Sounds/Menu/Title Boom.mp3" id="2_76n5f"]
 [ext_resource type="Script" uid="uid://uc5i0xt1krv6" path="res://Scripts/LevelScripts/level_3.gd" id="2_ckbkd"]
@@ -9,12 +9,13 @@
 [ext_resource type="FontFile" uid="uid://bbgliofgel8u8" path="res://Assets/Fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="5_lk1ev"]
 [ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="5_x5s1r"]
 [ext_resource type="PackedScene" uid="uid://dise1cf72re8" path="res://Scenes/Objects/Pressure_Plate.tscn" id="6_lk1ev"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckbkd"]
-shader = ExtResource("1_0bn43")
-shader_parameter/grid_color = Color(0, 0, 0, 1)
-shader_parameter/grid_size = 60.855
-shader_parameter/line_thickness = 5.46
+[ext_resource type="AudioStream" uid="uid://cqo7w5n2vhpk5" path="res://Assets/VoiceLines/Level3/Level3 - Intro.wav" id="10_hkeaf"]
+[ext_resource type="AudioStream" uid="uid://b507nu0a375gf" path="res://Assets/VoiceLines/Level3/Level3 - Smartypants.wav" id="11_jkw7r"]
+[ext_resource type="AudioStream" uid="uid://d0gj07g5loepi" path="res://Assets/VoiceLines/Level3/Level3 - Instruction1.wav" id="12_jkw7r"]
+[ext_resource type="AudioStream" uid="uid://b4oqqejctm8si" path="res://Assets/VoiceLines/Level3/Level3 - instruction1 skip full.wav" id="13_3uval"]
+[ext_resource type="AudioStream" uid="uid://cmm2k65wka3dy" path="res://Assets/VoiceLines/Level3/Level3 - InstructionOopsie.wav" id="13_socs1"]
+[ext_resource type="AudioStream" uid="uid://0ao1x5ynj438" path="res://Assets/VoiceLines/Level3/Level3 - intruction1 skip partial.wav" id="14_7lvg2"]
+[ext_resource type="AudioStream" uid="uid://b84x8jcwtllll" path="res://Assets/VoiceLines/Level3/Level3 - Pressed Button First.wav" id="15_7lvg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5s1r"]
 size = Vector2(61.738, 40)
@@ -173,7 +174,7 @@ size = Vector2(105, 13)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cbup6"]
 shader = ExtResource("4_62evj")
-shader_parameter/crack_density = 5.65
+shader_parameter/crack_density = 113.9
 shader_parameter/crack_intensity = 0.4
 shader_parameter/world_offset = Vector2(0, 0)
 
@@ -299,6 +300,9 @@ _data = {
 &"show_button": SubResource("Animation_avjic")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lvg2"]
+size = Vector2(20, 235)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62evj"]
 size = Vector2(4.55591, 40)
 
@@ -306,6 +310,15 @@ size = Vector2(4.55591, 40)
 size = Vector2(3060.33, 15.4427)
 
 [node name="Level3" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.521141, 0.521141, 0.521141, 1)
+texture_repeat = 2
+position = Vector2(650, 349)
+scale = Vector2(0.532028, 0.532028)
+texture = ExtResource("1_socs1")
+region_enabled = true
+region_rect = Rect2(-5272.36, -1818.89, 15704.5, 4355.14)
 
 [node name="LevelCamera" type="Camera2D" parent="."]
 position = Vector2(650, 367)
@@ -401,29 +414,20 @@ stream = ExtResource("2_76n5f")
 volume_db = 3.387
 pitch_scale = 1.29
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_ckbkd")
-offset_left = -482.0
-offset_top = -425.0
-offset_right = -442.0
-offset_bottom = -385.0
-scale = Vector2(572.12, 41.68)
-color = Color(0.344076, 0.344076, 0.344076, 1)
-
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2(867, 666)
 
 [node name="Wall" type="ColorRect" parent="Walls"]
-offset_top = 8.0
+offset_top = 26.0
 offset_right = 5.0
-offset_bottom = 40.0
+offset_bottom = 58.0
 color = Color(0, 0, 0, 1)
 
 [node name="Wall2" type="ColorRect" parent="Walls"]
 offset_left = 6.0
-offset_top = 8.0
+offset_top = 26.0
 offset_right = 14.0
-offset_bottom = 40.0
+offset_bottom = 58.0
 color = Color(0, 0, 0, 1)
 
 [node name="DoorMiddle" type="Area2D" parent="Walls"]
@@ -462,8 +466,9 @@ position = Vector2(597, -12)
 
 [node name="Crane" type="ColorRect" parent="Level3Elements/MiddleNodeReveal"]
 offset_left = 47.0
-offset_top = -739.0
+offset_top = -751.0
 offset_right = 55.0
+offset_bottom = -12.0
 color = Color(0, 0, 0, 1)
 
 [node name="Arm" type="ColorRect" parent="Level3Elements/MiddleNodeReveal/Crane"]
@@ -569,9 +574,8 @@ position = Vector2(0, 700)
 
 [node name="ColorRect" type="ColorRect" parent="Level3Elements/Floor"]
 material = SubResource("ShaderMaterial_cbup6")
-offset_right = 40.0
+offset_right = 1296.0
 offset_bottom = 40.0
-scale = Vector2(127.896, 1)
 color = Color(0.140447, 0.140447, 0.140447, 1)
 metadata/_edit_group_ = true
 
@@ -733,6 +737,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_76n5f")
 }
 
+[node name="Helper" type="Area2D" parent="Level3Elements"]
+position = Vector2(235, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level3Elements/Helper"]
+position = Vector2(60, 107.5)
+shape = SubResource("RectangleShape2D_7lvg2")
+
 [node name="Player" parent="." instance=ExtResource("5_x5s1r")]
 position = Vector2(205, 629)
 
@@ -759,6 +770,57 @@ scale = Vector2(1.2796, 4.0796)
 position = Vector2(-222.726, 7.84389)
 shape = SubResource("RectangleShape2D_jkw7r")
 
+[node name="VoiceLines" type="Node2D" parent="."]
+
+[node name="Intro" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(640, 244)
+stream = ExtResource("10_hkeaf")
+volume_db = 8.0
+autoplay = true
+bus = &"VoiceLines"
+
+[node name="Intro - skip" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(640, 244)
+stream = ExtResource("11_jkw7r")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="Instruction1" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(640, 244)
+stream = ExtResource("12_jkw7r")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="InstructionHelp" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(640, 244)
+stream = ExtResource("13_socs1")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="HelpNevermind" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(640, 244)
+stream = ExtResource("13_socs1")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="Instruction1skipfull" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(640, 244)
+stream = ExtResource("13_3uval")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="Instruction1skippartial" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(640, 244)
+stream = ExtResource("14_7lvg2")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="Instruction1PressedButtonAlready" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(640, 244)
+stream = ExtResource("15_7lvg2")
+volume_db = 8.0
+bus = &"VoiceLines"
+
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Resume" to="Level3Elements" method="_on_resume_pressed"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Unstuck" to="Level3Elements" method="_on_unstuck_pressed"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/ExitMenu" to="Level3Elements" method="_on_exit_menu_pressed"]
@@ -770,4 +832,7 @@ shape = SubResource("RectangleShape2D_jkw7r")
 [connection signal="pressed_down" from="Level3Elements/Platform3/Button" to="Level3Elements" method="_on_button_pressed_down"]
 [connection signal="activated" from="Level3Elements/Platform1/PressurePlate" to="Level3Elements" method="_on_pressure_plate_activated"]
 [connection signal="released" from="Level3Elements/Platform1/PressurePlate" to="Level3Elements" method="_on_pressure_plate_released"]
+[connection signal="body_entered" from="Level3Elements/Helper" to="Level3Elements" method="_on_helper_body_entered"]
 [connection signal="body_entered" from="HiddenLevel" to="Level3Elements" method="_on_hidden_level_body_entered"]
+[connection signal="finished" from="VoiceLines/Intro" to="Level3Elements" method="_on_intro_finished"]
+[connection signal="finished" from="VoiceLines/Intro - skip" to="Level3Elements" method="_on_intro__skip_finished"]

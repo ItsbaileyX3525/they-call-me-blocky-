@@ -1,0 +1,1943 @@
+[gd_scene load_steps=76 format=3 uid="uid://ojnlvf1l7k3h"]
+
+[ext_resource type="Texture2D" uid="uid://b51d2uxsk3hdg" path="res://Assets/Decals/Tile.webp" id="1_wirjb"]
+[ext_resource type="Script" uid="uid://d2462evmgybms" path="res://Scripts/LevelScripts/level_4.gd" id="2_4f37u"]
+[ext_resource type="FontFile" uid="uid://cnvdujn66at4h" path="res://Assets/Fonts/ComicRelief-Regular.ttf" id="2_bqeum"]
+[ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="3_vvme3"]
+[ext_resource type="AudioStream" uid="uid://b76ymtx65nc8j" path="res://Assets/Sounds/Menu/Title Boom.mp3" id="4_f5hg0"]
+[ext_resource type="Shader" uid="uid://bxudinudgkho3" path="res://Shaders/Cobblestone.gdshader" id="5_e558k"]
+[ext_resource type="FontFile" uid="uid://bbgliofgel8u8" path="res://Assets/Fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="6_qb40t"]
+[ext_resource type="PackedScene" uid="uid://cqtlaat786iaf" path="res://Scenes/Objects/Button.tscn" id="7_e558k"]
+[ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="7_qr356"]
+[ext_resource type="PackedScene" uid="uid://cjl5n1qfq2ys6" path="res://Scenes/Objects/Lever.tscn" id="8_qb40t"]
+[ext_resource type="Texture2D" uid="uid://dujwrhxfh2a6m" path="res://Assets/Decals/Circle.png" id="10_f5hg0"]
+[ext_resource type="AudioStream" uid="uid://o1fykn0jkt6o" path="res://Assets/Sounds/SFX/Beam.mp3" id="10_qb40t"]
+[ext_resource type="AudioStream" uid="uid://dtbqqdlqvm4wm" path="res://Assets/VoiceLines/Level4/Level4 - Intro.wav" id="13_qr356"]
+[ext_resource type="AudioStream" uid="uid://cueot0w36eob" path="res://Assets/VoiceLines/Level4/Level4 - IntroSkip.wav" id="14_xnvqf"]
+[ext_resource type="AudioStream" uid="uid://bn0os4poq7nlr" path="res://Assets/VoiceLines/Level4/Level4 - Ball.wav" id="15_x82cs"]
+[ext_resource type="AudioStream" uid="uid://b6no4vsgs503p" path="res://Assets/VoiceLines/Level4/Level4 - BallPress.wav" id="16_qwpk0"]
+[ext_resource type="AudioStream" uid="uid://cngyd8jfg6u4" path="res://Assets/VoiceLines/Level4/Level4 - noHelp.wav" id="17_kgo3b"]
+[ext_resource type="AudioStream" uid="uid://rthxhbtdjb4u" path="res://Assets/VoiceLines/Level4/Level4 - lolz.wav" id="18_yq28s"]
+[ext_resource type="AudioStream" uid="uid://wmqs6nvtc34n" path="res://Assets/VoiceLines/Level4/Level4 - sassy.wav" id="19_dvp7d"]
+[ext_resource type="AudioStream" uid="uid://cfb41jj2ccyux" path="res://Assets/VoiceLines/Level4/Level4 - No ball.wav" id="20_kydo2"]
+[ext_resource type="AudioStream" uid="uid://2l2e7k21qgqi" path="res://Assets/VoiceLines/Level4/Level4 - Nope.wav" id="21_qkgq3"]
+[ext_resource type="AudioStream" uid="uid://b1q543tx3dnh6" path="res://Assets/VoiceLines/Level4/Level4 - Nuh uh.wav" id="22_8lerl"]
+[ext_resource type="AudioStream" uid="uid://duo5vxs5pr0os" path="res://Assets/VoiceLines/Level4/Level4 - BIG BERTHA.wav" id="23_qkgq3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31vnp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqeum"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x82cs"]
+size = Vector2(61.738, 40)
+
+[sub_resource type="Animation" id="Animation_vfeps"]
+resource_name = "DoorUp"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-42, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wall2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 8), Vector2(48, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorMiddle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 54), Vector2(-16, 54), Vector2(-16, -129)]
+}
+
+[sub_resource type="Animation" id="Animation_eqs5w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wall2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 26)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorMiddle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, 54)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gu1j6"]
+_data = {
+&"DoorUp": SubResource("Animation_vfeps"),
+&"RESET": SubResource("Animation_eqs5w")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvp7d"]
+size = Vector2(43.5714, 40.0227)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f5hg0"]
+a = Vector2(-7.28507, 1.35381)
+b = Vector2(291.08, 8.64973)
+
+[sub_resource type="Gradient" id="Gradient_qb40t"]
+offsets = PackedFloat32Array(0.012987, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dt8bd"]
+gradient = SubResource("Gradient_qb40t")
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kydo2"]
+size = Vector2(61.738, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqeum"]
+size = Vector2(125, 73.6598)
+
+[sub_resource type="Gradient" id="Gradient_f5hg0"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e558k"]
+gradient = SubResource("Gradient_f5hg0")
+fill_from = Vector2(0.43662, 0.549296)
+fill_to = Vector2(0.544601, 0.338028)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5hg0"]
+size = Vector2(68.7267, 7.0903)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e558k"]
+size = Vector2(109.004, 4.00742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb40t"]
+size = Vector2(87, 4.00742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwsqn"]
+size = Vector2(49.3369, 7.0903)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt8bd"]
+size = Vector2(48.8472, 7.0903)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr356"]
+size = Vector2(40.1138, 2.33871)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnvqf"]
+size = Vector2(21, 625)
+
+[sub_resource type="Animation" id="Animation_qb40t"]
+resource_name = "MoveWalls"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1723, 689), Vector2(1723, 487)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Button:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1779, 700), Vector2(1779, 790)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ColorRect2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1812, 613), Vector2(1812, 703)]
+}
+
+[sub_resource type="Animation" id="Animation_qr356"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1723, 689)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Button:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1779, 700)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ColorRect2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1812, 613)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xnvqf"]
+_data = {
+&"MoveWalls": SubResource("Animation_qb40t"),
+&"RESET": SubResource("Animation_qr356")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkgq3"]
+size = Vector2(21, 670)
+
+[sub_resource type="Animation" id="Animation_x82cs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3233, 689)]
+}
+
+[sub_resource type="Animation" id="Animation_xnvqf"]
+resource_name = "WallMove"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3233, 689), Vector2(8711, 689)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwpk0"]
+_data = {
+&"RESET": SubResource("Animation_x82cs"),
+&"WallMove": SubResource("Animation_xnvqf")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgo3b"]
+size = Vector2(116, 7)
+
+[sub_resource type="Animation" id="Animation_nwsqn"]
+resource_name = "MoveUp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2303, 698), Vector2(2303, 557)]
+}
+
+[sub_resource type="Animation" id="Animation_yq28s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2303, 698)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvp7d"]
+_data = {
+&"MoveUp": SubResource("Animation_nwsqn"),
+&"RESET": SubResource("Animation_yq28s")
+}
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qb40t"]
+a = Vector2(7.30579, -4.24677)
+b = Vector2(-18.2627, 16.429)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qr356"]
+a = Vector2(52.2999, -4.18661)
+b = Vector2(84.6022, 16.4637)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o4pm"]
+size = Vector2(40, 294)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldphf"]
+size = Vector2(292, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlw0w"]
+size = Vector2(40, 255)
+
+[sub_resource type="Animation" id="Animation_ux10m"]
+resource_name = "LiftUp"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99, 1.53333, 3.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-613, 0), Vector2(-613, -200.691), Vector2(-613, -200.691), Vector2(-613, -696)]
+}
+
+[sub_resource type="Animation" id="Animation_hdxml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-613, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6a2tn"]
+_data = {
+&"LiftUp": SubResource("Animation_ux10m"),
+&"RESET": SubResource("Animation_hdxml")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ux10m"]
+size = Vector2(20, 626)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lerl"]
+size = Vector2(29.0267, 40)
+
+[sub_resource type="Animation" id="Animation_bqeum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 175)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 175)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crane:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(954, -1196)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Frame:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(932, -363)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(840, -333)]
+}
+
+[sub_resource type="Animation" id="Animation_31vnp"]
+resource_name = "Reveal"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 175), Vector2(128, 175)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 175), Vector2(128, 175)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crane:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.26667, 2, 2.2, 2.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(954, -1196), Vector2(954, -327), Vector2(954, -327), Vector2(954, -791)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Frame:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.26667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(932, -363), Vector2(932, 506)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.36667, 2.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(840, -333), Vector2(840, 535)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vvme3"]
+_data = {
+&"RESET": SubResource("Animation_bqeum"),
+&"Reveal": SubResource("Animation_31vnp")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31vnp"]
+size = Vector2(239, 170)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_31vnp"]
+radius = 33.1851
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f5hg0"]
+radius = 18.1728
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qb40t"]
+radius = 119.001
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwpk0"]
+size = Vector2(100, 83)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwsqn"]
+shader = ExtResource("5_e558k")
+shader_parameter/crack_density = 900.0
+shader_parameter/crack_intensity = 0.68
+shader_parameter/world_offset = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq28s"]
+size = Vector2(6272, 40)
+
+[node name="Level4" type="Node2D"]
+
+[node name="LevelCamera" type="Camera2D" parent="."]
+position = Vector2(650, 367)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="LevelCamera"]
+visible = false
+
+[node name="CodeInput" type="Node2D" parent="LevelCamera/CanvasLayer"]
+process_mode = 3
+light_mask = 2
+position = Vector2(474, 279)
+
+[node name="Bg" type="ColorRect" parent="LevelCamera/CanvasLayer/CodeInput"]
+offset_left = -21.0
+offset_top = 16.0
+offset_right = 22.0
+offset_bottom = 28.0
+scale = Vector2(9.53959, 9.53959)
+color = Color(0.194349, 0.194349, 0.194349, 1)
+
+[node name="Question" type="ColorRect" parent="LevelCamera/CanvasLayer/CodeInput"]
+offset_left = -17.0
+offset_top = 19.0
+offset_right = 25.0
+offset_bottom = 22.0
+scale = Vector2(9.53959, 9.53959)
+color = Color(0.118581, 0.118581, 0.118581, 1)
+
+[node name="QuestionText" type="Label" parent="LevelCamera/CanvasLayer/CodeInput/Question"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_right = 2204.0
+offset_bottom = 163.0
+scale = Vector2(0.0187801, 0.0187801)
+theme_override_fonts/font = ExtResource("6_qb40t")
+theme_override_font_sizes/font_size = 116
+text = "What caused it?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Input" type="ColorRect" parent="LevelCamera/CanvasLayer/CodeInput"]
+offset_left = -3.0
+offset_top = 86.0
+offset_right = 36.0
+offset_bottom = 90.0
+scale = Vector2(9.53959, 9.53959)
+color = Color(0.419813, 0.419813, 0.419813, 1)
+
+[node name="LineEdit" type="LineEdit" parent="LevelCamera/CanvasLayer/CodeInput"]
+process_mode = 3
+offset_left = -2.0
+offset_top = 86.0
+offset_right = 2543.0
+offset_bottom = 347.0
+scale = Vector2(0.145782, 0.145782)
+theme_override_constants/caret_width = 10
+theme_override_fonts/font = ExtResource("2_bqeum")
+theme_override_font_sizes/font_size = 131
+theme_override_styles/focus = SubResource("StyleBoxFlat_31vnp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqeum")
+placeholder_text = "Answer..."
+keep_editing_on_text_submit = true
+caret_blink = true
+
+[node name="CodeReturn" type="Button" parent="LevelCamera/CanvasLayer/CodeInput"]
+process_mode = 3
+offset_left = -51.0
+offset_top = -15.0
+offset_right = -21.0
+offset_bottom = 16.0
+text = " X "
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="LevelCamera"]
+visible = false
+
+[node name="Menu" type="Control" parent="LevelCamera/CanvasLayer2"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelCamera/CanvasLayer2/Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.5
+offset_right = 312.5
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 60
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCamera/CanvasLayer2/Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="LevelCamera/CanvasLayer2/Menu/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 67
+text = "Paused Game"
+
+[node name="Elements" type="Control" parent="LevelCamera/CanvasLayer2/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelCamera/CanvasLayer2/Menu/Elements"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -129.5
+offset_right = 156.5
+offset_bottom = 129.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Resume" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vvme3")
+theme_override_font_sizes/font_size = 46
+text = "RESUME GAME"
+
+[node name="Unstuck" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vvme3")
+theme_override_font_sizes/font_size = 46
+text = "UNSTUCK"
+
+[node name="ExitMenu" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vvme3")
+theme_override_font_sizes/font_size = 46
+text = "EXIT TO MENU"
+
+[node name="Exit" type="Button" parent="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vvme3")
+theme_override_font_sizes/font_size = 46
+text = "QUIT TO DESKTOP"
+
+[node name="Boom" type="AudioStreamPlayer" parent="LevelCamera/CanvasLayer2/Menu"]
+stream = ExtResource("4_f5hg0")
+volume_db = 3.387
+pitch_scale = 1.29
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(2714, 349)
+scale = Vector2(0.532028, 0.532028)
+texture = ExtResource("1_wirjb")
+region_enabled = true
+region_rect = Rect2(-5272.36, -1818.89, 15704.5, 4355.14)
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(2718, 666)
+
+[node name="Wall" type="ColorRect" parent="Walls"]
+offset_top = 8.0
+offset_right = 5.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Wall2" type="ColorRect" parent="Walls"]
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 14.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="DoorMiddle" type="Area2D" parent="Walls"]
+position = Vector2(-16, 54)
+scale = Vector2(1.2796, 4.0796)
+
+[node name="ColorRect" type="ColorRect" parent="Walls/DoorMiddle"]
+offset_left = -15.0
+offset_right = 114.0
+offset_bottom = 40.0
+scale = Vector2(0.48001, 1)
+color = Color(0.372327, 0.219733, 1.92523e-07, 1)
+
+[node name="Knob" type="ColorRect" parent="Walls/DoorMiddle"]
+offset_left = 33.0
+offset_top = 23.0
+offset_right = 48.0
+offset_bottom = 26.0
+scale = Vector2(0.48001, 1)
+color = Color(0.988022, 0.615569, 6.93083e-06, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/DoorMiddle"]
+position = Vector2(16.0206, 19.9999)
+shape = SubResource("RectangleShape2D_x82cs")
+
+[node name="AppearDoor" type="AnimationPlayer" parent="Walls"]
+libraries = {
+&"": SubResource("AnimationLibrary_gu1j6")
+}
+
+[node name="Level4Elements" type="Node2D" parent="."]
+script = ExtResource("2_4f37u")
+
+[node name="WallL" type="StaticBody2D" parent="Level4Elements"]
+scale = Vector2(0.839999, 17.64)
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/WallL"]
+offset_left = -2337.0
+offset_top = -60.0
+offset_right = 40.0
+offset_bottom = 47.0
+scale = Vector2(0.999763, 0.992068)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Level4Elements/WallL"]
+offset_left = 39.0
+offset_top = 35.9031
+offset_right = 258.0
+offset_bottom = 38.9031
+rotation = 0.0246034
+scale = Vector2(0.999763, 0.992068)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/WallL"]
+position = Vector2(18.2143, 20.0113)
+shape = SubResource("RectangleShape2D_dvp7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level4Elements/WallL"]
+position = Vector2(47.7115, 35.1356)
+shape = SubResource("SegmentShape2D_f5hg0")
+
+[node name="WallR" type="StaticBody2D" parent="Level4Elements"]
+position = Vector2(6229, 0)
+scale = Vector2(0.839999, 17.64)
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/WallR"]
+offset_right = 1753.0
+offset_bottom = 43.0
+scale = Vector2(0.999763, 0.992068)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/WallR"]
+position = Vector2(20, 20.0113)
+shape = SubResource("RectangleShape2D_dvp7d")
+
+[node name="ColorRect2" type="ColorRect" parent="Level4Elements/WallR"]
+offset_left = -0.539276
+offset_top = 38.568
+offset_right = 218.461
+offset_bottom = 41.568
+rotation = 3.10565
+scale = Vector2(0.999763, 0.992068)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level4Elements/WallR"]
+position = Vector2(8.1723, 37.8004)
+rotation = 3.08105
+shape = SubResource("SegmentShape2D_f5hg0")
+
+[node name="LevelCounter" type="Node2D" parent="Level4Elements"]
+position = Vector2(0, 6)
+
+[node name="Control" type="Control" parent="Level4Elements/LevelCounter"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 136.0
+offset_right = 1256.0
+offset_bottom = 700.0
+
+[node name="Outline" type="ColorRect" parent="Level4Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = -6.0
+offset_right = 116.0
+offset_bottom = 46.0
+grow_horizontal = 2
+color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[node name="Inside" type="ColorRect" parent="Level4Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_top = -3.0
+offset_right = 113.0
+offset_bottom = 43.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Level4Elements/LevelCounter/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.0
+offset_right = 113.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.843184, 0.843184, 0.843184, 1)
+theme_override_fonts/font = ExtResource("6_qb40t")
+theme_override_font_sizes/font_size = 46
+text = "4"
+horizontal_alignment = 1
+
+[node name="Lights" type="Node2D" parent="Level4Elements"]
+
+[node name="Light" type="Node2D" parent="Level4Elements/Lights"]
+position = Vector2(634, 30)
+
+[node name="LightbulbWire" type="ColorRect" parent="Level4Elements/Lights/Light"]
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
+scale = Vector2(0.159995, 0.559999)
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Lightbulb" type="ColorRect" parent="Level4Elements/Lights/Light"]
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 60.0
+scale = Vector2(0.639995, 0.16)
+color = Color(0.484183, 0.266439, 0.0693719, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Level4Elements/Lights"]
+position = Vector2(654.5, 103.75)
+scale = Vector2(19.3594, 18.6641)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+energy = 3.09
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_dt8bd")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Level4Elements/Lights"]
+position = Vector2(1881, 103.75)
+scale = Vector2(19.3594, 18.6641)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+energy = 3.09
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_dt8bd")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Level4Elements/Lights"]
+position = Vector2(3100, 103.75)
+scale = Vector2(19.3594, 18.6641)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+energy = 3.09
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_dt8bd")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Level4Elements/Lights"]
+position = Vector2(4321, 103.75)
+scale = Vector2(19.3594, 18.6641)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+energy = 3.09
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_dt8bd")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Level4Elements/Lights"]
+position = Vector2(5538, 103.75)
+scale = Vector2(19.3594, 18.6641)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+energy = 3.09
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_dt8bd")
+
+[node name="PointLight2D6" type="PointLight2D" parent="Level4Elements/Lights"]
+position = Vector2(6748, 103.75)
+scale = Vector2(19.3594, 18.6641)
+color = Color(0.279099, 0.114292, 0.0467659, 1)
+energy = 3.09
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_dt8bd")
+
+[node name="Light2" type="Node2D" parent="Level4Elements/Lights"]
+position = Vector2(1871, 30)
+
+[node name="LightbulbWire" type="ColorRect" parent="Level4Elements/Lights/Light2"]
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
+scale = Vector2(0.159995, 0.559999)
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Lightbulb" type="ColorRect" parent="Level4Elements/Lights/Light2"]
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 60.0
+scale = Vector2(0.639995, 0.16)
+color = Color(0.484183, 0.266439, 0.0693719, 1)
+
+[node name="Light3" type="Node2D" parent="Level4Elements/Lights"]
+position = Vector2(3114, 30)
+
+[node name="LightbulbWire" type="ColorRect" parent="Level4Elements/Lights/Light3"]
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
+scale = Vector2(0.159995, 0.559999)
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Lightbulb" type="ColorRect" parent="Level4Elements/Lights/Light3"]
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 60.0
+scale = Vector2(0.639995, 0.16)
+color = Color(0.484183, 0.266439, 0.0693719, 1)
+
+[node name="Light4" type="Node2D" parent="Level4Elements/Lights"]
+position = Vector2(4316, 30)
+
+[node name="LightbulbWire" type="ColorRect" parent="Level4Elements/Lights/Light4"]
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
+scale = Vector2(0.159995, 0.559999)
+color = Color(0.180005, 0.180005, 0.180005, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Lightbulb" type="ColorRect" parent="Level4Elements/Lights/Light4"]
+offset_left = 2.0
+offset_top = 20.0
+offset_right = 42.0
+offset_bottom = 60.0
+scale = Vector2(0.639995, 0.16)
+color = Color(0.484183, 0.266439, 0.0693719, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="DoorMiddle" type="Area2D" parent="Level4Elements"]
+position = Vector2(158, 537)
+scale = Vector2(1.2796, 4.0796)
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/DoorMiddle"]
+offset_left = -15.0
+offset_right = 114.0
+offset_bottom = 40.0
+scale = Vector2(0.48001, 1)
+color = Color(0.372327, 0.219733, 1.92523e-07, 1)
+
+[node name="Knob" type="ColorRect" parent="Level4Elements/DoorMiddle"]
+offset_left = 33.0
+offset_top = 23.0
+offset_right = 48.0
+offset_bottom = 26.0
+scale = Vector2(0.48001, 1)
+color = Color(0.988022, 0.615569, 6.93083e-06, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/DoorMiddle"]
+position = Vector2(16.0206, 19.9999)
+shape = SubResource("RectangleShape2D_kydo2")
+
+[node name="SecretDoorInput" type="Area2D" parent="Level4Elements"]
+position = Vector2(1200, 383)
+scale = Vector2(2.73341, 2.73341)
+
+[node name="Bg" type="ColorRect" parent="Level4Elements/SecretDoorInput"]
+offset_left = -21.0
+offset_top = 71.974
+offset_right = 22.0
+offset_bottom = 83.974
+color = Color(0.194349, 0.194349, 0.194349, 1)
+
+[node name="Input" type="ColorRect" parent="Level4Elements/SecretDoorInput"]
+offset_left = -19.0
+offset_top = 73.974
+offset_right = 20.0
+offset_bottom = 76.974
+color = Color(0.419813, 0.419813, 0.419813, 1)
+
+[node name="Keyboard" type="Node2D" parent="Level4Elements/SecretDoorInput"]
+position = Vector2(0, 55.974)
+
+[node name="Wire" type="ColorRect" parent="Level4Elements/SecretDoorInput/Keyboard"]
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 30.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="Wire2" type="ColorRect" parent="Level4Elements/SecretDoorInput/Keyboard"]
+offset_left = 29.1007
+offset_top = 22.1814
+offset_right = 35.1007
+offset_bottom = 24.1814
+rotation = -0.46136
+color = Color(0, 0, 0, 1)
+
+[node name="Bg" type="ColorRect" parent="Level4Elements/SecretDoorInput/Keyboard"]
+offset_left = 34.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 36.0
+color = Color(0.194349, 0.194349, 0.194349, 1)
+
+[node name="Seperator" type="ColorRect" parent="Level4Elements/SecretDoorInput/Keyboard/Bg"]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 62.0
+offset_bottom = 7.0
+color = Color(0, 0, 0, 1)
+
+[node name="Seperator2" type="ColorRect" parent="Level4Elements/SecretDoorInput/Keyboard/Bg"]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 62.0
+offset_bottom = 14.0
+color = Color(0, 0, 0, 1)
+
+[node name="Row1" type="Label" parent="Level4Elements/SecretDoorInput/Keyboard/Bg"]
+layout_mode = 0
+offset_right = 1249.0
+offset_bottom = 121.0
+scale = Vector2(0.0496307, 0.0496307)
+theme_override_font_sizes/font_size = 86
+text = "Q  W  E  R  T  Y  U  I  O  P"
+horizontal_alignment = 1
+
+[node name="Row2" type="Label" parent="Level4Elements/SecretDoorInput/Keyboard/Bg"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 1249.0
+offset_bottom = 128.0
+scale = Vector2(0.0496307, 0.0496307)
+theme_override_font_sizes/font_size = 86
+text = "A  S  D  F  G  H  J  K  L "
+horizontal_alignment = 1
+
+[node name="Row3" type="Label" parent="Level4Elements/SecretDoorInput/Keyboard/Bg"]
+layout_mode = 0
+offset_top = 14.0
+offset_right = 1249.0
+offset_bottom = 135.0
+scale = Vector2(0.0496307, 0.0496307)
+theme_override_font_sizes/font_size = 86
+text = "Z  X  C  V  B  N  M "
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/SecretDoorInput"]
+position = Vector2(37.5, 78.1702)
+shape = SubResource("RectangleShape2D_bqeum")
+
+[node name="BallHolder" type="StaticBody2D" parent="Level4Elements"]
+position = Vector2(503, 660)
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/BallHolder"]
+offset_top = 31.0
+offset_right = 154.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="CoolColour" type="ColorRect" parent="Level4Elements/BallHolder"]
+offset_left = 21.0
+offset_top = 29.0
+offset_right = 137.0
+offset_bottom = 31.0
+color = Color(0.793517, 0.30464, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Level4Elements/BallHolder/CoolColour"]
+position = Vector2(57.5, -0.5)
+scale = Vector2(1.79688, 0.078125)
+color = Color(0.933333, 0.431373, 0, 1)
+texture = SubResource("GradientTexture2D_e558k")
+
+[node name="Ramp" type="ColorRect" parent="Level4Elements/BallHolder"]
+offset_left = -17.0
+offset_top = 40.0
+offset_right = 52.0
+offset_bottom = 49.0
+rotation = -0.466586
+color = Color(0, 0, 0, 1)
+
+[node name="Ramp2" type="ColorRect" parent="Level4Elements/BallHolder"]
+offset_left = 163.0
+offset_top = 48.0
+offset_right = 222.0
+offset_bottom = 57.0
+rotation = -2.57685
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallHolder"]
+position = Vector2(74.2278, 34.8184)
+shape = SubResource("RectangleShape2D_f5hg0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level4Elements/BallHolder"]
+position = Vector2(15.4861, 27.6257)
+rotation = -0.467542
+shape = SubResource("RectangleShape2D_f5hg0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level4Elements/BallHolder"]
+position = Vector2(145.073, 30.336)
+rotation = -2.57669
+shape = SubResource("RectangleShape2D_f5hg0")
+
+[node name="BallHolder1" type="Area2D" parent="Level4Elements/BallHolder"]
+position = Vector2(81.3146, 21.7307)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallHolder/BallHolder1"]
+position = Vector2(-0.791565, 7.99634)
+shape = SubResource("RectangleShape2D_e558k")
+
+[node name="Yeeter" type="Area2D" parent="Level4Elements/BallHolder"]
+position = Vector2(81.3146, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallHolder/Yeeter"]
+position = Vector2(-0.814575, 2.26929)
+shape = SubResource("RectangleShape2D_qb40t")
+
+[node name="BallHolder2" type="StaticBody2D" parent="Level4Elements"]
+position = Vector2(2464, 660)
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/BallHolder2"]
+offset_top = 31.0
+offset_right = 154.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="CoolColour" type="ColorRect" parent="Level4Elements/BallHolder2"]
+offset_left = 21.0
+offset_top = 29.0
+offset_right = 137.0
+offset_bottom = 31.0
+color = Color(0.793517, 0.30464, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Level4Elements/BallHolder2/CoolColour"]
+position = Vector2(57.5, -0.5)
+scale = Vector2(1.79688, 0.078125)
+color = Color(0.933333, 0.431373, 0, 1)
+texture = SubResource("GradientTexture2D_e558k")
+
+[node name="Ramp" type="ColorRect" parent="Level4Elements/BallHolder2"]
+offset_left = -17.0
+offset_top = 40.0
+offset_right = 33.0
+offset_bottom = 49.0
+rotation = -0.466586
+color = Color(0, 0, 0, 1)
+
+[node name="Ramp2" type="ColorRect" parent="Level4Elements/BallHolder2"]
+offset_left = 163.0
+offset_top = 48.0
+offset_right = 202.0
+offset_bottom = 57.0
+rotation = -2.57685
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallHolder2"]
+position = Vector2(74.2278, 34.8184)
+shape = SubResource("RectangleShape2D_f5hg0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level4Elements/BallHolder2"]
+position = Vector2(6.83154, 31.9951)
+rotation = -0.467542
+shape = SubResource("RectangleShape2D_nwsqn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level4Elements/BallHolder2"]
+position = Vector2(153.469, 35.657)
+rotation = -2.57669
+shape = SubResource("RectangleShape2D_dt8bd")
+
+[node name="BallHolder2" type="Area2D" parent="Level4Elements/BallHolder2"]
+position = Vector2(81.3146, 21.7307)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallHolder2/BallHolder2"]
+position = Vector2(-0.791565, 7.99634)
+shape = SubResource("RectangleShape2D_e558k")
+
+[node name="BallHolder3" type="StaticBody2D" parent="Level4Elements"]
+position = Vector2(3550.36, 660)
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/BallHolder3"]
+offset_top = 31.0
+offset_right = 154.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="CoolColour" type="ColorRect" parent="Level4Elements/BallHolder3"]
+offset_left = 21.0
+offset_top = 29.0
+offset_right = 137.0
+offset_bottom = 31.0
+color = Color(0.793517, 0.30464, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Level4Elements/BallHolder3/CoolColour"]
+position = Vector2(57.5, -0.5)
+scale = Vector2(1.79688, 0.078125)
+color = Color(0.933333, 0.431373, 0, 1)
+texture = SubResource("GradientTexture2D_e558k")
+
+[node name="Ramp" type="ColorRect" parent="Level4Elements/BallHolder3"]
+offset_left = -17.0
+offset_top = 40.0
+offset_right = 52.0
+offset_bottom = 49.0
+rotation = -0.466586
+color = Color(0, 0, 0, 1)
+
+[node name="Ramp2" type="ColorRect" parent="Level4Elements/BallHolder3"]
+offset_left = 163.0
+offset_top = 48.0
+offset_right = 222.0
+offset_bottom = 57.0
+rotation = -2.57685
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallHolder3"]
+position = Vector2(74.2278, 34.8184)
+shape = SubResource("RectangleShape2D_f5hg0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level4Elements/BallHolder3"]
+position = Vector2(15.4861, 27.6257)
+rotation = -0.467542
+shape = SubResource("RectangleShape2D_f5hg0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level4Elements/BallHolder3"]
+position = Vector2(145.073, 30.336)
+rotation = -2.57669
+shape = SubResource("RectangleShape2D_f5hg0")
+
+[node name="BallHolder3" type="Area2D" parent="Level4Elements/BallHolder3"]
+position = Vector2(81.3146, 21.7307)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallHolder3/BallHolder3"]
+position = Vector2(-0.791565, 7.99634)
+shape = SubResource("RectangleShape2D_e558k")
+
+[node name="Yeeter" type="Area2D" parent="Level4Elements/BallHolder3"]
+position = Vector2(81.3146, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallHolder3/Yeeter"]
+position = Vector2(-0.814575, 2.26929)
+shape = SubResource("RectangleShape2D_qb40t")
+
+[node name="BallPipe" type="Node2D" parent="Level4Elements"]
+position = Vector2(931, 30)
+scale = Vector2(1.75999, 2.48)
+
+[node name="Pipe" type="ColorRect" parent="Level4Elements/BallPipe"]
+offset_right = 40.0
+offset_bottom = 60.0
+color = Color(0, 0, 0, 0.431373)
+
+[node name="Line" type="ColorRect" parent="Level4Elements/BallPipe"]
+offset_left = 19.0
+offset_right = 20.0
+offset_bottom = 60.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line5" type="ColorRect" parent="Level4Elements/BallPipe"]
+offset_right = 1.0
+offset_bottom = 60.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line6" type="ColorRect" parent="Level4Elements/BallPipe"]
+offset_left = 39.0
+offset_right = 40.0
+offset_bottom = 60.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line2" type="ColorRect" parent="Level4Elements/BallPipe"]
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line7" type="ColorRect" parent="Level4Elements/BallPipe"]
+offset_right = 40.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line3" type="ColorRect" parent="Level4Elements/BallPipe"]
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 25.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line4" type="ColorRect" parent="Level4Elements/BallPipe"]
+offset_top = 42.0
+offset_right = 40.0
+offset_bottom = 43.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level4Elements/BallPipe"]
+position = Vector2(10.2273, 43.9516)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/BallPipe/StaticBody2D"]
+position = Vector2(10.0569, -8.83065)
+shape = SubResource("RectangleShape2D_qr356")
+
+[node name="Wall" type="StaticBody2D" parent="Level4Elements"]
+position = Vector2(1723, 689)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/Wall"]
+position = Vector2(10.5, -341.5)
+shape = SubResource("RectangleShape2D_xnvqf")
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/Wall"]
+offset_top = -685.0
+offset_right = 21.0
+offset_bottom = -27.0
+color = Color(0, 0, 0, 1)
+
+[node name="MoveWall" type="AnimationPlayer" parent="Level4Elements/Wall"]
+libraries = {
+&"": SubResource("AnimationLibrary_xnvqf")
+}
+
+[node name="Wall2" type="StaticBody2D" parent="Level4Elements"]
+position = Vector2(3233, 689)
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/Wall2"]
+offset_top = -685.0
+offset_right = 3374.0
+offset_bottom = 11.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/Wall2"]
+position = Vector2(10.5, -324)
+shape = SubResource("RectangleShape2D_qkgq3")
+
+[node name="MoveFakeWall" type="AnimationPlayer" parent="Level4Elements/Wall2"]
+libraries = {
+&"": SubResource("AnimationLibrary_qwpk0")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Level4Elements"]
+offset_left = 1812.0
+offset_top = 613.0
+offset_right = 1906.0
+offset_bottom = 638.0
+rotation = 1.29969
+scale = Vector2(0.999763, 0.992068)
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="Button" parent="Level4Elements" instance=ExtResource("7_e558k")]
+position = Vector2(1779, 700)
+rotation = -1.57079
+is_permenant = true
+
+[node name="PlatformLift" type="AnimatableBody2D" parent="Level4Elements"]
+position = Vector2(2303, 698)
+
+[node name="Pole" type="ColorRect" parent="Level4Elements/PlatformLift"]
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 14.0
+offset_bottom = 877.0
+color = Color(0, 0, 0, 1)
+
+[node name="Floor" type="ColorRect" parent="Level4Elements/PlatformLift"]
+offset_left = -50.0
+offset_top = 3.0
+offset_right = 66.0
+offset_bottom = 10.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/PlatformLift"]
+position = Vector2(8, 6.5)
+shape = SubResource("RectangleShape2D_kgo3b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level4Elements/PlatformLift"]
+libraries = {
+&"": SubResource("AnimationLibrary_dvp7d")
+}
+
+[node name="Lever" parent="Level4Elements" instance=ExtResource("8_qb40t")]
+position = Vector2(2165, 599)
+
+[node name="Button2" parent="Level4Elements" instance=ExtResource("7_e558k")]
+position = Vector2(2875, 667)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Level4Elements/Button2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/Button2/StaticBody2D2"]
+position = Vector2(-3.21411, 5.34351)
+shape = SubResource("SegmentShape2D_qb40t")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level4Elements/Button2/StaticBody2D2"]
+position = Vector2(-3.21411, 5.34351)
+shape = SubResource("SegmentShape2D_qr356")
+
+[node name="Crane" type="Node2D" parent="Level4Elements"]
+position = Vector2(-613, 0)
+
+[node name="Crane" type="ColorRect" parent="Level4Elements/Crane"]
+offset_left = 5303.0
+offset_top = -344.0
+offset_right = 5311.0
+offset_bottom = 395.0
+color = Color(0, 0, 0, 1)
+
+[node name="Arm" type="ColorRect" parent="Level4Elements/Crane/Crane"]
+layout_mode = 0
+offset_top = 729.0
+offset_right = 8.0
+offset_bottom = 747.0
+rotation = 0.99936
+color = Color(0, 0, 0, 1)
+
+[node name="Arm2" type="ColorRect" parent="Level4Elements/Crane/Crane"]
+layout_mode = 0
+offset_left = 3.44525
+offset_top = 735.648
+offset_right = 11.4452
+offset_bottom = 754.648
+rotation = -1.00007
+color = Color(0, 0, 0, 1)
+
+[node name="Arm3" type="ColorRect" parent="Level4Elements/Crane/Crane"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 738.0
+offset_right = -10.0
+offset_bottom = 751.0
+color = Color(0, 0, 0, 1)
+
+[node name="Arm4" type="ColorRect" parent="Level4Elements/Crane/Crane"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 739.0
+offset_right = 24.0
+offset_bottom = 752.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level4Elements/Crane"]
+
+[node name="ColorRect" type="ColorRect" parent="Level4Elements/Crane/StaticBody2D"]
+offset_left = 5143.0
+offset_top = 425.0
+offset_right = 5183.0
+offset_bottom = 700.0
+color = Color(0.233925, 0.233925, 0.233925, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Level4Elements/Crane/StaticBody2D"]
+offset_left = 5143.0
+offset_top = 406.0
+offset_right = 5439.0
+offset_bottom = 446.0
+color = Color(0.233925, 0.233925, 0.233925, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Level4Elements/Crane/StaticBody2D"]
+offset_left = 5435.0
+offset_top = 406.0
+offset_right = 5475.0
+offset_bottom = 700.0
+color = Color(0.233925, 0.233925, 0.233925, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/Crane/StaticBody2D"]
+position = Vector2(5163, 553)
+shape = SubResource("RectangleShape2D_2o4pm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level4Elements/Crane/StaticBody2D"]
+position = Vector2(5329, 426)
+shape = SubResource("RectangleShape2D_ldphf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level4Elements/Crane/StaticBody2D"]
+position = Vector2(5455, 573.5)
+shape = SubResource("RectangleShape2D_wlw0w")
+
+[node name="RemoveCage" type="AnimationPlayer" parent="Level4Elements/Crane"]
+libraries = {
+&"": SubResource("AnimationLibrary_6a2tn")
+}
+
+[node name="OMEGABUTTON" parent="Level4Elements" instance=ExtResource("7_e558k")]
+position = Vector2(6158, 633)
+rotation = -1.57079
+scale = Vector2(8.01522, 8.01522)
+
+[node name="Disintergrate" type="Area2D" parent="Level4Elements"]
+position = Vector2(3119, 684)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4Elements/Disintergrate"]
+position = Vector2(0, -302)
+shape = SubResource("RectangleShape2D_ux10m")
+
+[node name="Roof" type="StaticBody2D" parent="."]
+scale = Vector2(260.76, 0.76)
+
+[node name="ColorRect" type="ColorRect" parent="Roof"]
+offset_top = -1163.0
+offset_right = 29.0
+offset_bottom = 40.0
+color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(14.5133, 20)
+shape = SubResource("RectangleShape2D_8lerl")
+
+[node name="MegaSecret" type="Node2D" parent="."]
+
+[node name="Frame" type="Node2D" parent="MegaSecret"]
+position = Vector2(932, -363)
+
+[node name="ColorRect4" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = 17.0
+offset_top = -77.0
+offset_right = 33.0
+offset_bottom = 9.0
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = 96.0
+offset_top = -32.0
+offset_right = 112.0
+offset_bottom = 120.0
+rotation = 1.57079
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = -111.0
+offset_top = 89.0
+offset_right = -95.0
+offset_bottom = 129.0
+rotation = 1.57079
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = -111.0
+offset_top = 132.0
+offset_right = -95.0
+offset_bottom = 190.0
+rotation = 1.57079
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = -111.0
+offset_top = 172.0
+offset_right = -95.0
+offset_bottom = 252.0
+rotation = 1.57079
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = 145.0
+offset_top = 89.0
+offset_right = 161.0
+offset_bottom = 120.0
+rotation = 4.71238
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="ColorRect14" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = 145.0
+offset_top = 132.0
+offset_right = 161.0
+offset_bottom = 179.0
+rotation = 4.71238
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="ColorRect15" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = 145.0
+offset_top = 172.0
+offset_right = 161.0
+offset_bottom = 234.0
+rotation = 4.71238
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="ColorRect" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = -111.0
+offset_top = 6.0
+offset_right = 145.0
+offset_bottom = 20.0
+color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = -201.0
+offset_top = 188.0
+offset_right = 3.0
+offset_bottom = 202.0
+rotation = -1.10927
+color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = -201.0
+offset_top = 194.0
+offset_right = -195.0
+offset_bottom = 208.0
+rotation = -1.57079
+color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = 215.0
+offset_top = 194.0
+offset_right = 414.0
+offset_bottom = 208.0
+rotation = -1.992
+color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = 215.0
+offset_top = 194.0
+offset_right = 221.0
+offset_bottom = 207.0
+rotation = -1.57266
+scale = Vector2(0.970337, 0.982563)
+color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = -111.0
+offset_top = 6.0
+offset_right = 58.0
+offset_bottom = 20.0
+rotation = -0.621224
+color = Color(0.544974, 0.544974, 0.544974, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="MegaSecret/Frame"]
+offset_left = 137.0
+offset_top = 18.0
+offset_right = 292.0
+offset_bottom = 32.0
+rotation = 3.83879
+color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="ColorRect" type="ColorRect" parent="MegaSecret"]
+offset_left = 949.0
+offset_top = 525.0
+offset_right = 1077.0
+offset_bottom = 700.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MegaSecret"]
+offset_left = 949.0
+offset_top = 700.0
+offset_right = 1077.0
+offset_bottom = 875.0
+rotation = -3.14159
+color = Color(0, 0, 0, 1)
+
+[node name="ShowDoor" type="AnimationPlayer" parent="MegaSecret"]
+libraries = {
+&"": SubResource("AnimationLibrary_vvme3")
+}
+speed_scale = 0.3
+
+[node name="Crane" type="ColorRect" parent="MegaSecret"]
+offset_left = 954.0
+offset_top = -791.0
+offset_right = 962.0
+offset_bottom = -52.0
+color = Color(0, 0, 0, 1)
+
+[node name="Arm" type="ColorRect" parent="MegaSecret/Crane"]
+layout_mode = 0
+offset_top = 729.0
+offset_right = 8.0
+offset_bottom = 747.0
+rotation = 0.99936
+color = Color(0, 0, 0, 1)
+
+[node name="Arm2" type="ColorRect" parent="MegaSecret/Crane"]
+layout_mode = 0
+offset_left = 3.44525
+offset_top = 735.648
+offset_right = 11.4452
+offset_bottom = 754.648
+rotation = -1.00007
+color = Color(0, 0, 0, 1)
+
+[node name="Arm3" type="ColorRect" parent="MegaSecret/Crane"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 738.0
+offset_right = -10.0
+offset_bottom = 751.0
+color = Color(0, 0, 0, 1)
+
+[node name="Arm4" type="ColorRect" parent="MegaSecret/Crane"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 739.0
+offset_right = 24.0
+offset_bottom = 752.0
+color = Color(0, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="MegaSecret"]
+position = Vector2(840, -333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MegaSecret/Area2D"]
+position = Vector2(109.5, 75)
+shape = SubResource("RectangleShape2D_31vnp")
+
+[node name="Player" parent="." instance=ExtResource("7_qr356")]
+position = Vector2(215, 626)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Beam" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_qb40t")
+
+[node name="PhysicsObjects" type="Node2D" parent="."]
+
+[node name="BallTrigger1" type="RigidBody2D" parent="PhysicsObjects"]
+position = Vector2(333, 649)
+mass = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsObjects/BallTrigger1"]
+position = Vector2(1, 13.4999)
+shape = SubResource("CircleShape2D_31vnp")
+
+[node name="Sprite2D" type="Sprite2D" parent="PhysicsObjects/BallTrigger1"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(1, 13.4898)
+scale = Vector2(0.0448229, 0.0448229)
+texture = ExtResource("10_f5hg0")
+
+[node name="BallTrigger2" type="RigidBody2D" parent="PhysicsObjects"]
+position = Vector2(964, 43)
+mass = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PhysicsObjects/BallTrigger2"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(1, 13.5)
+scale = Vector2(0.0250001, 0.0244792)
+texture = ExtResource("10_f5hg0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsObjects/BallTrigger2"]
+position = Vector2(1, 13.4999)
+shape = SubResource("CircleShape2D_f5hg0")
+
+[node name="BallTrigger3" type="RigidBody2D" parent="PhysicsObjects"]
+position = Vector2(4694, 563)
+mass = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsObjects/BallTrigger3"]
+position = Vector2(1, 13.4999)
+shape = SubResource("CircleShape2D_qb40t")
+
+[node name="Sprite2D" type="Sprite2D" parent="PhysicsObjects/BallTrigger3"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(1, 13.4898)
+scale = Vector2(0.160809, 0.160809)
+texture = ExtResource("10_f5hg0")
+
+[node name="SquareTrigger1" type="RigidBody2D" parent="PhysicsObjects"]
+position = Vector2(1976, 610)
+mass = 2.3
+
+[node name="ColorRect" type="ColorRect" parent="PhysicsObjects/SquareTrigger1"]
+offset_top = 5.0
+offset_right = 100.0
+offset_bottom = 88.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsObjects/SquareTrigger1"]
+position = Vector2(50, 46.5)
+shape = SubResource("RectangleShape2D_qwpk0")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 700)
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+material = SubResource("ShaderMaterial_nwsqn")
+offset_right = 49.0
+offset_bottom = 40.0
+scale = Vector2(127.896, 1)
+color = Color(0.140447, 0.140447, 0.140447, 1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(3136, 20)
+shape = SubResource("RectangleShape2D_yq28s")
+
+[node name="UnstuckPosition" type="Node2D" parent="."]
+process_mode = 3
+position = Vector2(250, 338)
+
+[node name="VoiceLines" type="Node2D" parent="."]
+
+[node name="Intro" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(647, 35)
+stream = ExtResource("13_qr356")
+volume_db = 8.0
+autoplay = true
+bus = &"VoiceLines"
+
+[node name="Introskip" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(647, 35)
+stream = ExtResource("14_xnvqf")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="Introball" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(647, 35)
+stream = ExtResource("15_x82cs")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="BallPress" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(647, 35)
+stream = ExtResource("16_qwpk0")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="BallPressSkip" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(1456, 35)
+stream = ExtResource("17_kgo3b")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="Lolz" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(2843, 41)
+stream = ExtResource("18_yq28s")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="Sassy" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(2827, 44)
+stream = ExtResource("19_dvp7d")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="NoBall" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(2827, 44)
+stream = ExtResource("20_kydo2")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="NoBall2" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(2827, 44)
+stream = ExtResource("21_qkgq3")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="NoBall3" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(2827, 44)
+stream = ExtResource("22_8lerl")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="BigBertha" type="AudioStreamPlayer2D" parent="VoiceLines"]
+position = Vector2(2827, 44)
+stream = ExtResource("23_qkgq3")
+volume_db = 8.0
+bus = &"VoiceLines"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1187.0
+offset_top = 435.0
+offset_right = 2168.0
+offset_bottom = 724.0
+scale = Vector2(0.224413, 0.224413)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bqeum")
+theme_override_font_sizes/font_size = 206
+text = "15432 ???"
+
+[connection signal="text_changed" from="LevelCamera/CanvasLayer/CodeInput/LineEdit" to="Level4Elements" method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="LevelCamera/CanvasLayer/CodeInput/LineEdit" to="Level4Elements" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer/CodeInput/CodeReturn" to="Level4Elements" method="_on_code_return_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Resume" to="Level4Elements" method="_on_resume_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Unstuck" to="Level4Elements" method="_on_unstuck_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/ExitMenu" to="Level4Elements" method="_on_exit_menu_pressed"]
+[connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Exit" to="Level4Elements" method="_on_exit_pressed"]
+[connection signal="body_entered" from="Walls/DoorMiddle" to="Level4Elements" method="_on_door_middle_body_entered"]
+[connection signal="body_entered" from="Level4Elements/SecretDoorInput" to="Level4Elements" method="_on_secret_door_input_body_entered"]
+[connection signal="body_exited" from="Level4Elements/SecretDoorInput" to="Level4Elements" method="_on_secret_door_input_body_exited"]
+[connection signal="body_entered" from="Level4Elements/BallHolder/BallHolder1" to="Level4Elements" method="_on_ball_holder_1_body_entered"]
+[connection signal="body_exited" from="Level4Elements/BallHolder/BallHolder1" to="Level4Elements" method="_on_ball_holder_1_body_exited"]
+[connection signal="body_entered" from="Level4Elements/BallHolder/Yeeter" to="Level4Elements" method="_on_yeeter_body_entered"]
+[connection signal="body_entered" from="Level4Elements/BallHolder2/BallHolder2" to="Level4Elements" method="_on_ball_holder_2_body_entered"]
+[connection signal="body_entered" from="Level4Elements/BallHolder3/BallHolder3" to="Level4Elements" method="_on_ball_holder_3_body_entered"]
+[connection signal="body_entered" from="Level4Elements/BallHolder3/Yeeter" to="Level4Elements" method="_on_yeeter_body_entered"]
+[connection signal="pressed_down" from="Level4Elements/Button" to="Level4Elements" method="_on_button_pressed_down"]
+[connection signal="powered" from="Level4Elements/Lever" to="Level4Elements" method="_on_lever_powered"]
+[connection signal="area_pressed_down" from="Level4Elements/Button2" to="Level4Elements" method="_on_button_2_area_pressed_down"]
+[connection signal="area_pressed_down" from="Level4Elements/OMEGABUTTON" to="Level4Elements" method="_on_omegabutton_area_pressed_down"]
+[connection signal="body_entered" from="Level4Elements/Disintergrate" to="Level4Elements" method="_on_disintergrate_body_entered"]
+[connection signal="animation_finished" from="MegaSecret/ShowDoor" to="Level4Elements" method="_on_show_door_animation_finished"]
+[connection signal="body_entered" from="MegaSecret/Area2D" to="Level4Elements" method="_on_area_2d_body_entered"]

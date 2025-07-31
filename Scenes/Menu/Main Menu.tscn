@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://clujq1f4bmaa5"]
+[gd_scene load_steps=11 format=3 uid="uid://clujq1f4bmaa5"]
 
 [ext_resource type="Script" uid="uid://cm5jlg12vkpc6" path="res://Scripts/Menu/main_menu.gd" id="1_04eqm"]
 [ext_resource type="Texture2D" uid="uid://clxkd0enr188e" path="res://Assets/the lads.png" id="2_my7in"]
 [ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="3_krpjf"]
 [ext_resource type="AudioStream" uid="uid://b76ymtx65nc8j" path="res://Assets/Sounds/Menu/Title Boom.mp3" id="3_y7nxq"]
-[ext_resource type="AudioStream" uid="uid://5fyodqx26a1c" path="res://Assets/Sounds/Menu/one piece?.mp3" id="4_vct2b"]
+[ext_resource type="AudioStream" uid="uid://b3e5d4bwmtgda" path="res://Assets/Sounds/Menu/What Is Real.mp3" id="5_krpjf"]
+[ext_resource type="AudioStream" uid="uid://bequv7v0wnaq0" path="res://Assets/Sounds/Menu/thailand-eas-alarm-2006-266492.mp3" id="6_ebtur"]
 
 [sub_resource type="Animation" id="Animation_my7in"]
 resource_name = "LoadGame"
@@ -197,11 +198,14 @@ pitch_scale = 1.29
 libraries = {
 &"": SubResource("AnimationLibrary_vct2b")
 }
-autoplay = "LoadGame"
 
 [node name="Bg" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_vct2b")
-volume_db = -5.622
+stream = ExtResource("5_krpjf")
+volume_db = 2.082
+
+[node name="AltBG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ebtur")
+volume_db = -12.362
 
 [connection signal="pressed" from="Menu/Elements/CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Elements/CenterContainer/VBoxContainer/Collectables" to="." method="_on_collectables_pressed"]

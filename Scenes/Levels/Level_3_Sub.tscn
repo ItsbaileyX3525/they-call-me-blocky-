@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7ysr00pdlcqg"]
+[gd_scene load_steps=14 format=3 uid="uid://b7ysr00pdlcqg"]
 
-[ext_resource type="Shader" uid="uid://dd40doue2epok" path="res://Shaders/Grid.gdshader" id="1_20aes"]
+[ext_resource type="Texture2D" uid="uid://b51d2uxsk3hdg" path="res://Assets/Decals/Tile.webp" id="1_kyex6"]
 [ext_resource type="FontFile" uid="uid://bbgliofgel8u8" path="res://Assets/Fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="2_uolee"]
 [ext_resource type="PackedScene" uid="uid://ch5uhvbhutp8a" path="res://Scenes/Player/Player.tscn" id="3_kyex6"]
 
@@ -17,6 +17,7 @@ func _ready() -> void:
 	player.velocity.y = 12
 	await get_tree().create_timer(.4).timeout
 	player.oppose_gravity()
+	WorldManager.has_entered_sub = true
 
 func _on_hidden_level_body_entered(body: Node2D) -> void:
 	if body.name == \"Player\":
@@ -31,12 +32,6 @@ func _on_area_2d_radio_body_entered(body: Node2D) -> void:
 		radio.visible = false
 		WorldManager.tape3 = true
 "
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uolee"]
-shader = ExtResource("1_20aes")
-shader_parameter/grid_color = Color(0, 0, 0, 1)
-shader_parameter/grid_size = 60.855
-shader_parameter/line_thickness = 5.46
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20aes"]
 size = Vector2(4.54441, 40)
@@ -60,12 +55,12 @@ fill_to = Vector2(0.5, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wlcp"]
 size = Vector2(3060.33, 15.4427)
 
-[sub_resource type="Gradient" id="Gradient_f0kld"]
+[sub_resource type="Gradient" id="Gradient_kyex6"]
 offsets = PackedFloat32Array(0.34, 0.42)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kyex6"]
-gradient = SubResource("Gradient_f0kld")
+gradient = SubResource("Gradient_kyex6")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -75,14 +70,14 @@ size = Vector2(138, 85)
 [node name="Level3_sub" type="Node2D"]
 script = SubResource("GDScript_6wlcp")
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_uolee")
-offset_left = -482.0
-offset_top = -425.0
-offset_right = -442.0
-offset_bottom = -385.0
-scale = Vector2(572.12, 41.68)
-color = Color(0.344076, 0.344076, 0.344076, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.521141, 0.521141, 0.521141, 1)
+texture_repeat = 2
+position = Vector2(650, 22.0001)
+scale = Vector2(0.532028, 0.532028)
+texture = ExtResource("1_kyex6")
+region_enabled = true
+region_rect = Rect2(-5272.36, -1818.89, 15704.5, 4355.14)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.255659, 0.255659, 0.255659, 1)

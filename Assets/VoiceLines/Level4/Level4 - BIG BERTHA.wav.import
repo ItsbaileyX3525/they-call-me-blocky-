@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://duo5vxs5pr0os"
+path="res://.godot/imported/Level4 - BIG BERTHA.wav-7a0ec4320d9745d93814694a0201d0b3.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level4/Level4 - BIG BERTHA.wav"
+dest_files=["res://.godot/imported/Level4 - BIG BERTHA.wav-7a0ec4320d9745d93814694a0201d0b3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

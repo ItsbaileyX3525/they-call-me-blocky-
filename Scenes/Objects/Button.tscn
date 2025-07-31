@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqtlaat786iaf"]
+[gd_scene load_steps=11 format=3 uid="uid://cqtlaat786iaf"]
 
 [ext_resource type="Script" uid="uid://c45qi30aa6n4w" path="res://Scripts/Objects/Button.gd" id="1_d1dk7"]
 [ext_resource type="Shader" uid="uid://f5thhf6sh4p1" path="res://Shaders/ColorRectRoundedCorner.gdshader" id="2_msdqy"]
+[ext_resource type="AudioStream" uid="uid://b464ubpboyv13" path="res://Assets/Sounds/SFX/ButtonDown.wav" id="3_msdqy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f15vc"]
 shader = ExtResource("2_msdqy")
@@ -103,6 +104,11 @@ shape = SubResource("RectangleShape2D_msdqy")
 libraries = {
 &"": SubResource("AnimationLibrary_f15vc")
 }
+
+[node name="Press" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(26.0565, 9.59978)
+stream = ExtResource("3_msdqy")
+pitch_scale = 3.03
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

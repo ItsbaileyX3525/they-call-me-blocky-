@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wmqs6nvtc34n"
+path="res://.godot/imported/Level4 - sassy.wav-74ff54eb4f925f240220e69cb3617be6.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level4/Level4 - sassy.wav"
+dest_files=["res://.godot/imported/Level4 - sassy.wav-74ff54eb4f925f240220e69cb3617be6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

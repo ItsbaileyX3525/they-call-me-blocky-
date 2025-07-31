@@ -1,0 +1,107 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt4ox0lpabg4l"]
+
+[ext_resource type="Theme" uid="uid://f0mbot4ijp4n" path="res://Assets/Themes/Menu/UI_Theme.tres" id="1_fku5t"]
+[ext_resource type="AudioStream" uid="uid://b76ymtx65nc8j" path="res://Assets/Sounds/Menu/Title Boom.mp3" id="2_ggn03"]
+
+[sub_resource type="GDScript" id="GDScript_fku5t"]
+script/source = "extends Control
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+"
+
+[node name="DemoComplete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_fku5t")
+
+[node name="BackgroundColour" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0114364, 0.0395265, 1)
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.5
+offset_right = 312.5
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 45
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Menu/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 67
+text = "Thanks for playing the demo!"
+
+[node name="Elements" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/Elements"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -129.5
+offset_right = 156.5
+offset_bottom = 129.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Elements/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Exit" type="Button" parent="Menu/Elements/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fku5t")
+theme_override_font_sizes/font_size = 46
+text = "    QUIT    "
+
+[node name="Boom" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource("2_ggn03")
+volume_db = 3.387
+pitch_scale = 1.29
+
+[node name="Label" type="Label" parent="Menu"]
+layout_mode = 0
+offset_top = 161.0
+offset_right = 10665.0
+offset_bottom = 840.0
+scale = Vector2(0.120015, 0.120015)
+theme_override_font_sizes/font_size = 241
+text = "There is much more to be found, play the game again and find some secrets...
+ Think outside the box, you know, go back to the start if you have to...."
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Menu/Elements/CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvtx8ni55aut2"
+path="res://.godot/imported/Level6 - Intro.wav-43c1ca77918817eb158d10439bd60b64.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level6/Level6 - Intro.wav"
+dest_files=["res://.godot/imported/Level6 - Intro.wav-43c1ca77918817eb158d10439bd60b64.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

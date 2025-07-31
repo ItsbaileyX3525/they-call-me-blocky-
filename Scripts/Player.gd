@@ -44,6 +44,7 @@ var jump_pressed: bool = false
 var jump_just_pressed: bool = false
 
 var can_blink: bool = false
+var can_move: bool = true
 
 func _physics_process(delta: float) -> void:
 	handle_input()
@@ -64,12 +65,13 @@ func _physics_process(delta: float) -> void:
 			c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
 
 func handle_input() -> void:
-	input_direction = Input.get_axis("ui_left", "ui_right")
-	jump_just_pressed = Input.is_action_just_pressed("ui_jump")
-	jump_pressed = Input.is_action_pressed("ui_jump")
+	if can_move:
+		input_direction = Input.get_axis("ui_left", "ui_right")
+		jump_just_pressed = Input.is_action_just_pressed("ui_jump")
+		jump_pressed = Input.is_action_pressed("ui_jump")
 
-	if jump_just_pressed:
-		jump_buffer_timer = JUMP_BUFFER_TIME
+		if jump_just_pressed:
+			jump_buffer_timer = JUMP_BUFFER_TIME
 
 func oppose_gravity() -> void:
 	gravity_flipped = !gravity_flipped

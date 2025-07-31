@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0siq7md26316"
+path="res://.godot/imported/Level5 - Hard.wav-fed4fc53727d92f71fedd6601729c555.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level5/Level5 - Hard.wav"
+dest_files=["res://.godot/imported/Level5 - Hard.wav-fed4fc53727d92f71fedd6601729c555.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

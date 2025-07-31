@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://fenqf72fafmw"]
+
+[ext_resource type="Script" uid="uid://cfgohavb5ildr" path="res://Scripts/LevelScripts/the_end.gd" id="1_iraeb"]
+[ext_resource type="FontFile" uid="uid://ir0tjy2l36gl" path="res://Assets/Fonts/d.ttf" id="2_0l5lt"]
+[ext_resource type="Shader" uid="uid://do3flcme5hnes" path="res://Shaders/Level_7.gdshader" id="3_avpuv"]
+[ext_resource type="AudioStream" uid="uid://l0ftuisiwf1e" path="res://Assets/Sounds/Background/The end.mp3" id="4_fsnxe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsnxe"]
+shader = ExtResource("3_avpuv")
+shader_parameter/jitter_strength = 0.0
+shader_parameter/jitter_speed = 0.1
+shader_parameter/jitter_frequency = 12.0
+shader_parameter/separate_xy = false
+shader_parameter/time_offset = 0.0
+shader_parameter/enable_rotation = false
+shader_parameter/rotation_strength = 5.0
+shader_parameter/rotation_speed = 3.0
+shader_parameter/rotation_frequency = 4.0
+shader_parameter/enable_scaling = false
+shader_parameter/scale_strength = 0.284
+shader_parameter/scale_speed = 2.5
+shader_parameter/scale_frequency = 6.0
+shader_parameter/base_scale = 1.0
+shader_parameter/text_color = Color(1, 1, 1, 1)
+shader_parameter/use_custom_color = false
+shader_parameter/shake_intensity = 0.5
+shader_parameter/enable_pixelation = true
+shader_parameter/pixel_size = 4.0
+shader_parameter/adaptive_pixels = true
+shader_parameter/enable_outline = true
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
+shader_parameter/chromatic_aberration = false
+shader_parameter/aberration_strength = 1.0
+
+[node name="TheEnd" type="Node2D"]
+script = ExtResource("1_iraeb")
+
+[node name="BackgroundColour" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1325.0
+offset_bottom = 747.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0114364, 0.0395265, 1)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 9196.0
+offset_bottom = 920.0
+scale = Vector2(0.139187, 0.139187)
+theme_override_fonts/font = ExtResource("2_0l5lt")
+theme_override_font_sizes/font_size = 286
+text = "I can't animate so I will tell the story text... Sorry."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+material = SubResource("ShaderMaterial_fsnxe")
+offset_right = 5155.0
+offset_bottom = 2899.0
+scale = Vector2(0.248326, 0.248326)
+theme_override_font_sizes/font_size = 231
+text = "And now, I'm in a coma, I am aware that I am... For now but each day or test I feel like I'm fading away like the candle is about to go out."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Bg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fsnxe")
+volume_db = -18.297
+autoplay = true

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1q543tx3dnh6"
+path="res://.godot/imported/Level4 - Nuh uh.wav-60c6f515abc2ce96d21971adbe83369d.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level4/Level4 - Nuh uh.wav"
+dest_files=["res://.godot/imported/Level4 - Nuh uh.wav-60c6f515abc2ce96d21971adbe83369d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://csh0ok338dykk"
+path="res://.godot/imported/VoiceLog #2.wav-e32eafdc47e252bd0e79fd95b4a9752f.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/VoiceShlog/VoiceLog #2.wav"
+dest_files=["res://.godot/imported/VoiceLog #2.wav-e32eafdc47e252bd0e79fd95b4a9752f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

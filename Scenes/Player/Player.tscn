@@ -76,7 +76,7 @@ _data = {
 size = Vector2(67, 67)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s0eop"]
-polygon = PackedVector2Array(0, 0, 0, 67, 67, 67, 67, 0)
+polygon = PackedVector2Array(0, 0, -0.0161133, 62.5465, 67.0086, 62.6817, 67, 0)
 
 [sub_resource type="Gradient" id="Gradient_s0eop"]
 offsets = PackedFloat32Array(1)

@@ -11,7 +11,6 @@ func save_data(content: Dictionary) -> void:
 
 func load_from_file():
 	if FileAccess.file_exists("user://WorldManager.sav"):
-		print("File found")
 		var file = FileAccess.open("user://WorldManager.sav", FileAccess.READ)
 		var content = [
 			file.get_var(),
@@ -20,7 +19,6 @@ func load_from_file():
 		]
 		return content
 	else:
-		print("File not found")
 		return false
 
 func save_game() -> void:
@@ -73,16 +71,16 @@ func _ready() -> void:
 	
 	var content = load_from_file()
 	
-	completed_levels.clear()
-	collected_tapes.clear()
-	completed_hidden_levels.clear()
-	completed_levels = content[0].duplicate()
-	collected_tapes = content[1].duplicate()
-	completed_hidden_levels = content[2].duplicate()
+	if content:
+		completed_levels.clear()
+		collected_tapes.clear()
+		completed_hidden_levels.clear()
+		completed_levels = content[0].duplicate()
+		collected_tapes = content[1].duplicate()
+		completed_hidden_levels = content[2].duplicate()
 	
 	for e in range(len(collected_tapes)):
 		var i = collected_tapes[e]
-		print(e, i)
 		tapes[e] = i
 		
 	tape1_motion_lights = tapes[0]
@@ -98,6 +96,9 @@ var times_gone_back_to_intro: int = 0 #Tracks how many times you've gone back to
 var completed_level1_explain: bool = false
 
 var level_3_pos: Vector2 = Vector2(0.0,0.0)
+
+#Level 3 stuff
+var has_entered_sub: bool = false
 
 #setgets
 

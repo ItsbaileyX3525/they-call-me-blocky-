@@ -3,6 +3,12 @@ extends Control
 @onready var tape_label: Label = $Right/Control/MarginContainer/CenterContainer/Radio/Label
 @onready var time: Label = $Right/Control/MarginContainer2/VBoxContainer/Time
 @onready var circle_1: Sprite2D = $Right/Control/MarginContainer2/VBoxContainer/ColorRect/Circle1
+@onready var play: Button = $"Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#1/MarginContainer/Play"
+@onready var play2: Button = $"Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#2/MarginContainer/Play"
+@onready var play3: Button = $"Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#3/MarginContainer/Play"
+@onready var pause: Button = $"Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#1/MarginContainer/Pause"
+@onready var pause2: Button = $"Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#2/MarginContainer/Pause"
+@onready var pause3: Button = $"Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#3/MarginContainer/Pause"
 
 var playing_tape: bool = false
 var knob_start: float = 0.0
@@ -15,7 +21,7 @@ var current_tape_recording: AudioStreamPlayer
 	[WorldManager.tape3, $"Left/Control/MarginContainer/SmoothScrollContainer/MarginContainer/VBoxContainer/VoiceLog#3", $"Recordings/Motorbikes", "Voice log #3"]
 ]
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	map_time_to_position()
 
 func map_time_to_position() -> void:
@@ -29,7 +35,7 @@ func map_time_to_position() -> void:
 
 			var current_minutes := int(current_time) / 60
 			var current_seconds := int(current_time) % 60
-			var total_minutes := int(total_length) / 60
+			var total_minutes := int(total_length) / 60 # I KNOW ITS AN INTERGER DIVISION PLS STOP WHINING GODOT!
 			var total_seconds := int(total_length) % 60
 
 			var current_str := "%d:%02d" % [current_minutes, current_seconds]
@@ -39,8 +45,29 @@ func map_time_to_position() -> void:
 
 func recording_finished() -> void:
 	current_tape_recording = null
+	if WorldManager.tape1_motion_lights:
+		pause.visible = false
+		pause.disabled = true
+		play.visible = true
+		play.disabled = false
+	if WorldManager.tape2:
+		pause2.visible = false
+		pause2.disabled = true
+		play2.visible = true
+		play2.disabled = false
+	if WorldManager.tape3:
+		pause3.visible = false
+		pause3.disabled = true
+		play3.visible = true
+		play3.disabled = false
 
 func play_recording(play_button: Button, pause_button: Button, sound: AudioStreamPlayer) -> void:
+	if WorldManager.tape1_motion_lights:
+		play.disabled = true
+	if WorldManager.tape2:
+		play2.disabled = true
+	if WorldManager.tape3:
+		play3.disabled = true
 	if sound.playing:
 		sound.stop()
 		current_tape_recording = null
@@ -48,9 +75,14 @@ func play_recording(play_button: Button, pause_button: Button, sound: AudioStrea
 		pause_button.disabled = true
 		play_button.visible = true
 		pause_button.visible = false
+		if WorldManager.tape1_motion_lights:
+			play.disabled = false
+		if WorldManager.tape2:
+			play2.disabled = false
+		if WorldManager.tape3:
+			play3.disabled = false
 	else:
 		sound.play()
-		print(typeof(current_tape_recording))
 		current_tape_recording = sound
 		pause_button.disabled = false
 		play_button.disabled = true
@@ -73,8 +105,10 @@ func show_tape_player(tape_node: ColorRect, recording: AudioStreamPlayer, tape_l
 	recording.connect("finished", recording_finished)
 	
 func _ready() -> void:
-	print(WorldManager.tape1_motion_lights)
 	for e in tapes:
-		print(e)
 		if e[0]:
 			show_tape_player(e[1], e[2], e[3])
+
+
+func _on_return_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Menu/Main Menu.tscn")

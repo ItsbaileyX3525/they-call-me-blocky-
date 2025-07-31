@@ -4,10 +4,18 @@ extends Control
 @onready var fullscreen_chkbox: CheckBox = $MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/MarginContainer/VBoxContainer/MarginContainer/Fullscreen
 @onready var borderless_chkbox: CheckBox = $MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/MarginContainer3/CheckBox
 @onready var volume_slider: HSlider = $MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VolumeSlider
+@onready var voice_display: Label = $MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/Display
+@onready var voiceline_slider: HSlider = $MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/VoiceLineSlider
 
 func _ready() -> void:
-	volume_display.text = str(SettingsManager.volume)
+	voiceline_slider.value = SettingsManager.voice_volume
 	volume_slider.value = SettingsManager.volume
+	volume_display.text = str(SettingsManager.volume)
+	voice_display.text = str(SettingsManager.voice_volume)
+	var sfx_index = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(sfx_index, volume_remap(int(volume_display.text)))
+	sfx_index = AudioServer.get_bus_index("VoiceLines")
+	AudioServer.set_bus_volume_db(sfx_index, volume_remap(int(voice_display.text)))
 	resolution_options.selected = SettingsManager.resolution_selected
 	fullscreen_chkbox.button_pressed = SettingsManager.fullscreen
 	borderless_chkbox.button_pressed = SettingsManager.borderless
@@ -30,8 +38,8 @@ func volume_remap(volume: float) -> float:
 func _on_volume_slider_value_changed(value: float) -> void:
 	volume_display.text = str(int(value))
 
-func _on_volume_slider_drag_ended(value_changed: bool) -> void:
-	var sfx_index= AudioServer.get_bus_index("Master")
+func _on_volume_slider_drag_ended(_value_changed: bool) -> void:
+	var sfx_index = AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_volume_db(sfx_index, volume_remap(int(volume_display.text)))
 	SettingsManager.volume = int(volume_display.text)
 
@@ -68,3 +76,11 @@ func _on_option_button_item_selected(index: int) -> void:
 		get_window().set_size(index_to_resolution[index])
 		SettingsManager.resolution_selected = index
 		get_window().position = Vector2(0, 0) #Stop window from going off screen
+
+func _on_voice_line_slider_value_changed(value: float) -> void:
+	voice_display.text = str(int(value))
+
+func _on_voice_line_slider_drag_ended(_value_changed: bool) -> void:
+	var sfx_index = AudioServer.get_bus_index("VoiceLines")
+	AudioServer.set_bus_volume_db(sfx_index, volume_remap(int(voice_display.text)))
+	SettingsManager.voice_volume = int(voice_display.text)

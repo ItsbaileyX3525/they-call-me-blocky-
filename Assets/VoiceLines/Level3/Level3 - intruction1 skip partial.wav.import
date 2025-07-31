@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://0ao1x5ynj438"
+path="res://.godot/imported/Level3 - intruction1 skip partial.wav-5a02140b8c6c8706209405a5c065c6f9.sample"
+
+[deps]
+
+source_file="res://Assets/VoiceLines/Level3/Level3 - intruction1 skip partial.wav"
+dest_files=["res://.godot/imported/Level3 - intruction1 skip partial.wav-5a02140b8c6c8706209405a5c065c6f9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
