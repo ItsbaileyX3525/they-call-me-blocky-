@@ -2132,16 +2132,16 @@ script = ExtResource("21_m7ynw")
 position = Vector2(5639, 666)
 
 [node name="Wall" type="ColorRect" parent="Section5/Walls"]
-offset_top = 8.0
+offset_top = 26.0
 offset_right = 5.0
-offset_bottom = 40.0
+offset_bottom = 58.0
 color = Color(0, 0, 0, 1)
 
 [node name="Wall2" type="ColorRect" parent="Section5/Walls"]
 offset_left = 6.0
-offset_top = 8.0
+offset_top = 26.0
 offset_right = 14.0
-offset_bottom = 40.0
+offset_bottom = 58.0
 color = Color(0, 0, 0, 1)
 
 [node name="DoorMiddle" type="Area2D" parent="Section5/Walls"]

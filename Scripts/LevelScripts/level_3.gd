@@ -96,8 +96,8 @@ func _on_hidden_level_body_entered(_body: Node2D) -> void:
 
 func _on_door_middle_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		#get_tree().call_deferred("change_scene_to_file","res://Scenes/Levels/Demo_Complete.tscn")
-		get_tree().call_deferred("change_scene_to_file","res://Scenes/Levels/Level_4.tscn")
+		get_tree().call_deferred("change_scene_to_file","res://Scenes/Levels/Demo_Complete.tscn")
+		#get_tree().call_deferred("change_scene_to_file","res://Scenes/Levels/Level_4.tscn")
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

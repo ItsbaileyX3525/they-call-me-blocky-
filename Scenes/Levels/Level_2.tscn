@@ -1171,6 +1171,21 @@ text = "Wh  en is you  r bi  rth  day   ?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 402.0
+offset_top = 182.0
+offset_right = 2396.0
+offset_bottom = 345.0
+scale = Vector2(0.259909, 0.259909)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("21_q5gq6")
+theme_override_font_sizes/font_size = 116
+text = "Press 'E' to interact with the levers."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Resume" to="Level2Elements" method="_on_resume_pressed"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/Unstuck" to="Level2Elements" method="_on_unstuck_pressed"]
 [connection signal="pressed" from="LevelCamera/CanvasLayer2/Menu/Elements/CenterContainer/VBoxContainer/ExitMenu" to="Level2Elements" method="_on_exit_menu_pressed"]
