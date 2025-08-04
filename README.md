@@ -8,6 +8,12 @@ They call me blocky! Is a simple game where you are in trial chambers and you co
 
 ## How to beat each level
 
+You can either follow the below tutorial or watch this youtube video I uploaded to my channel:
+
+https://youtu.be/qfS1KqaQlAA - Demo version (ship 1)
+
+https://youtu.be/rM5MRU4NHHg - Live version (ship 2)
+
 ### Level 1
 
 Beating level 1 is very simple, just walk through the door and wait for the button to move down and press it with your character's weight
